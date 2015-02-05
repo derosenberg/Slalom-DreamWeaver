@@ -2,10 +2,11 @@
 $(document).on('pageinit','#login', function(){
 	$(document).on('click','#btnLogin', function(){
 		$.ajax({
-			url: 'http://slalomtest.elasticbeanstalk.com',
+			url: 'http://slalomtest2.',
 			data: $('#loginForm').serialize(),
 			type: 'POST',
 			async: true,
+			contentType:"application/json",
 			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
@@ -18,7 +19,7 @@ $(document).on('pageinit','#login', function(){
 					$.mobile.changePage("#map");
 				}
 				else{
-					alert('logon unsuccessful');
+					alert('login unsuccessful');
 				}
 			},
 			error: function(request, error){
