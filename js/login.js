@@ -2,7 +2,7 @@
 $(document).on('pageinit','#login', function(){
 	$(document).on('click','#loginSubmitBtn', function(){
 		$.ajax({
-			url: 'http://slalomtest2.',
+			url: 'http://slalomtest2.azurewebsites.net/api/Login/',
 			data: $('#loginForm').serialize(),
 			type: 'POST',
 			async: true,
@@ -32,7 +32,7 @@ $(document).on('pageinit','#login', function(){
 $(document).on('pageinit','#forgotPassword', function(){
 	$(document).on('click','#forgotPasswordBtn', function(){
 		$.ajax({
-			url: 'http://slalomtest2.',
+			url: 'http://slalomtest2.azurewebsites.net/api/forgotpassword/',
 			data: $('#forgotPasswordForm').serialize(),
 			type: 'POST',
 			async: true,
@@ -45,15 +45,11 @@ $(document).on('pageinit','#forgotPassword', function(){
 				$.mobile.hidePageLoadingMsg();
 			},
 			success: function(result){
-				if(result.success){
-					$.mobile.changePage("#map");
-				}
-				else{
-					alert('login unsuccessful');
-				}
+				$.mobile.changePage("#login");
 			},
 			error: function(request, error){
-				alert('Error, sorry.');
+				alert('Sorry, something went wrong.');
+				$.mobile.changePage("#login");
 			}
 		});
 	});
