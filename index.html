@@ -14,31 +14,32 @@
 </head>
 
 <body>
-<div data-role="page" id="login">
-  <div data-role="header">
+<div id="login" data-role="page" data-theme="c">
+  <div data-role="header" data-theme="b">
     <h1>Login</h1>
     
   </div>
-  <center><img src = "http://www.prlog.org/12206499-sharepoint-fest-chicago-2013-platinum-sponsor.jpg"/></center>
-  <div data-role="content">
-  	<form id="loginForm" method="post">
+  <div data-role="content" data-theme="d">
+  	<center><img src = "http://www.prlog.org/12206499-sharepoint-fest-chicago-2013-platinum-sponsor.jpg"/></center>
+    
+    <form id="loginForm" method="post">
   	  <div data-role="fieldcontain">
   	    <label for="username">Username: </label>
-  	    <input type="text" name="username" id="username" value=""  />
+  	    <input name="username" type="text" id="username" value="" data-theme="d"  />
       </div>
       
   	  <div data-role="fieldcontain">
       	<label for="passwordinput">Password:</label>
-		<input type="password" name="passwordinput" id="passwordinput" value=""  />
+		<input name="passwordinput" type="password" id="passwordinput" value="" data-theme="d"  />
       </div>
       
-  	  <a href="#" data-role="button">Button</a>
+  	  <a href="#" data-role="button" data-theme="d">Button</a>
     	
     </form>
     
     <a href="#forgotPassword">Forgot your password?</a>
   </div>
-  <div data-role="footer">
+  <div data-role="footer" data-theme="b">
     <h4>Slalom Consulting</h4>
   </div>
 </div>
