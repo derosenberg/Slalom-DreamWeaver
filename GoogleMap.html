@@ -1,26 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Untitled Document</title>
-<script language="javascript">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 100% }
+</style>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(36.18694627244084, -86.78524544999999);
+    var myOptions = {
+      zoom: 10,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+		var marker_latlng = new google.maps.LatLng(36.18694627244084, -86.78524544999999);
 
-	function init()
-	{
-		if( navigator.geolocation )
-		{
-			alert( "Yeah!! We have Geolocation" );
-		}
-		eles
-		{
-			alert( "Our phone sucks" );
-		}
-	}
+var marker = new google.maps.Marker({
+position: marker_latlng,
+map: map,
+title:"Slalom Event"
+});
+var contentString = 'Slalom Get Together';
+
+var infowindow = new google.maps.InfoWindow({
+content: contentString
+});
+
+google.maps.event.addListener(marker, 'click', function() {
+infowindow.open(map,marker);
+});
+  }
 
 </script>
-
 </head>
-
-<body>
+<body onload="initialize()">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
 </body>
 </html>
