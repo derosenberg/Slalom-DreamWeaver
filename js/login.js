@@ -68,12 +68,12 @@ $(document).on('pageinit','#regisPage', function(){
 	//AJAX call for Submit New User
 	$(document).on('click','#submitNewUser', function(){
 		$.ajax({
-			url: 'http://slalomtest2.azurewebsites.net/api/account/register/',
+			url: 'http://slalomtest2.azurewebsites.net/api/account/register',
 			data: $('#regisPageForm').serialize(),
 			type: 'POST',
 			async: true,
-			contentType:"application/json",
-			dataType:"json",
+			contentType:"application/x-www-form-urlencoded",
+//			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
