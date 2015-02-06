@@ -65,7 +65,7 @@ $(document).on('pageinit','#forgotPassword', function(){
 //Registration page Controls
 $(document).on('pageinit','#regisPage', function(){
 	
-	//AJAX call for password recovery
+	//AJAX call for Submit New User
 	$(document).on('click','#submitNewUser', function(){
 		$.ajax({
 			url: 'http://slalomtest2.azurewebsites.net/api/account/register/',
