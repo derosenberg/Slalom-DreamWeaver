@@ -1,4 +1,6 @@
 // JavaScript Document
+var GPA = 5.0;
+
 $(document).on('pageinit','#login', function(){
 	$(document).on('click','#loginSubmitBtn', function(){
 		$.ajax({
