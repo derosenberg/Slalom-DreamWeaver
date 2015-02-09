@@ -43,7 +43,7 @@ $(document).on('pageinit','#forgotPassword', function(){
 			data: $('#forgotPasswordForm').serialize(),
 			type: 'POST',
 			async: true,
-			contentType:"application/json",
+			contentType:"application/x-www-form-urlencoded",
 			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
@@ -73,7 +73,7 @@ $(document).on('pageinit','#regisPage', function(){
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
-//			dataType:"json",
+			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
