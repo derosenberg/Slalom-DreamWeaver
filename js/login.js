@@ -3,11 +3,41 @@
 //Login Page Controls
 $(document).on('pageinit','#login', function(){
 	
-	//AJAX Call for login
-	$(document).on('click','#loginSubmitBtn', function(){
+	//Get user with token
+	function GetProfile()
+	{
 		$.ajax({
 			url: 'http://slalomtest2.azurewebsites.net/api/Login/',
 			data: $('#loginForm').serialize(),
+			type: 'POST',
+			async: true,
+			contentType:"application/json",
+			dataType:"json",
+			beforeSend: function(){
+				$.mobile.showPageLoadingMsg(true);
+			},
+			complete: function(){
+				$.mobile.hidePageLoadingMsg();
+			},
+			success: function(result){
+				if(result.success){
+					$.mobile.changePage("#map");
+				}
+				else{
+					alert('login unsuccessful');
+				}
+			},
+			error: function(request, error){
+				alert('Error, sorry.');
+			}
+		});
+	}
+	
+	//AJAX Call for login
+	$(document).on('click','#loginSubmitBtn', function(){
+		$.ajax({
+			url: 'http://slalomtest2.azurewebsites.net/api/Token/',
+			data: $('#loginForm').serialize() + "&grant_type=password",
 			type: 'POST',
 			async: true,
 			contentType:"application/json",
