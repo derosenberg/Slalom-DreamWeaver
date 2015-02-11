@@ -1,17 +1,19 @@
 // JavaScript Document
 
+var Token = "";
+
 //Login Page Controls
 $(document).on('pageinit','#login', function(){
 	
-	//Get user with token
+	/*//Get user with token
 	function GetProfile()
 	{
 		$.ajax({
-			url: 'http://slalomtest2.azurewebsites.net/api/Login/',
-			data: $('#loginForm').serialize(),
-			type: 'POST',
+			url: 'http://slalomtest2.azurewebsites.net/api/values',
+			headers: { 'Authorization': 'Bearer ' + Token },
+			data: "username=" + $('#username').val() + "&password=" + $('#password').val() + "&grant_type",
+			type: 'GET',
 			async: true,
-			contentType:"application/json",
 			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
@@ -31,16 +33,15 @@ $(document).on('pageinit','#login', function(){
 				alert('Error, sorry.');
 			}
 		});
-	}
+	}*/
 	
 	//AJAX Call for login
 	$(document).on('click','#loginSubmitBtn', function(){
 		$.ajax({
-			url: 'http://slalomtest2.azurewebsites.net/api/Token/',
-			data: $('#loginForm').serialize() + "&grant_type=password",
+			url: 'http://slalomtest2.azurewebsites.net/Token',
+			data: "username=" + $('#username').val() + "&password=" + $('#password').val() + "&grant_type=password",
 			type: 'POST',
 			async: true,
-			contentType:"application/json",
 			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
@@ -49,15 +50,12 @@ $(document).on('pageinit','#login', function(){
 				$.mobile.hidePageLoadingMsg();
 			},
 			success: function(result){
-				if(result.success){
-					$.mobile.changePage("#map");
-				}
-				else{
-					alert('login unsuccessful');
-				}
+				Token = result.access_token
+				$.mobile.changePage("#Home");
 			},
 			error: function(request, error){
-				alert('Error, sorry.');
+				alert("Error " + request.status + ": " + request.responseJSON.error_description);
+				//alert('Error, sorry.');
 			}
 		});
 	});
@@ -119,4 +117,24 @@ $(document).on('pageinit','#regisPage', function(){
 			}
 		});
 	});
+});
+
+$(document).on('pageinit', '#Home', function(){
+	$.ajax({
+		url: 'http://slalomtest2.azurewebsites.net/api/values/',
+		type: 'GET',
+		async: true,
+		dataType:"json",
+		beforeSend: function(request){
+			request.withCredentials = true;
+        	request.setRequestHeader("Authorization", "Basic " + Token);
+		},
+		success: function(result){
+			console.log(result);
+		},
+		error: function(request, error){
+			alert('Error, sorry.');
+		}
+	});
+	
 });
