@@ -2,6 +2,7 @@
 
 var Token = "";
 
+
 //Login Page Controls
 $(document).on('pageinit','#login', function(){
 	
