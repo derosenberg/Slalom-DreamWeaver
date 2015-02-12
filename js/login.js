@@ -98,7 +98,7 @@ $(document).on('pageinit','#regisPage', function(){
 	$(document).on('click','#submitNewUser', function(){
 		$.ajax({
 			url: 'http://slalomtest2.azurewebsites.net/api/account/register',
-			data: $('#regisPageForm').serialize(),
+			data: "Email=" + $('#regisEmail').val() + "&Password=" + $('#regisPassword').val() + "&ConfirmPassword=" + $('#ConfirmPassword').val() + "&fname=" + $('#fname').val() + "&lname=" + $('#lname').val() + "&phone=" + $('#phone').val() + "&picture=" + $('#regisPortrait').attr('src') + "&guestEmail=" + $('#guestemail').val(),
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
