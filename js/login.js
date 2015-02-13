@@ -43,7 +43,6 @@ $(document).on('pageinit','#login', function(){
 			data: "username=" + $('#username').val() + "&password=" + $('#password').val() + "&grant_type=password",
 			type: 'POST',
 			async: true,
-			dataType:"text/plain",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
@@ -68,23 +67,24 @@ $(document).on('pageinit','#forgotPassword', function(){
 	//AJAX call for password recovery
 	$(document).on('click','#forgotPasswordBtn', function(){
 		$.ajax({
-			url: 'http://slalomtest2.azurewebsites.net/api/forgotpassword/',
-			data: $('#forgotPasswordForm').serialize(),
+			url: 'http://slalomtest2.azurewebsites.net/api/Account/forgotpassword/',
+			data: "Email=" + $('#emailForgot').val(),
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
-			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
 			complete: function(){
 				$.mobile.hidePageLoadingMsg();
+				$('#emailForgot').val("")
 			},
-			success: function(result){
+			success: function(){
+				alert("Success, email is in your inbox.");
 				$.mobile.changePage("#login");
 			},
 			error: function(request, error){
-				alert('Sorry, something went wrong.');
+				alert("Error " + request.status + ": " + request.responseJSON.Message);
 				$.mobile.changePage("#login");
 			}
 		});
@@ -127,8 +127,8 @@ $(document).on('pageinit', '#Home', function(){
 		async: true,
 		dataType:"json",
 		beforeSend: function(request){
-			request.withCredentials = true;
-        	request.setRequestHeader("Authorization", "Basic " + Token);
+			//request.withCredentials = true;
+        //	request.setRequestHeader("Authorization", "Basic " + Token);
 		},
 		success: function(result){
 			console.log(result);
