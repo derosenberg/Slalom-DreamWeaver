@@ -43,7 +43,7 @@ $(document).on('pageinit','#login', function(){
 			data: "username=" + $('#username').val() + "&password=" + $('#password').val() + "&grant_type=password",
 			type: 'POST',
 			async: true,
-			dataType:"json",
+			dataType:"text/plain",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
@@ -98,7 +98,7 @@ $(document).on('pageinit','#regisPage', function(){
 	$(document).on('click','#submitNewUser', function(){
 		$.ajax({
 			url: 'http://slalomtest2.azurewebsites.net/api/account/register',
-			data: "Email=" + $('#regisEmail').val() + "&Password=" + $('#regisPassword').val() + "&ConfirmPassword=" + $('#ConfirmPassword').val() + "&fname=" + $('#fname').val() + "&lname=" + $('#lname').val() + "&phone=" + $('#phone').val() + "&picture=" + $('#regisPortrait').attr('src') + "&guestEmail=" + $('#guestemail').val(),
+			data: "Email=" + $('#regisEmail').val() + "&Password=" + $('#regisPassword').val() + "&ConfirmPassword=" + $('#ConfirmPassword').val() + "&fname=" + $('#fname').val() + "&lname=" + $('#lname').val() + "&phone=" + $('#phone').val() + "&picture=" + $('#regisPic').val() + "&guestEmail=" + $('#guestemail').val(),
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
