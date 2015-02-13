@@ -40,6 +40,7 @@ $(document).on('click','#regisPortrait', function(){
       // Get image handle
       //
       var smallImage = document.getElementById('regisPortrait');
+	  var hiddenField = document.getElementById('regisPic');
 
       // Unhide image elements
       //
@@ -49,6 +50,7 @@ $(document).on('click','#regisPortrait', function(){
       // The in-line CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
+	  hiddenField.value = "data:image/jpeg;base64," + imageData;
     }
 
     // Called when a photo is successfully retrieved
@@ -170,7 +172,8 @@ $(document).on('click','#regisPortrait', function(){
   	   
   	  
      <div style="text-align: center">
-      <img id="regisPortrait" src="" width ="120px" height="170px"/>
+      <img id="regisPortrait" name="regisPortrait" src="" width ="120px" height="170px"/>
+      <input type="hidden" id="regisPic" name="regisPic" value="UNSET"/>
       </div>
   		
          <div data-role="fieldcontain">
