@@ -4,10 +4,10 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 		xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.helloworld"
+        id        = "com.uamis.hi8us"
         version   = "1.0.0">
 
-    <name>PhoneGap Example</name>
+    <name>Slalom Hi8us</name>
 
     <description>
         This is our initial test environment for our Hi8us mobile application

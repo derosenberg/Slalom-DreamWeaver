@@ -102,7 +102,6 @@ $(document).on('pageinit','#regisPage', function(){
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
-			dataType:"json",
 			beforeSend: function(){
 				$.mobile.showPageLoadingMsg(true);
 			},
@@ -110,10 +109,14 @@ $(document).on('pageinit','#regisPage', function(){
 				$.mobile.hidePageLoadingMsg();
 			},
 			success: function(result){
+				alert('Congratulations, user registration was successful.');
 				$.mobile.changePage("#login");
 			},
 			error: function(request, error){
-				alert('Sorry, something went wrong.');
+				console.log(request);
+				var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+				alert(myError);
+				
 				$.mobile.changePage("#login");
 			}
 		});
