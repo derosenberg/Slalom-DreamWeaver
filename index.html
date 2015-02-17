@@ -83,8 +83,10 @@ $(document).on('click','#regisPortrait', function(){
     //
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, 
+	  { quality: 50,  
+	  correctOrientation: true,
+      destinationType: destinationType.DATA_URL });
     }
 
     // A button will call this function
@@ -99,7 +101,9 @@ $(document).on('click','#regisPortrait', function(){
     //
     function getPhoto(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(onPhotoURISuccess, onFail,
+	   { quality: 50,
+	   	correctOrientation : true,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
@@ -176,8 +180,9 @@ $(document).on('click','#regisPortrait', function(){
   	 <form id="regisPageForm" method="post">
   	   
 
-     <div style="text-align: center; position: fixed-center">
-      <img id="regisPortrait" name="regisPortrait" src="" width ="170px" height="170px"/>
+     <div>
+      <img style= "textalign: center; display: block; margin-left: auto; margin-right: 	
+      auto;" id="regisPortrait" name="regisPortrait" src="" width ="130px" height="170px"       />
       <input type="hidden" id="regisPic" name="regisPic" value="UNSET"/>
       </div>
   	
