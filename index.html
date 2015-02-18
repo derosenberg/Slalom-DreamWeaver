@@ -117,13 +117,20 @@ $(document).on('click','#regisPortrait', function(){
 </script>
 <!--JavaScript-->
 <script type="text/javascript" src="js/login.js"></script>
- 
 
+<!--<script type="text/javascript">
+  function goToNewPage()
+    {
+        var url = document.getElementById('list').onchange;
+        if(url != 'none') {
+            window.location = url;
+        }
+    }
+  -->
+</script>
 </head>
 
 
-
-<body>
 <div id="login" data-role="page" data-theme="c">
   <div data-role="header" data-theme="b">
     <h1>Login</h1>
@@ -178,27 +185,22 @@ $(document).on('click','#regisPortrait', function(){
   </div>
   <div data-role="content" data-theme="d">
   	 <form id="regisPageForm" method="post">
-  	   
-
-     <div>
-      <img style= "textalign: center; display: block; margin-left: auto; margin-right: 	
-      auto;" id="regisPortrait" name="regisPortrait" src="" width ="130px" height="170px"       />
-      <input type="hidden" id="regisPic" name="regisPic" value="UNSET"/>
-      </div>
-  	
-         <div data-role="fieldcontain">
+  	    <div style= "float: right;" data-role="fieldcontain">
   	    <label for="fname">First Name:</label>
   	    <input type="text" name="fname" id="fname" value=""  />
         </div>
-  	    <div data-role="fieldcontain">
+  	    <div style= "float: right;" data-role="fieldcontain">
   	      <label for="lname">Last Name:</label>
   	      <input type="text" name="lname" id="lname" value=""  />
          </div>
 
-        
-         
 
-  	    <div data-role="fieldcontain">
+     <div>
+      <img style= "textalign: center; display: block; margin-right: auto;" id=  "regisPortrait" name="regisPortrait" src="" width ="130px" height="170px"       />
+      <input type="hidden" id="regisPic" name="regisPic" value="UNSET"/>
+      </div>
+  	
+        <div data-role="fieldcontain">
   	      <label for="regisEmail">Email:</label>
   	      <input type="email" name="regisEmail" id="regisEmail" value=""  />
       	</div>
@@ -240,13 +242,25 @@ $(document).on('click','#regisPortrait', function(){
 </div>
   
 
-
-
 <div id="Home" data-role="page" data-theme="b">
   <div data-role="header" data-theme="b">
   <a href="#login" data-role="button" data-icon="back">Back</a>
+  
+  <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" data-theme="b">Select a Page</a>
+ <div data-role="popup" id="popupMenu" data-theme="d">
+    <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
+        <li data-role="divider" data-theme="e">Select a Page</li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#regisPage">Registration Page</a></li>
+        <li><a href="#forgotPassword">Forgot Password</a></li>
+    </ul>
+
+</div>
+    
     <h1>Home</h1>
-  </div>
+   
+   </div>
+
   <div data-role="content" data-theme="d">
   
   	<p>Welcome to Hi8us, future homepage.</p>
