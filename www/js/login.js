@@ -186,7 +186,7 @@ var app = {
 		['Location 3', 33.213007,-87.558909]
     	];
 		
-/*		 var infoWindowContent = [
+		var infoWindowContent = [
         ['<div class="info_content">' +
         '<h3>Location 1</h3>' + '</div>'],
         ['<div class="info_content">' +
@@ -195,7 +195,8 @@ var app = {
 		['<div class="info_content">' +
         '<h3>Location 3</h3>' + '</div>']
     ];
-	*/	
+		
+		var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
 		
 		 // Loop through our array of markers & place each one on the map  
     for( i = 0; i < markers.length; i++ ) {
@@ -205,9 +206,8 @@ var app = {
             map: map,
             title: markers[i][0]
         });
-	}
 	
-/*	var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+	
 	
 	google.maps.event.addListener(eventMarker, 'click', (function(eventMarker, i) {
             return function() {
@@ -215,22 +215,8 @@ var app = {
                 infoWindow.open(map, eventMarker);
             }
         })(eventMarker, i));
-		
-
-	var prt = new google.maps.LatLng(33.210798, -87.550617); 
 	
-	var marker2 = new google.maps.Marker({
-            position: prt,
-            map: map,
-            title: 'location 4'
-        });
-		
-	var infoWindow2 = new google.maps.InfoWindow(infoWindowOptions);
-	google.maps.event.addListener(marker,'click',function(e){
-  
-  	infoWindow2.open(map, marker2);
-  	});
-	*/
+	}
 		
         var locationmarker = {
             url: 'img/blue_dot.png',
