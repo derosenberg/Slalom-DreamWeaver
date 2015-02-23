@@ -5,9 +5,9 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.uamis.hi8us"
-        version   = "1.0.0">
+        version   = "2.0.0">
 
-    <name>Slalom Hi8us</name>
+    <name>Slalom Hi8us 3</name>
 
     <description>
         Test application for Slalom Hi8us.
@@ -49,6 +49,7 @@
     <gap:plugin name="org.apache.cordova.battery-status" />-->
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
+	<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
 	 <!--
     <gap:plugin name="org.apache.cordova.console" />
     <gap:plugin name="org.apache.cordova.contacts" />

@@ -6,35 +6,33 @@ var Token = "";
 //Login Page Controls
 $(document).on('pageinit','#login', function(){
 	
-	/*//Get user with token
-	function GetProfile()
+	//Get Token to latest value
+	if(window.localStorage.getItem("token") !== null)
+	{
+		Token = window.localStorage.getItem("token");
+	}
+	console.log(Token);
+	//Attempt to log in
+	
+	if(Token.length > 0)
 	{
 		$.ajax({
-			url: 'http://slalomtest2.azurewebsites.net/api/values',
-			headers: { 'Authorization': 'Bearer ' + Token },
-			data: "username=" + $('#username').val() + "&password=" + $('#password').val() + "&grant_type",
+			url: 'http://slalomtest2.azurewebsites.net/api/values/',
 			type: 'GET',
 			async: true,
 			dataType:"json",
-			beforeSend: function(){
-				$.mobile.showPageLoadingMsg(true);
-			},
-			complete: function(){
-				$.mobile.hidePageLoadingMsg();
+			beforeSend: function(request){
+				request.withCredentials = true;
+    	    	request.setRequestHeader("Authorization", "Bearer " + Token);
 			},
 			success: function(result){
-				if(result.success){
-					$.mobile.changePage("#map");
-				}
-				else{
-					alert('login unsuccessful');
-				}
+				$.mobile.changePage("#Home");
 			},
 			error: function(request, error){
-				alert('Error, sorry.');
+				 window.localStorage.removeItem("token");
 			}
 		});
-	}*/
+	}
 	
 	//AJAX Call for login
 	$(document).on('click','#loginSubmitBtn', function(){
@@ -51,6 +49,7 @@ $(document).on('pageinit','#login', function(){
 			},
 			success: function(result){
 				Token = result.access_token
+				window.localStorage.setItem("token", Token);
 				$.mobile.changePage("#Home");
 			},
 			error: function(request, error){
@@ -94,11 +93,23 @@ $(document).on('pageinit','#forgotPassword', function(){
 //Registration page Controls
 $(document).on('pageinit','#regisPage', function(){
 	
+	//AJAX Call to submit picture
+	function UploadPhoto(guid)
+	{
+		$.ajax({
+			url: 'http://slalomtest2.azurewebsites.net/api/PostPic',
+			async: true,
+			contentType:"application/json",
+			type: 'POST',
+			data: '{ "s": "' + $("#regisPic").val() + '", "id": "' + guid + '" }',
+		});
+	}
+	
 	//AJAX call for Submit New User
 	$(document).on('click','#submitNewUser', function(){
 		$.ajax({
 			url: 'http://slalomtest2.azurewebsites.net/api/account/register',
-			data: "Email=" + $('#regisEmail').val() + "&Password=" + $('#regisPassword').val() + "&ConfirmPassword=" + $('#ConfirmPassword').val() + "&fname=" + $('#fname').val() + "&lname=" + $('#lname').val() + "&phone=" + $('#phone').val() + "&picture=" + $('#regisPic').val() + "&guestEmail=" + $('#guestemail').val(),
+			data: "Email=" + $('#regisEmail').val() + "&Password=" + $('#regisPassword').val() + "&ConfirmPassword=" + $('#ConfirmPassword').val() + "&fname=" + $('#fname').val() + "&lname=" + $('#lname').val() + "&phone=" + $('#phone').val() + "&guestEmail=" + $('#guestemail').val(),
 			type: 'POST',
 			async: true,
 			contentType:"application/x-www-form-urlencoded",
@@ -109,11 +120,11 @@ $(document).on('pageinit','#regisPage', function(){
 				$.mobile.hidePageLoadingMsg();
 			},
 			success: function(result){
+				UploadPhoto(result);
 				alert('Congratulations, user registration was successful.');
 				$.mobile.changePage("#login");
 			},
 			error: function(request, error){
-				console.log(request);
 				var myError = "Error " + request.status + ": " + request.responseJSON.Message;
 				alert(myError);
 				
@@ -124,23 +135,7 @@ $(document).on('pageinit','#regisPage', function(){
 });
 
 $(document).on('pageinit', '#Home', function(){
-	$.ajax({
-		url: 'http://slalomtest2.azurewebsites.net/api/values/',
-		type: 'GET',
-		async: true,
-		dataType:"json",
-		beforeSend: function(request){
-			//request.withCredentials = true;
-        //	request.setRequestHeader("Authorization", "Basic " + Token);
-		},
-		success: function(result){
-			console.log(result);
-		},
-		error: function(request, error){
-			alert('Error, sorry.');
-		}
-	});
-	
+	console.log("Home sweet home");
 });
 
 $(document).on('pageinit', '#mapPage', function(){
@@ -162,6 +157,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+		
+		if (parseFloat(window.device.version) >= 7.0) {
+          document.body.style.marginTop = "20px";
+    }
+		
        // app.receivedEvent('deviceready');
        navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
     },
@@ -173,12 +173,65 @@ var app = {
 
         var mapOptions = {
             center: latLong,
-            zoom: 13,
+            zoom: 17,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		
+		 
+		var markers = [
+        ['Location 1', 33.200932,-87.538735],
+        ['Location 2', 33.212193,-87.553714],
+		['Location 3', 33.213007,-87.558909]
+    	];
+		
+/*		 var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>Location 1</h3>' + '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Location 2 </h3>' +
+        '</div>'],
+		['<div class="info_content">' +
+        '<h3>Location 3</h3>' + '</div>']
+    ];
+	*/	
+		
+		 // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var pos = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        var eventMarker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: markers[i][0]
+        });
+	}
+	
+/*	var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+	
+	google.maps.event.addListener(eventMarker, 'click', (function(eventMarker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, eventMarker);
+            }
+        })(eventMarker, i));
+		
 
+	var prt = new google.maps.LatLng(33.210798, -87.550617); 
+	
+	var marker2 = new google.maps.Marker({
+            position: prt,
+            map: map,
+            title: 'location 4'
+        });
+		
+	var infoWindow2 = new google.maps.InfoWindow(infoWindowOptions);
+	google.maps.event.addListener(marker,'click',function(e){
+  
+  	infoWindow2.open(map, marker2);
+  	});
+	*/
+		
         var locationmarker = {
             url: 'img/blue_dot.png',
             anchor: new google.maps.Point(16, 0)
