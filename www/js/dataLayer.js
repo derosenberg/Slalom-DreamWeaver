@@ -151,3 +151,42 @@ function RegisterUser(user){
 		});
 	});
 }
+
+function GetLocationList() {
+
+    var locations;
+
+    //AJAX call to get a list of user locations
+    $.ajax({
+        url: S_ROOT + 'api/Profiles/getlocation/',
+        type: 'GET',
+        async: false,
+        contentType: "application/x-www-form-urlencoded",
+        beforeSend: function () {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            locations = result;
+        },
+        error: function (request, error) {
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            alert(myError);
+
+            $.mobile.changePage("#login");
+        }
+    });
+
+    return locations;
+}
