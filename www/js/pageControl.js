@@ -12,7 +12,7 @@ $(document).on('pageinit', '#login', function () {
 
 
     //Attempt to authenticate with token
-    if (Token.length > 0) {
+    if (S_TOKEN.length > 0) {
     	AuthenticateToken();
     }
 
