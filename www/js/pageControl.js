@@ -4,6 +4,9 @@
 //Login Page Controls
 $(document).on('pageinit', '#login', function () {
 
+    //Disable form on submit
+    $('#loginForm :input').prop("disabled", true);
+
     //Get Token to latest value
     if (window.localStorage.getItem("S_TOKEN") !== null) {
         S_TOKEN = window.localStorage.getItem("S_TOKEN");
@@ -16,10 +19,16 @@ $(document).on('pageinit', '#login', function () {
     	AuthenticateToken();
     }
 
+    //Enable form
+    $('#regisPageForm :input').prop("disabled", false);
+
     //When submit button clicked, get the token
     $(document).on('click', '#loginSubmitBtn', function () {
 
-    	//Gets the token and either logs in or alerts failure
+        //Disable form on submit
+        $('#loginForm :input').prop("disabled", true);
+
+        //Gets the token and either logs in or alerts failure
     	GetToken($('#username').val(), $('#password').val());
 
     });
@@ -38,8 +47,14 @@ $(document).on('pageinit', '#forgotPassword', function () {
 //Registration page Controls
 $(document).on('pageinit', '#regisPage', function () {
 
+    //Enable form
+    $('#regisPageForm :input').prop("disabled", false);
+
     //AJAX call for Submit New User
 	$(document).on('click', '#submitNewUser', function () {
+
+	    //Disable form on submit
+	    $('#regisPageForm :input').prop("disabled", true);
 
 		//Create user variable
 		var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $("#regisPic").val());
