@@ -190,3 +190,35 @@ function GetLocationList() {
 
     return locations;
 }
+
+function PutLocation(longitude, latitude) {
+
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/Profile/putlocation/?lat=' + latitude + '&lo=' + longitude,
+        type: 'PUT',
+        async: true,
+        contentType: "application/x-www-form-urlencoded",
+        beforeSend: function () {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+
+            //Log success
+            console.log("Location updated");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            console.log(myError);
+        }
+    });
+
+}
