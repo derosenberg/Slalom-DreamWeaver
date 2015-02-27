@@ -5,7 +5,7 @@
 $(document).on('pageinit', '#login', function () {
 
     //Disable form on submit
-    $('#loginForm :input').prop("disabled", true);
+    $('#loginForm :input').prop("disabled", false);
 
     //Get Token to latest value
     if (window.localStorage.getItem("S_TOKEN") !== null) {

@@ -27,10 +27,10 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
 	<script type="text/javascript">
 
-		$(document).on('click', '#regisPortrait', function () {
-			capturePhoto();
-		});
+	
 
+
+	
 		var pictureSource;   // picture source
 		var destinationType; // sets the format of returned value
 
@@ -46,7 +46,8 @@
 		}
 
 		// Called when a photo is successfully retrieved
-		//
+		
+		
 		function onPhotoDataSuccess(imageData) {
 			// Uncomment to view the base64-encoded image data
 			console.log(imageData);
@@ -83,7 +84,12 @@
 
 			// Get image handle
 			//
-			var largeImage = document.getElementById('largeImage');
+			var largeImage = document.getElementById('regisPortrait');
+			var hiddenField = document.getElementById('regisPic');
+
+
+
+			var hiddenField = document.getElementById('regisPic');
 
 			// Unhide image elements
 			//
@@ -106,20 +112,32 @@
             	destinationType: destinationType.DATA_URL
             });
 		}
+		
+		 function capturePhotoWithFile() {
+        
+		
+			navigator.camera.getPicture(onPhotoFileSuccess, onFail, 
+			{ 
+				quality: 50, 
+				correctOrientation: true,
+				destinationType: Camera.DestinationType.FILE_URI });
+    		}
+    
 
 		// A button will call this function
 		//
 		function capturePhotoEdit() {
 			// Take picture using device camera, allow edit, and retrieve image as base64-encoded string
 			navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-				quality: 20, allowEdit: true,
+				quality: 20, 
+				allowEdit: true,
 				destinationType: destinationType.DATA_URL
 			});
 		}
 
 		// A button will call this function
 		//
-		function getPhoto(source) {
+	 function getPhoto(source) {
 			// Retrieve image file location from specified source
 			navigator.camera.getPicture(onPhotoURISuccess, onFail,
              {
@@ -129,6 +147,7 @@
              	sourceType: source
              });
 		}
+
 
 		// Called if something bad happens.
 		//
@@ -141,8 +160,6 @@
 			history.back();
 			return false;
 		}
-
-
 
 	</script>
 	<!--JavaScript-->
@@ -219,12 +236,14 @@
 					<label for="lname">Last Name:</label>
 					<input type="text" name="lname" id="lname" value="" />
 				</div>
-
-
-				<div>
-					<img style="text-align: center; display: block; margin-right: auto;" id="regisPortrait" name="regisPortrait" src="" width="130px" height="170px" />
-					<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
-				</div>
+         <div>
+          
+        <img style="display: none; text-align: center; margin-right: auto;" id="regisPortrait" name="regisPortrait" src="" 						            width="130px" height="170px" />
+    	
+			<input type="hidden" id="regisPic" name="regisPic" value=		            "UNSET" />
+           
+		</div>
+			
 
 				<div data-role="fieldcontain">
 					<label for="regisEmail">Email:</label>
@@ -246,8 +265,17 @@
 					<label for="guestemail">Guest Email:</label>
 					<input type="email" name="guestemail" id="guestemail" value="" />
 				</div>
+                
+                <br/>
+                
+                 <div><a href="#camera" data-icon="searchfield::after" data-iconpos="left" data-role="button">Add Picture</a>
+                 </div>
+                 
+                 <br/>
+                 
+                 <div>
 				<a href="#" id="submitNewUser" data-role="button" data-theme="d">Submit</a>
-
+</div>
 				<br />
 				<br />
 				<br />
@@ -266,6 +294,19 @@
 			</form>
 		</div>
 	</div>
+	<div data-role="page" id="camera">
+	  <div data-role="header">
+	    <h1>Camera</h1>
+      </div>
+	  <div data-role="content">
+      	<button onclick="capturePhoto();">Capture Photo</button>
+        <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From
+Photo Library</button>
+      </div>
+	  <div data-role="footer">
+	    <h4>Footer</h4>
+      </div>
+</div>
 
 
 	<div data-role="page" id="mapPage">
@@ -339,7 +380,8 @@
 			</div>
 			<h1>Activities</h1>
 		</div>
-		<div data-role="content">Content</div>
+		<div data-role="content">
+        </div>
 		<div data-role="footer">
 			<h4>Footer</h4>
 		</div>
