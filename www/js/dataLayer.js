@@ -162,7 +162,7 @@ function GetLocationList() {
         type: 'GET',
         async: false,
         contentType: "application/x-www-form-urlencoded",
-        beforeSend: function () {
+        beforeSend: function (request) {
 
             //Attaches credentials to AJAX call
             request.withCredentials = true;
@@ -200,7 +200,7 @@ function PutLocation(longitude, latitude) {
         type: 'PUT',
         async: true,
         contentType: "application/x-www-form-urlencoded",
-        beforeSend: function () {
+        beforeSend: function (request) {
 
             //Attaches credentials to AJAX call
             request.withCredentials = true;
