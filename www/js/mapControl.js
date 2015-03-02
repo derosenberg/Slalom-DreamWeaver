@@ -36,6 +36,7 @@ $(document).on('pageinit', '#mapPage', function () {
 
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+			var locations = GetLocationList();
 
 			var markers = [
             ['Location 1', 33.200932, -87.538735],
