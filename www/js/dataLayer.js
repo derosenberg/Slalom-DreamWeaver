@@ -183,8 +183,6 @@ function GetLocationList() {
         error: function (request, error) {
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
             alert(myError);
-
-            $.mobile.changePage("#login");
         }
     });
 
