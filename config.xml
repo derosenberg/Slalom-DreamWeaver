@@ -7,7 +7,7 @@
         id        = "com.uamis.hi8us"
         version   = "2.0.0">
 
-    <name>Slalom Hi8us 3</name>
+    <name>Slalom Hi8us Internal Test</name>
 
     <description>
         Test application for Slalom Hi8us.
