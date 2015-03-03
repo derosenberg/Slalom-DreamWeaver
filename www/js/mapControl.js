@@ -37,7 +37,33 @@ $(document).on('pageinit', '#mapPage', function () {
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 			var locations = GetLocationList();
+			
+			var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
+			
 
+			for (p = 0; p < locations.length; p++) {
+				var otherLocationMarker = {
+				url: 'img/pink_Dot.png',
+				anchor: new google.maps.Point(16, 0)
+				}
+				var position = new google.maps.LatLng(locations[p].latitude, locations[p].longitude);
+				var otherMarker = new google.maps.Marker({
+					position: position,
+					map: map,
+					title: locations[p].lname,
+					icon: otherLocationMarker
+				});
+				
+				google.maps.event.addListener(otherMarker, 'click', (function (otherMarker, p) {
+					return function () {
+						otherInfoWindow.setContent(locations[p].fname + ' ' +locations[p].lname);
+						otherInfoWindow.open(map, otherMarker);
+					}
+				})(otherMarker, p));
+			
+			}
+		
+			
 			var markers = [
             ['Location 1', 33.200932, -87.538735],
             ['Location 2', 33.212193, -87.553714],
