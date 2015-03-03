@@ -144,7 +144,7 @@ function RegisterUser(user){
 			},
 			error: function (request, error) {
 				var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-				alert(myError);
+				navigator.notification.alert(myError, console.log(myError), "Registration Failed");
 
 				$.mobile.changePage("#login");
 			}
@@ -182,7 +182,7 @@ function GetLocationList() {
         },
         error: function (request, error) {
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            alert(myError);
+            navigator.notification.alert(myError, console.log(myError), "Operation Failed");
         }
     });
 
@@ -216,6 +216,39 @@ function PutLocation(longitude, latitude) {
             //Log failure
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
             console.log(myError);
+        }
+    });
+
+}
+
+function PostMessage(recipient, message) {
+
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/',
+        type: 'POST',
+        async: true,
+        data: '{ "recipient_id": "' + recipient + '", "text": "' + message + '" }',
+        contentType: "application/json",
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+
+            //Log success
+            console.log("message sent");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Message Send Failed");
         }
     });
 
