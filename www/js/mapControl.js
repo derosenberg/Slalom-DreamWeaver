@@ -27,6 +27,8 @@ $(document).on('pageinit', '#mapPage', function () {
 			var longitude = position.coords.longitude;
 			var latitude = position.coords.latitude;
 			var latLong = new google.maps.LatLng(latitude, longitude);
+			
+			
 
 			var mapOptions = {
 				center: latLong,
@@ -37,6 +39,7 @@ $(document).on('pageinit', '#mapPage', function () {
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 			var locations = GetLocationList();
+			
 			
 			var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
 			
@@ -72,12 +75,11 @@ $(document).on('pageinit', '#mapPage', function () {
 
 			var infoWindowContent = [
             ['<div class="info_content">' +
-            '<h3>Location 1</h3>' + '</div>'],
+            '<h3>Tequila Cowboy</h3>' + '<h5>305 Broadway Nashville, TN 37201</h5>' +'<p>Buzzy, multi-roomed nightspot featuring a live music stage, dance club, game area & mechanical bull.</p>' + '</div>'],
             ['<div class="info_content">' +
-            '<h3>Location 2 </h3>' +
-            '</div>'],
+            '<h3>Honky Tonk Central</h3>' + '<h5>329 Broadway Nashville, TN 37201</h5>' +'<p>Bustling 3-story gathering place featuring pub eats & live country music all day long</p>' + '</div>'],
             ['<div class="info_content">' +
-            '<h3>Location 3</h3>' + '</div>']
+            '<h3>The Farm House</h3>' + '<h5>210 Almond St Nashville, TN 37201</h5>' +'<p>Reimagined, farm-fresh Southern classics, local brews & house-flavored 		moonshine in a hip space</p>' + '</div>']
 			];
 
 			var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
@@ -112,6 +114,8 @@ $(document).on('pageinit', '#mapPage', function () {
 				title: 'my location',
 				icon: locationmarker
 			});
+			
+    		window.onload = PutLocation(longitude, latitude);
 		},
 
 		onError: function (error) {
