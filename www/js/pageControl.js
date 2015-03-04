@@ -71,4 +71,18 @@ $(document).on('pageinit', '#Home', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
+$(document).on('pageinit', '#message', function () {
+    //AJAX call for Submit New User
+    $(document).on('click', '#sendMessage', function () {
+
+        //Disable form on submit
+        $('#regisPageForm :input').prop("disabled", true);
+
+        //Register user
+        PostMessage(5, "It is nice outside.");
+
+    });
+});
+//------------------------------------------------------------------------------------------------------------
+
 
