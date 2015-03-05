@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="js/dataLayer.js"></script>
 	<script type="text/javascript" src="js/mapControl.js"></script>
 	<script type="text/javascript" src="js/pageControl.js"></script>
+    <!-- <script type="text/javascript" src="js/status.js"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
 	<script type="text/javascript">
 
@@ -351,8 +352,37 @@ Photo Library</button>
 			<h1>Home</h1>
 		</div>
 		<div data-role="content">
+<form id="statusUpdateForm" method="post">
+    <div data-role="fieldcontain">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" value="" />
+    </div>
+     <div data-role="fieldcontain">
+         <label for="message">Message:</label>
+        <input type="text" name="statusmessage" id="statusmessage" value="" />
+    </div>
+    
+    <button id="submitPostButton" onclick="submitPostForm();">Create Update</button>
+</form>
+<hr />
 
-			<p>Welcome to Hi8us, future homepage.</p>
+<ul class="ul_current">
+    <li>
+        <div><strong>Username1:</strong></div>
+        <div>Content for the FIRST update</div>
+    </li>
+    <hr/>
+    <li>
+        <div><strong>Username2:</strong></div>
+        <div>Content for the SECOND update</div>
+    </li>
+    <hr/>
+    <li>
+        <div><strong>Username3:</strong></div>
+        <div>Content for the THIRD update</div>
+    </li>
+    <hr/>
+</ul>
 
 		</div>
 		<div data-role="footer">
