@@ -139,7 +139,7 @@ function RegisterUser(user){
 			success: function (result) {
 				user.imgID = result;
 				UploadPhoto(user);
-				alert('Congratulations, user registration was successful.');
+				navigator.notification.alert("Congrats, log in with your email!", console.log("yay"), "Registration Successful");
 				$.mobile.changePage("#login");
 			},
 			error: function (request, error) {
@@ -243,6 +243,7 @@ function PostMessage(recipient, message) {
 
             //Log success
             console.log("message sent");
+            navigator.notification.alert("Successsssss", console.log("success"), "Message Sent");
         },
         error: function (request, error) {
 
@@ -254,4 +255,78 @@ function PostMessage(recipient, message) {
 
 }
 
- 
+function GetConversations() {
+
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getconversations',
+        type: 'GET',
+        async: true,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            //Log success
+            navigator.notification.alert("Received list", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+}
+
+function GetMessages(message_id) {
+
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getmessages/' + message_id,
+        type: 'GET',
+        async: true,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            //Log success
+            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+}
