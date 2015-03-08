@@ -257,6 +257,7 @@ function PostMessage(recipient, message) {
 
 function GetConversations() {
 
+    var conversations;
 
     //AJAX call to update location
     $.ajax({
@@ -280,6 +281,8 @@ function GetConversations() {
         },
         success: function (result) {
 
+            conversations = result;
+
             //Log success
             navigator.notification.alert("Received list", console.log(result), "Conversation Received");
         },
@@ -291,16 +294,19 @@ function GetConversations() {
         }
     });
 
+    return conversations;
+
 }
 
 function GetMessages(message_id) {
 
+    var messages;
 
     //AJAX call to update location
     $.ajax({
         url: S_ROOT + 'api/conversations/getmessages/' + message_id,
         type: 'GET',
-        async: true,
+        async: false,
         beforeSend: function (request) {
 
             //Show page loader
@@ -318,6 +324,8 @@ function GetMessages(message_id) {
         },
         success: function (result) {
 
+            messages = result;
+
             //Log success
             navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
         },
@@ -328,5 +336,51 @@ function GetMessages(message_id) {
             navigator.notification.alert(myError, console.log(myError), "Unable to Load");
         }
     });
+
+    return messages;
+
+}
+
+function GetRecipients()
+{
+
+    var recipients;
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getrecipients/',
+        type: 'GET',
+        async: false,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            recipients = result;
+
+            //Log success
+            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+    return recipients;
 
 }

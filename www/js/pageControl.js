@@ -73,8 +73,14 @@ $(document).on('pageinit', '#Home', function () {
 
 $(document).on('pageinit', '#conversations', function () {
     //AJAX call for Submit New User
-    //GetConversations();
-    GetMessages(10);
+
+    var recipients = GetRecipients();
+
+    foreach(recipient in recipients)
+    {
+        $("#popupMenu1").append("<li value='" + recipient.userID + "'>" + recipient.name + "</li>");
+    }
+
     $(document).on('click', '#sendMessage', function (e) {
 
         //Prevent auto redirect
