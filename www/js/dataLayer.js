@@ -263,7 +263,7 @@ function GetConversations() {
     $.ajax({
         url: S_ROOT + 'api/conversations/getconversations',
         type: 'GET',
-        async: true,
+        async: false,
         beforeSend: function (request) {
 
             //Show page loader

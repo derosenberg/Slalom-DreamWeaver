@@ -75,10 +75,10 @@ $(document).on('pageinit', '#conversations', function () {
     //AJAX call for Submit New User
 
     var recipients = GetRecipients();
-
-    foreach(recipient in recipients)
+    
+    for (i = 0; i < recipients.length; i++)
     {
-        $("#popupMenu1").append("<li value='" + recipient.userID + "'>" + recipient.name + "</li>");
+        $("#popupMenu1").append("<li value='" + recipients[i].id + "'>" + recipients[i].fname + " " + recipients[i].lname + "</li>");
     }
 
     $(document).on('click', '#sendMessage', function (e) {
