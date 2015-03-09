@@ -27,7 +27,8 @@ $(document).on('pageinit', '#mapPage', function () {
 			var longitude = position.coords.longitude;
 			var latitude = position.coords.latitude;
 			var latLong = new google.maps.LatLng(latitude, longitude);
-			
+			var gmarkers = [];
+			var mMarker = [];
 			
 
 			var mapOptions = {
@@ -37,14 +38,24 @@ $(document).on('pageinit', '#mapPage', function () {
 			};
 
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+			
+			
+		function removeMarkers(){
+    		for(i=0; i<gmarkers.length; i++){
+       			gmarkers[i].setMap(null);
+    		}
+			for(i=0; i<mMarker.length; i++){
+       			mMarker[i].setMap(null);
+    		}
+		}
+			
+			function addMarkers() {
 			var locations = GetLocationList();
-			
-			
+				
 			var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
 			
-
-			for (p = 0; p < locations.length; p++) {
+				
+		for (p = 0; p < locations.length; p++) {
 				var otherLocationMarker = {
 				url: 'img/pink_Dot.png',
 				anchor: new google.maps.Point(16, 0)
@@ -57,6 +68,8 @@ $(document).on('pageinit', '#mapPage', function () {
 					icon: otherLocationMarker
 				});
 				
+				gmarkers.push(otherMarker)
+				
 				google.maps.event.addListener(otherMarker, 'click', (function (otherMarker, p) {
 					return function () {
 						otherInfoWindow.setContent(locations[p].fname + ' ' +locations[p].lname);
@@ -65,8 +78,23 @@ $(document).on('pageinit', '#mapPage', function () {
 				})(otherMarker, p));
 			
 			}
-		
+				var locationmarker = {
+					url: 'img/blue_dot.png',
+					anchor: new google.maps.Point(16, 0)
+				}
+				var marker = new google.maps.Marker({
+					position: latLong,
+					map: map,
+					title: 'my location',
+					icon: locationmarker
+				});
+				mMarker.push(marker);
+		}
 			
+			addMarkers();
+			
+
+
 			var markers = [
             ['Location 1', 33.200932, -87.538735],
             ['Location 2', 33.212193, -87.553714],
@@ -75,11 +103,11 @@ $(document).on('pageinit', '#mapPage', function () {
 
 			var infoWindowContent = [
             ['<div class="info_content">' +
-            '<h3>Tequila Cowboy</h3>' + '<h5>305 Broadway Nashville, TN 37201</h5>' +'<p>Buzzy, multi-roomed nightspot featuring a live music stage, dance club, game area & mechanical bull.</p>' + '</div>'],
+            '<h2>2:00 PM</h2>' + '<h3>Tequila Cowboy</h3>' +  '<h5>305 Broadway Nashville, TN 37201</h5>' +'<p>Buzzy, multi-roomed nightspot featuring a live music stage, dance club, game area & mechanical bull.</p>' + '</div>'],
             ['<div class="info_content">' +
-            '<h3>Honky Tonk Central</h3>' + '<h5>329 Broadway Nashville, TN 37201</h5>' +'<p>Bustling 3-story gathering place featuring pub eats & live country music all day long</p>' + '</div>'],
+            '<h2>3:00 PM</h2>'+'<h3>Honky Tonk Central</h3>' + '<h5>329 Broadway Nashville, TN 37201</h5>' +'<p>Bustling 3-story gathering place featuring pub eats & live country music all day long</p>' + '</div>'],
             ['<div class="info_content">' +
-            '<h3>The Farm House</h3>' + '<h5>210 Almond St Nashville, TN 37201</h5>' +'<p>Reimagined, farm-fresh Southern classics, local brews & house-flavored 		moonshine in a hip space</p>' + '</div>']
+            '<h2>5:00 PM</h2>'+'<h3>The Farm House</h3>' + '<h5>210 Almond St Nashville, TN 37201</h5>' +'<p>Reimagined, farm-fresh Southern classics, local brews & house-flavored 		moonshine in a hip space</p>' + '</div>']
 			];
 
 			var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
@@ -103,21 +131,16 @@ $(document).on('pageinit', '#mapPage', function () {
 				})(eventMarker, i));
 
 			}
-
-			var locationmarker = {
-				url: 'img/blue_dot.png',
-				anchor: new google.maps.Point(16, 0)
-			}
-			var marker = new google.maps.Marker({
-				position: latLong,
-				map: map,
-				title: 'my location',
-				icon: locationmarker
-			});
-			
-    		window.onload = PutLocation(longitude, latitude);
+			$(document).ready(function(){
+       		setInterval(function() {
+				
+				removeMarkers();
+				addMarkers();
+						
+    		PutLocation(longitude, latitude);
+				}, 30000);
+   	});
 		},
-
 		onError: function (error) {
 			alert("the code is " + error.code + ". \n" + "message: " + error.message);
 		},
