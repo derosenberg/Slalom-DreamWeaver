@@ -73,7 +73,7 @@ $(document).on('pageinit', '#conversations', function () {
     
     for (i = 0; i < recipients.length; i++)
     {
-        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].id + "'><a href='#message'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
+        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].id + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
     }
 
     $(document).on('click', '.recipientList', function () {
@@ -99,7 +99,7 @@ $(document).on('pageinit', '#messages', function () {
         PostMessage(5, $('#message').val());
 
         //Empty form and re-enable
-        $('#message').val("");
+        $('#messages').val("");
         $('#messageForm1 :input').prop("disabled", false);
 
     });
