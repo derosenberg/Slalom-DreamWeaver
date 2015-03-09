@@ -73,7 +73,7 @@ $(document).on('pageinit', '#conversations', function () {
     
     for (i = 0; i < recipients.length; i++)
     {
-        $("#popupMenu1").append("<li value='" + recipients[i].id + "'>" + recipients[i].fname + " " + recipients[i].lname + "</li>");
+        $("#popupMenu1").append("<li value='" + recipients[i].id + "'><a href='#message'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
     }
 
     $(document).on('click', '#sendMessage', function (e) {
