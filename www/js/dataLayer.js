@@ -385,15 +385,14 @@ function GetRecipients()
 
 }
 
-function PostPost(post) {
-$(document).on('click', '#submitNewPost', function () {
+function PostStatus(status) {
 
     //AJAX call to update location
     $.ajax({
         url: S_ROOT + 'api/posts/PostPost',
         type: 'POST',
         async: true,
-        data: '{ "body": "' + post.body + '" }',
+        data: '{ "body": "' + status.body + '" }',
         contentType: "application/json",
         beforeSend: function (request) {
 
@@ -418,7 +417,6 @@ $(document).on('click', '#submitNewPost', function () {
     });
 
 }
-)};
 
 //gets posts in list
 function GetPostList(){

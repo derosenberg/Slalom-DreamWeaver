@@ -66,11 +66,6 @@ $(document).on('pageinit', '#regisPage', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
-$(document).on('pageinit', '#Home', function () {
-    console.log("Home sweet home");
-});
-//------------------------------------------------------------------------------------------------------------
-
 $(document).on('pageinit', '#conversations', function () {
     //AJAX call for Submit New User
 
@@ -100,4 +95,19 @@ $(document).on('pageinit', '#conversations', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
+$(document).on('pageinit', '#Home', function () {
 
+    //Onclicking stuff, post the status
+    $(document).on('click', '#submitNewPost', function () {
+
+        PostStatus();
+
+    });
+
+
+    //Reset the form
+    function resetform() {
+        document.getElementById("statusUpdateForm").reset();
+    }
+});
+//------------------------------------------------------------------------------------------------------------
