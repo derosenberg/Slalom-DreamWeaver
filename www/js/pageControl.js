@@ -73,9 +73,28 @@ $(document).on('pageinit', '#conversations', function () {
     
     for (i = 0; i < recipients.length; i++)
     {
-        $("#popupMenu1").append("<li value='" + recipients[i].id + "'><a href='#message'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
+        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].id + "'><a href='#message'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
     }
 
+    $(document).on('click', '.recipientList', function () {
+
+        //Disable form on submit
+        $('#messageForm1 :input').prop("disabled", true);
+
+        //Register user
+        PostMessage(5, $('#message').val());
+
+        //Empty form and re-enable
+        $('#message').val("");
+        $('#messageForm1 :input').prop("disabled", false);
+
+    });
+});
+//------------------------------------------------------------------------------------------------------------
+
+$(document).on('pageinit', '#messages', function () {
+
+    //AJAX call for Submit New User
     $(document).on('click', '#sendMessage', function (e) {
 
         //Prevent auto redirect
