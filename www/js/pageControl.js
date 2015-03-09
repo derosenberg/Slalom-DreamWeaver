@@ -77,7 +77,7 @@ $(document).on('pageinit', '#conversations', function () {
     }
 
     $(document).on('click', '.recipientList', function () {
-        $('#recipientId').val($(this)[0].val());
+        $('#recipientId').val($(this).val());
     });
 });
 //------------------------------------------------------------------------------------------------------------
