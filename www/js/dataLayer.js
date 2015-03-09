@@ -385,15 +385,15 @@ function GetRecipients()
 
 }
 
-function PostPost(post) {
-$(document).on('click', '#submitNewPost', function () {
+function PostStatus(status) {
+$(document).on('click', '#submitNewStatus', function () {
 
     //AJAX call to update location
     $.ajax({
-        url: S_ROOT + 'api/posts/PostPost',
+        url: S_ROOT + 'api/posts/PostStatus',
         type: 'POST',
         async: true,
-        data: '{ "body": "' + post.body + '" }',
+        data: '{ "body": "' + status.body + '" }',
         contentType: "application/json",
         beforeSend: function (request) {
 
@@ -421,10 +421,10 @@ $(document).on('click', '#submitNewPost', function () {
 )};
 
 //gets posts in list
-function GetPostList(){
+function GetStatusList(){
 $.ajax({
 	type: "GET",
-	url: S_ROOT + 'api/posts/GetPosts',
+	url: S_ROOT + 'api/posts/GetStatus',
 	data: "{}",
 		async: false,
 		contentType: "application/json",
@@ -441,33 +441,33 @@ $.ajax({
 	},
 		  success: function (data) {
 
-LoadPosts(data);
+LoadStatus(data);
 		//Log success
 		console.log("message sent");
-		navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+		navigator.notification.alert("Successsssss", console.log("success"), "Status Created");
 	},
 	error: function (request, error) {
 
 		//Log failure
 		var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-		navigator.notification.alert(myError, console.log(myError), "Post Failed");
+		navigator.notification.alert(myError, console.log(myError), "Status Failed");
 	}
 	
 	});
 }
 
 //function to load on to list
-function LoadPosts(data){
+function LoadStatus(data){
 	for (var i in data){
-		var post = data[i];
-		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
+		var status = data[i];
+		var row = "<dt>Userinfo</dt>" + "<dd>" + status.body + "</dd>";
 		$("#ul_current").append(row);
 	}
 }
 
-function RefreshPosts(){
-$(document).on('click', '#resfreshPosts', function () {
-	GetPostList();
+function RefreshStatus(){
+$(document).on('click', '#resfreshStatus', function () {
+	GetStatusList();
 			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
 		$("#ul_current").append(testrow);
 });
