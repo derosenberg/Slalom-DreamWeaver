@@ -139,7 +139,7 @@ function RegisterUser(user){
 			success: function (result) {
 				user.imgID = result;
 				UploadPhoto(user);
-				alert('Congratulations, user registration was successful.');
+				navigator.notification.alert("Congrats, log in with your email!", console.log("yay"), "Registration Successful");
 				$.mobile.changePage("#login");
 			},
 			error: function (request, error) {
@@ -243,6 +243,7 @@ function PostMessage(recipient, message) {
 
             //Log success
             console.log("message sent");
+            navigator.notification.alert("Successsssss", console.log("success"), "Message Sent");
         },
         error: function (request, error) {
 
@@ -252,4 +253,222 @@ function PostMessage(recipient, message) {
         }
     });
 
+}
+
+function GetConversations() {
+
+    var conversations;
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getconversations',
+        type: 'GET',
+        async: false,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            conversations = result;
+
+            //Log success
+            navigator.notification.alert("Received list", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+    return conversations;
+
+}
+
+function GetMessages(message_id) {
+
+    var messages;
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getmessages/' + message_id,
+        type: 'GET',
+        async: false,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            messages = result;
+
+            //Log success
+            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+    return messages;
+
+}
+
+function GetRecipients()
+{
+
+    var recipients;
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getrecipients/',
+        type: 'GET',
+        async: false,
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            recipients = result;
+
+            //Log success
+            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+    return recipients;
+
+}
+
+function PostPost(post) {
+$(document).on('click', '#submitNewPost', function () {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/posts/PostPost',
+        type: 'POST',
+        async: true,
+        data: '{ "body": "' + post.body + '" }',
+        contentType: "application/json",
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+
+            //Log success
+            console.log("message sent");
+            navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Post Failed");
+        }
+    });
+
+}
+)};
+
+//gets posts in list
+function GetPostList(){
+$.ajax({
+	type: "GET",
+	url: S_ROOT + 'api/posts/GetPosts',
+	data: "{}",
+		async: false,
+		contentType: "application/json",
+		dataType: "json",
+	beforeSend: function (request) {
+
+		//Show page loader
+		$.mobile.showPageLoadingMsg(true);
+
+		//Attaches credentials to AJAX call
+		request.withCredentials = true;
+		request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+	},
+		  success: function (data) {
+
+LoadPosts(data);
+		//Log success
+		console.log("message sent");
+		navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+	},
+	error: function (request, error) {
+
+		//Log failure
+		var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+		navigator.notification.alert(myError, console.log(myError), "Post Failed");
+	}
+	
+	});
+}
+
+//function to load on to list
+function LoadPosts(data){
+	for (var i in data){
+		var post = data[i];
+		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
+		$("#ul_current").append(row);
+	}
+}
+
+function RefreshPosts(){
+$(document).on('click', '#resfreshPosts', function () {
+	GetPostList();
+			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
+		$("#ul_current").append(testrow);
+});
 }

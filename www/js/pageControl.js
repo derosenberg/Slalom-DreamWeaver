@@ -71,15 +71,30 @@ $(document).on('pageinit', '#Home', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
-$(document).on('pageinit', '#message', function () {
+$(document).on('pageinit', '#conversations', function () {
     //AJAX call for Submit New User
-    $(document).on('click', '#sendMessage', function () {
+
+    var recipients = GetRecipients();
+    
+    for (i = 0; i < recipients.length; i++)
+    {
+        $("#popupMenu1").append("<li value='" + recipients[i].id + "'>" + recipients[i].fname + " " + recipients[i].lname + "</li>");
+    }
+
+    $(document).on('click', '#sendMessage', function (e) {
+
+        //Prevent auto redirect
+        e.preventDefault();
 
         //Disable form on submit
-        $('#regisPageForm :input').prop("disabled", true);
+        $('#messageForm1 :input').prop("disabled", true);
 
         //Register user
-        PostMessage(5, "It is nice outside.");
+        PostMessage(5, $('#message').val());
+
+        //Empty form and re-enable
+        $('#message').val("");
+        $('#messageForm1 :input').prop("disabled", false);
 
     });
 });
