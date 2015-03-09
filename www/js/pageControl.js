@@ -77,22 +77,14 @@ $(document).on('pageinit', '#conversations', function () {
     }
 
     $(document).on('click', '.recipientList', function () {
-
-        //Disable form on submit
-        $('#messageForm1 :input').prop("disabled", true);
-
-        //Register user
-        PostMessage(5, $('#message').val());
-
-        //Empty form and re-enable
-        $('#message').val("");
-        $('#messageForm1 :input').prop("disabled", false);
-
+        $('#recipientId').val($(this)[0].val());
     });
 });
 //------------------------------------------------------------------------------------------------------------
 
 $(document).on('pageinit', '#messages', function () {
+
+    console.log($('#recipientId').val())
 
     //AJAX call for Submit New User
     $(document).on('click', '#sendMessage', function (e) {
