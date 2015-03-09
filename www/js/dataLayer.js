@@ -384,3 +384,91 @@ function GetRecipients()
     return recipients;
 
 }
+
+function PostPost(post) {
+$(document).on('click', '#submitNewPost', function () {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/posts/PostPost',
+        type: 'POST',
+        async: true,
+        data: '{ "body": "' + post.body + '" }',
+        contentType: "application/json",
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+
+            //Log success
+            console.log("message sent");
+            navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Post Failed");
+        }
+    });
+
+}
+)};
+
+//gets posts in list
+function GetPostList(){
+$.ajax({
+	type: "GET",
+	url: S_ROOT + 'api/posts/GetPosts',
+	data: "{}",
+		async: false,
+		contentType: "application/json",
+		dataType: "json",
+	beforeSend: function (request) {
+
+		//Show page loader
+		$.mobile.showPageLoadingMsg(true);
+
+		//Attaches credentials to AJAX call
+		request.withCredentials = true;
+		request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+	},
+		  success: function (data) {
+
+LoadPosts(data);
+		//Log success
+		console.log("message sent");
+		navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+	},
+	error: function (request, error) {
+
+		//Log failure
+		var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+		navigator.notification.alert(myError, console.log(myError), "Post Failed");
+	}
+	
+	});
+}
+
+//function to load on to list
+function LoadPosts(data){
+	for (var i in data){
+		var post = data[i];
+		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
+		$("#ul_current").append(row);
+	}
+}
+
+function RefreshPosts(){
+$(document).on('click', '#resfreshPosts', function () {
+	GetPostList();
+			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
+		$("#ul_current").append(testrow);
+});
+}
