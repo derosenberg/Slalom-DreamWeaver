@@ -467,7 +467,7 @@ Photo Library</button>
                     </ul>
                     </div>
 	    <h1>Conversations</h1>
-      
+      </div>
 
       
       <div data-role="content" data-theme="d">
@@ -477,17 +477,14 @@ Photo Library</button>
         	<textarea id="message" placeholder="Message"></textarea>
         	<button id="sendMessage" name="sendMessage" >Send Message</button>
             <input type="hidden" id="recipientId" name="recipientId" value=		            "UNSET" />
+		</form>
 
-
-      		<a href="#popupMenu1" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a User</a>
-            <div data-role="popup">
+      		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a User</a>
+            <div data-role="popup" id="popupMenu2">
             <ul id="popupMenu1" name="popupMenu1" data-role="listview" data-inset="true" style="min-width:210px;">
             </ul>
             </div>
-      	<form id="conversations" name="conversations">
-				            
-
-        </form>
+      	
       </div>
 	  
       <div data-role="footer">
@@ -495,7 +492,7 @@ Photo Library</button>
       </div>
 		
         </div>
-	</div>
+
 
 
 
@@ -523,7 +520,7 @@ Photo Library</button>
         	<textarea id="message" name="message" placeholder="Message"></textarea>
         	<button id="sendMessage" name="sendMessage" >Send Message</button>
             
-        </form>
+      
       </div>
   </div>
   <div data-role="footer">
