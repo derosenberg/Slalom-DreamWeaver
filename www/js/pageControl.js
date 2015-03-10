@@ -86,21 +86,14 @@ $(document).on('pageinit', '#messages', function () {
 
     console.log($('#recipientId').val())
 
-    //AJAX call for Submit New User
+    //AJAX call for sending message
     $(document).on('click', '#sendMessage', function (e) {
 
         //Prevent auto redirect
         e.preventDefault();
 
-        //Disable form on submit
-        $('#messageForm1 :input').prop("disabled", true);
-
-        //Register user
-        PostMessage(5, $('#message').val());
-
-        //Empty form and re-enable
-        $('#messages').val("");
-        $('#messageForm1 :input').prop("disabled", false);
+        //Post Message
+        PostMessage($('#recipientId').val(), $('#messageBody').val());
 
     });
 });
@@ -111,7 +104,7 @@ $(document).on('pageinit', '#Home', function () {
     //Onclicking stuff, post the status
     $(document).on('click', '#submitNewPost', function () {
 
-        PostStatus();
+        PostStatus($("#statusbody").val());
 
     });
 

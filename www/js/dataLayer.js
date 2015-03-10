@@ -389,7 +389,7 @@ function PostStatus(status) {
 
     //AJAX call to update location
     $.ajax({
-        url: S_ROOT + 'api/posts/PostPost',
+        url: S_ROOT + 'api/status/',
         type: 'POST',
         async: true,
         data: '{ "body": "' + status + '" }',
@@ -422,7 +422,6 @@ function GetStatusList(){
 $.ajax({
 	type: "GET",
 	url: S_ROOT + 'api/posts/GetPosts',
-	data: "{}",
 		async: false,
 		contentType: "application/json",
 		dataType: "json",
