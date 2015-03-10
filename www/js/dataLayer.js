@@ -392,7 +392,7 @@ function PostStatus(status) {
         url: S_ROOT + 'api/posts/PostPost',
         type: 'POST',
         async: true,
-        data: '{ "body": "' + status.body + '" }',
+        data: '{ "body": "' + status + '" }',
         contentType: "application/json",
         beforeSend: function (request) {
 
@@ -405,7 +405,6 @@ function PostStatus(status) {
         success: function (result) {
 
             //Log success
-            console.log("message sent");
             navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
         },
         error: function (request, error) {
@@ -419,7 +418,7 @@ function PostStatus(status) {
 }
 
 //gets posts in list
-function GetPostList(){
+function GetStatusList(){
 $.ajax({
 	type: "GET",
 	url: S_ROOT + 'api/posts/GetPosts',
