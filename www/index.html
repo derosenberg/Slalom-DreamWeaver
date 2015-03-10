@@ -452,7 +452,7 @@ Photo Library</button>
     
     
     
-    <div data-role="page" id="conversations">
+  <div data-role="page" id="conversations">
 	  <div data-role="header">
       <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
       <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
@@ -481,17 +481,20 @@ Photo Library</button>
 
       		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a User</a>
             <div data-role="popup" id="popupMenu2">
-            <ul id="popupMenu1" name="popupMenu1" data-role="listview" data-inset="true" style="min-width:210px;">
+            <ul id="popupMenu1" name="popupMenu1" data-role="listview" data-inset="true" data-inline="true" data-filter="true"
+ style="min-width:210px;">
+            <br/>
+            <br/>
             </ul>
             </div>
-      	
       </div>
+
 	  
       <div data-role="footer">
 	    <h4>Footer</h4>
       </div>
 		
-        </div>
+  </div>
 
 
 
