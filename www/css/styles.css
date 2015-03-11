@@ -72,6 +72,7 @@ div[data-role="content"] {
 	display: none;
 }
 .messageContainer {
+    display: inline-block;
     width: 100%;
     margin: 5px 0px;
 }
@@ -90,7 +91,7 @@ div[data-role="content"] {
     color: #FFFFFF;
     float: right;
     margin-right: 5px;
-    padding: 2px;
+    padding: 10px;
 }
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
