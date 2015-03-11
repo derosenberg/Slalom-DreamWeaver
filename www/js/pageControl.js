@@ -96,11 +96,11 @@ $(document).on('pageinit', '#messages', function () {
         //Prevent auto redirect
         e.preventDefault();
 
-        //Clear message
-        $("#messageBody").val("");
-
         //Post Message
         PostMessage($('#recipientId').val(), $('#messageBody').val());
+		
+		//Clear message
+        $("#messageBody").val("");
 
     });
 	
