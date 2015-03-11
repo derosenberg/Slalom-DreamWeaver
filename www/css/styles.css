@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 .portrait h1 {
 }
 .landscape h1 {
@@ -70,6 +70,27 @@ div[data-role="content"] {
 	padding: 5px;
 	background-color: rgba(0,0,0,.7);
 	display: none;
+}
+.messageContainer {
+    width: 100%;
+    margin: 5px 0px;
+}
+.recipientMessage {
+    border: thin;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #009ed3;
+    float: left;
+    margin-left: 5px;
+    padding: 2px;
+}
+.senderMessage {
+    background-color: #009ed3;
+    border-radius: 6px;
+    color: #FFFFFF;
+    float: right;
+    margin-right: 5px;
+    padding: 2px;
 }
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
