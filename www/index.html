@@ -247,7 +247,7 @@
          <a href = "#camera"> 
         <img style="display: block; text-align: center; margin-right: auto;" id="regisPortrait" name="regisPortrait" src="" 						            width="130px" height="170px" />
     	
-			<input type="hidden" id="regisPic" name="regisPic" value=		            "UNSET" />
+			<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
            </a>
 		</div>
 			
@@ -307,7 +307,7 @@
         <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From
 Photo Library</button>
       </div>
-	  <div data-role="footer">
+	  <div data-role="footer" data-position="fixed">
 	    <h4>Footer</h4>
       </div>
 </div>
@@ -317,7 +317,7 @@ Photo Library</button>
 		<div data-role="header">
 			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
 
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -326,7 +326,7 @@ Photo Library</button>
 					<li><a href="#activities">Activities</a></li>
 					<li><a href="#weather">Weather</a></li>
                     <li><a href="#conversations">Conversations</a></li>
-                    <li><a href="#messages">Messages</a></li>
+               
 				</ul>
 			</div>
 			<h1>Map</h1>
@@ -343,7 +343,7 @@ Photo Library</button>
 	<div id="Home" data-role="page">
 		<div data-role="header">
 			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -352,7 +352,7 @@ Photo Library</button>
 					<li><a href="#activities">Activities</a></li>
 					<li><a href="#weather">Weather</a></li>
                     <li><a href="#conversations">Conversations</a></li>
-                    <li><a href="#messages">Messages</a></li>
+               
 				</ul>
 			</div>
 			<h1>Home</h1>
@@ -387,7 +387,7 @@ Photo Library</button>
     
  
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-position="fixed">
 			<h4>Footer</h4>
 		</div>
 	</div>
@@ -400,7 +400,7 @@ Photo Library</button>
 	<div data-role="page" id="activities">
 		<div data-role="header">
 			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -409,14 +409,14 @@ Photo Library</button>
 					<li><a href="#Home">Home</a></li>
 					<li><a href="#weather">Weather</a></li>
                     <li><a href="#conversations">Conversations</a></li>
-                    <li><a href="#messages">Messages</a></li>
+                    
 				</ul>
 			</div>
 			<h1>Activities</h1>
 		</div>
 		<div data-role="content">
         </div>
-		<div data-role="footer">
+		<div data-role="footer" data-position="fixed">
 			<h4>Footer</h4>
 		</div>
 	</div>
@@ -428,7 +428,7 @@ Photo Library</button>
 	<div data-role="page" id="weather">
 		<div data-role="header">
 			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -437,14 +437,14 @@ Photo Library</button>
 					<li><a href="#Home">Home</a></li>
 					<li><a href="#activities">Activities</a></li>
                     <li><a href="#conversations">Conversations</a></li>
-                    <li><a href="#messages">Messages</a></li>
+                 
 				</ul>
 			</div>
 			<h1>Header</h1>
 		</div>
 		<div data-role="content">
 		</div>
-		<div data-role="footer">
+		<div data-role="footer" data-position="fixed">
 			<h4>Footer</h4>
 		</div>
 	</div>
@@ -455,7 +455,7 @@ Photo Library</button>
   <div data-role="page" id="conversations">
 	  <div data-role="header">
       <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-      <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+      <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -463,7 +463,7 @@ Photo Library</button>
 					<li><a href="#mapPage">Map</a></li>
 					<li><a href="#Home">Home</a></li>
 					<li><a href="#activities">Activities</a></li>
-                    <li><a href="#messages">Messages</a></li>
+                    <li><a href="#weather">Weather</a></li>
                     </ul>
                     </div>
 	    <h1>Conversations</h1>
@@ -471,25 +471,22 @@ Photo Library</button>
 
       
       <div data-role="content" data-theme="d">
-
-      	<form id="messageForm">
-        	<input type="text" id="usernames" placeholder="Username"><br/>
-        	<textarea id="message" placeholder="Message"></textarea>
-        	<button id="sendMessage" name="sendMessage" >Send Message</button>
       
-		</form>
-
-      		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a User</a>
+      		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="star" style="background: #009ed3">Select a User</a>
+           
             <div data-role="popup" id="popupMenu2">
-            <ul id="popupMenu1" name="popupMenu1" data-role="listview" data-inset="true" data-inline="true" data-filter="true"
- style="min-width:210px;">
+            <ul id="popupMenu1" data-role="listview" data-inset="true" data-filter="true" style="min-width:210px;"<br/>>
             <br/>
             </ul>
             </div>
+            
+            <br/>
+            
+            
       </div>
 
 	  
-      <div data-role="footer">
+      <div data-role="footer" data-position="fixed">
 	    <h4>Footer</h4>
       </div>
 		
@@ -502,7 +499,7 @@ Photo Library</button>
 <div data-role="page" id="messages">
   <div data-role="header">
   <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-      <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Select a Page</a>
+      <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -513,20 +510,25 @@ Photo Library</button>
                     <li><a href="#conversations">Conversations</a></li>
                     </ul>
                     </div>
-    <h1>Messages</h1>
+    <h1 id="recipientName" name="recipientName">Messages</h1>
   
  		</div>
-  
   	 <div data-role="content" data-theme="d">
-      		<input type="hidden" id="recipientId" name="recipientId" value="UNSET" />
-        	<textarea id="messageBody" name="messageBody" placeholder="Message"></textarea>
-        	<button id="sendMessage" name="sendMessage" >Send Message</button>
+        	
             
       
       </div>
 
-  <div data-role="footer">
-    <h4>Footer</h4>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+  <div data-role="footer" data-position="fixed">
+  <input id="messageBody" name="messageBody" placeholder="Message"></input>
+     <input type="hidden" name="recipientId" id="recipientId" value="">      
+    <button name="sendMessage" id="sendMessage" data-icon="arrow-r" data-iconpos="right" >Send Message</button>
   </div>
 </div>
 
