@@ -78,13 +78,14 @@ $(document).on('pageinit', '#conversations', function () {
 
     $(document).on('click', '.recipientList', function () {
         $('#recipientId').val($(this).val());
+        $('#recipientName').text($(this).text());
     });
 });
 //------------------------------------------------------------------------------------------------------------
 
 $(document).on('pageinit', '#messages', function () {
 
-    console.log($('#recipientId').val())
+    console.log($('#recipientId').val());
 
     //AJAX call for sending message
     $(document).on('click', '#sendMessage', function (e) {
