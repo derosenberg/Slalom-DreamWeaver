@@ -1,6 +1,8 @@
 //Map page JS
 $(document).on('pageinit', '#mapPage', function () {
-
+	var longitude;
+	var latitude;
+	var latLong;
 	var app = {
 		// Application Constructor
 		initialize: function () {
@@ -18,17 +20,17 @@ $(document).on('pageinit', '#mapPage', function () {
 		// The scope of 'this' is the event. In order to call the 'receivedEvent'
 		// function, we must explicitly call 'app.receivedEvent(...);'
 		onDeviceReady: function () {
-
+			
 			// app.receivedEvent('deviceready');
 			navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+			
 		},
 
 		onSuccess: function (position) {
-			var longitude = position.coords.longitude;
-			var latitude = position.coords.latitude;
-			var latLong = new google.maps.LatLng(latitude, longitude);
+			 longitude = position.coords.longitude;
+			 latitude = position.coords.latitude;
+			 latLong = new google.maps.LatLng(latitude, longitude);
 			var gmarkers = [];
-			var mMarker = [];
 			
 
 			var mapOptions = {
@@ -39,14 +41,75 @@ $(document).on('pageinit', '#mapPage', function () {
 
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 			
+		var watchId;
+		var appPlacment = {
+			
+		// Application Constructor
+		initialize: function () {
+			this.bindEvents();
+		},
+		// Bind Event Listeners
+		//
+		// Bind any events that are required on startup. Common events are:
+		// 'load', 'deviceready', 'offline', and 'online'.
+		bindEvents: function () {
+			document.addEventListener('deviceready', this.onDeviceReady, false);
+		},
+		// deviceready Event Handler
+		//
+		// The scope of 'this' is the event. In order to call the 'receivedEvent'
+		// function, we must explicitly call 'app.receivedEvent(...);'
+		onDeviceReady: function () {
+			
+			// app.receivedEvent('deviceready');
+			watchId = navigator.geolocation.watchPosition(appPlacment.onSuccess, appPlacment.onError, {maximumAge: 10000, timeout:500000, enableHighAccuracy: false});
+			
+		},
+
+		onSuccess: function (position) {
+			 longitude = position.coords.longitude;
+			 latitude = position.coords.latitude;
+			 latLong = new google.maps.LatLng(latitude, longitude);
+			 var mMarker = [];
+			 
+			 
+			 var locationmarker = {
+					url: 'img/blue_dot.png',
+					anchor: new google.maps.Point(16, 0)
+				}
+				var marker = new google.maps.Marker({
+					position: latLong,
+					map: map,
+					title: 'my location',
+					icon: locationmarker
+				});
+				mMarker.push(marker);
+				navigator.geolocation.clearWatch(watchId);
+					
+		$(document).ready(function(){
+       		setInterval(function() {
+			
+			/*for(i=0; i<mMarker.length; i++){
+       			mMarker[i].setMap(null);
+    		}	*/
+			PutLocation(longitude, latitude);	
+		}, 10000);
+   	});	
+   
+			
+
+		},
+		onError: function (error) {
+			alert("the code is " + error.code + ". \n" + "message: " + error.message);
+		},
+		};
+		appPlacment.initialize();
 			
 		function removeMarkers(){
     		for(i=0; i<gmarkers.length; i++){
        			gmarkers[i].setMap(null);
     		}
-			for(i=0; i<mMarker.length; i++){
-       			mMarker[i].setMap(null);
-    		}
+
 		}
 			
 			function addMarkers() {
@@ -78,17 +141,7 @@ $(document).on('pageinit', '#mapPage', function () {
 				})(otherMarker, p));
 			
 			}
-				var locationmarker = {
-					url: 'img/blue_dot.png',
-					anchor: new google.maps.Point(16, 0)
-				}
-				var marker = new google.maps.Marker({
-					position: latLong,
-					map: map,
-					title: 'my location',
-					icon: locationmarker
-				});
-				mMarker.push(marker);
+				
 		}
 			
 			addMarkers();
@@ -121,8 +174,6 @@ $(document).on('pageinit', '#mapPage', function () {
 					title: markers[i][0]
 				});
 
-
-
 				google.maps.event.addListener(eventMarker, 'click', (function (eventMarker, i) {
 					return function () {
 						infoWindow.setContent(infoWindowContent[i][0]);
@@ -136,10 +187,9 @@ $(document).on('pageinit', '#mapPage', function () {
 				
 				removeMarkers();
 				addMarkers();
-						
-    		PutLocation(longitude, latitude);
-				}, 30000);
-   	});
+	
+		}, 10000);
+   	}); 
 		},
 		onError: function (error) {
 			alert("the code is " + error.code + ". \n" + "message: " + error.message);

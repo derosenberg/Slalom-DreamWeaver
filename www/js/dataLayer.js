@@ -189,12 +189,12 @@ function GetLocationList() {
     return locations;
 }
 
-function PutLocation(longitude, latitude) {
+function PutLocation(Longitude, Latitude) {
 
 
     //AJAX call to update location
     $.ajax({
-        url: S_ROOT + 'api/Profile/putlocation/?lat=' + latitude + '&lo=' + longitude,
+        url: S_ROOT + 'api/Profile/putlocation/?lat=' + Latitude + '&lo=' + Longitude,
         type: 'PUT',
         async: true,
         contentType: "application/x-www-form-urlencoded",
