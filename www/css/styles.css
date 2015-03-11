@@ -76,7 +76,7 @@ div[data-role="content"] {
     margin: 5px 0px;
 }
 .recipientMessage {
-    border: 2px solid black;
+    border: 2px solid #009ed3;
     border-radius: 6px;
     background-color: #FFFFFF;
     color: #009ed3;
