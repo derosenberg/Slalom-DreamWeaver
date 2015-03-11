@@ -111,7 +111,7 @@ $(document).on('pageinit', '#messages', function () {
 $(document).on('pageinit', '#Home', function () {
 
     //Onclicking stuff, post the status
-    $(document).on('click', '#submitNewPost', function () {
+    $(document).on('click', '#submitNewStatus', function () {
 
         PostStatus($("#statusbody").val());
 
