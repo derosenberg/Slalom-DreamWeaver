@@ -78,11 +78,10 @@ $(document).on('pageinit', '#conversations', function () {
 
     $(document).on('click', '.recipientList', function () {
         $('#recipientId').val($(this).val());
-<<<<<<< HEAD
+
 		$('#recipientName').text($(this).text());
-=======
-        $('#recipientName').text($(this).text());
->>>>>>> origin/Sprint2
+
+
     });
 });
 //------------------------------------------------------------------------------------------------------------
