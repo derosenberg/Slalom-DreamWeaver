@@ -76,13 +76,13 @@ div[data-role="content"] {
     margin: 5px 0px;
 }
 .recipientMessage {
-    border: thin;
+    border: 2px solid black;
     border-radius: 6px;
     background-color: #FFFFFF;
     color: #009ed3;
     float: left;
     margin-left: 5px;
-    padding: 2px;
+    padding: 10px;
 }
 .senderMessage {
     background-color: #009ed3;
