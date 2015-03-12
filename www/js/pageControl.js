@@ -75,19 +75,66 @@ $(document).on('pageinit', '#conversations', function () {
     {
         $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].ProfileID + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
     }
-});
-
-$(document).on('pageshow', '#conversations', function () {
-
-    $(document).one('click', '.recipientList', function () {
+    
+    $(document).on('click', '.recipientList', function () {
         $('#recipientId').val($(this).val());
 
         $('#recipientName').text($(this).text());
 
+    });
+
+    $(document).on('click', '.conversationContainer', function () {
+
+        $.mobile.changePage("#messages");
+
+        $('#recipientId').val($(this).find(":input").val());
+
+        $('#recipientName').text($(this).find(".conversationName").text());
+
+    });
+
+});
+
+$(document).on('pageshow', '#conversations', function () {
+
+    $("#conversationPageContent").empty();
+
+    var conversations = GetConversations();
+
+    for (i = 0; i < conversations.length; i++)
+    {
+        var temp = "<div class='conversationContainer'><label class='conversationName' style='float:left'><strong>";
+        temp += conversations[i].recname;
+        temp += "</strong></label><label style='float:right'>";
+        temp += conversations[i].latestmessagedate;
+        temp += "</label><input type='hidden' value='";
+        temp += conversations[i].rec_id;
+        temp += "'><br /><br /><p style='color:#666666; clear:both;'>";
+        temp += conversations[i].latestmessagetext;
+        temp += "</p></div>";
+
+        $("#conversationPageContent").append(temp);
+    }
+});
+//------------------------------------------------------------------------------------------------------------
+$(document).on('pageinit', '#messages', function () {
+    //AJAX call for sending message
+    $(document).on('click', '#sendMessage', function (e) {
+
+        //Prevent auto redirect
+        e.preventDefault();
+
+        //Post Message
+        PostMessage($('#recipientId').val(), $('#messageBody').val());
+
+        //Create new message bubble
+        $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + $('#messageBody').val() + "</div></div>")
+
+        //Clear message
+        $("#messageBody").val("");
 
     });
 });
-//------------------------------------------------------------------------------------------------------------
 
 $(document).on('pageshow', '#messages', function () {
 
@@ -103,23 +150,6 @@ $(document).on('pageshow', '#messages', function () {
         else
             $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
     }
-
-    //AJAX call for sending message
-    $(document).one('click', '#sendMessage', function (e) {
-
-        //Prevent auto redirect
-        e.preventDefault();
-
-        //Post Message
-        PostMessage($('#recipientId').val(), $('#messageBody').val());
-
-        //Create new message bubble
-        $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + $('#messageBody').val() + "</div></div>")
-
-        //Clear message
-        $("#messageBody").val("");
-
-    });
 });
 //------------------------------------------------------------------------------------------------------------
 
