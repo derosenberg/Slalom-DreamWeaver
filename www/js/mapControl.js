@@ -3,6 +3,7 @@ $(document).on('pageinit', '#mapPage', function () {
 	var longitude;
 	var latitude;
 	var latLong;
+	var mMarker = [];
 	var app = {
 		// Application Constructor
 		initialize: function () {
@@ -31,7 +32,6 @@ $(document).on('pageinit', '#mapPage', function () {
 			 latitude = position.coords.latitude;
 			 latLong = new google.maps.LatLng(latitude, longitude);
 			var gmarkers = [];
-			
 
 			var mapOptions = {
 				center: latLong,
@@ -40,8 +40,8 @@ $(document).on('pageinit', '#mapPage', function () {
 			};
 
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-			
-		var watchId;
+	$(document).ready(function(){
+       	setInterval(function() {
 		var appPlacment = {
 			
 		// Application Constructor
@@ -62,7 +62,7 @@ $(document).on('pageinit', '#mapPage', function () {
 		onDeviceReady: function () {
 			
 			// app.receivedEvent('deviceready');
-			watchId = navigator.geolocation.watchPosition(appPlacment.onSuccess, appPlacment.onError, {maximumAge: 10000, timeout:500000, enableHighAccuracy: false});
+			 navigator.geolocation.getCurrentPosition(appPlacment.onSuccess, appPlacment.onError);
 			
 		},
 
@@ -70,13 +70,11 @@ $(document).on('pageinit', '#mapPage', function () {
 			 longitude = position.coords.longitude;
 			 latitude = position.coords.latitude;
 			 latLong = new google.maps.LatLng(latitude, longitude);
-			 var mMarker = [];
 			 
-			 
-			 var locationmarker = {
-					url: 'img/blue_dot.png',
-					anchor: new google.maps.Point(16, 0)
-				}
+			 function clearOverlays() {
+  				for (var i = 0; i < mMarker.length; i++ ) {
+    			mMarker[i].setMap(null);
+  				}
 				var marker = new google.maps.Marker({
 					position: latLong,
 					map: map,
@@ -84,26 +82,29 @@ $(document).on('pageinit', '#mapPage', function () {
 					icon: locationmarker
 				});
 				mMarker.push(marker);
-				navigator.geolocation.clearWatch(watchId);
-					
-		$(document).ready(function(){
-       		setInterval(function() {
-			
-			/*for(i=0; i<mMarker.length; i++){
-       			mMarker[i].setMap(null);
-    		}	*/
+			 }
+				
+				
+			 var locationmarker = {
+					url: 'img/blue_dot.png',
+					anchor: new google.maps.Point(16, 0)
+				}
+				
+			clearOverlays();			
 			PutLocation(longitude, latitude);	
-		}, 10000);
-   	});	
-   
-			
 
+	
+	
+   
 		},
 		onError: function (error) {
 			alert("the code is " + error.code + ". \n" + "message: " + error.message);
 		},
 		};
 		appPlacment.initialize();
+				}, 2000);
+   	});	
+		
 			
 		function removeMarkers(){
     		for(i=0; i<gmarkers.length; i++){
@@ -116,8 +117,8 @@ $(document).on('pageinit', '#mapPage', function () {
 			var locations = GetLocationList();
 				
 			var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
-			
-				
+							
+
 		for (p = 0; p < locations.length; p++) {
 				var otherLocationMarker = {
 				url: 'img/pink_Dot.png',
