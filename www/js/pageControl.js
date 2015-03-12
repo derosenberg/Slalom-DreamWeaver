@@ -73,13 +73,16 @@ $(document).on('pageinit', '#conversations', function () {
     
     for (i = 0; i < recipients.length; i++)
     {
-        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].id + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
+        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].ProfileID + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
     }
+});
+
+$(document).on('pagecontainershow', '#conversations', function () {
 
     $(document).on('click', '.recipientList', function () {
         $('#recipientId').val($(this).val());
 
-		$('#recipientName').text($(this).text());
+        $('#recipientName').text($(this).text());
 
 
     });
@@ -88,7 +91,20 @@ $(document).on('pageinit', '#conversations', function () {
 
 $(document).on('pageinit', '#messages', function () {
 
-    console.log($('#recipientId').val());
+});
+
+$(document).on('pagecontainershow', '#messages', function () {
+
+    var recipient_id = $("#recipientId").val();
+
+    var conversation = GetMessages(recipient_id);
+
+    for (i = 0; i < conversation[0].Messages.length; i++) {
+        if (conversation[0].Messages[i].ProfileID == recipient_id)
+            $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+        else
+            $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+    }
 
     //AJAX call for sending message
     $(document).on('click', '#sendMessage', function (e) {
@@ -98,13 +114,14 @@ $(document).on('pageinit', '#messages', function () {
 
         //Post Message
         PostMessage($('#recipientId').val(), $('#messageBody').val());
-		
-		//Clear message
+
+        //Create new message bubble
+        $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + $('#messageBody').val() + "</div></div>")
+
+        //Clear message
         $("#messageBody").val("");
 
     });
-	
-
 });
 //------------------------------------------------------------------------------------------------------------
 
