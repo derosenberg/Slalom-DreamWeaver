@@ -77,9 +77,9 @@ $(document).on('pageinit', '#conversations', function () {
     }
 });
 
-$(document).on('pagecontainershow', '#conversations', function () {
+$(document).on('pageshow', '#conversations', function () {
 
-    $(document).on('click', '.recipientList', function () {
+    $(document).one('click', '.recipientList', function () {
         $('#recipientId').val($(this).val());
 
         $('#recipientName').text($(this).text());
@@ -89,11 +89,9 @@ $(document).on('pagecontainershow', '#conversations', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
-$(document).on('pageinit', '#messages', function () {
+$(document).on('pageshow', '#messages', function () {
 
-});
-
-$(document).on('pagecontainershow', '#messages', function () {
+    $("#messagePageContent").empty();
 
     var recipient_id = $("#recipientId").val();
 
@@ -107,7 +105,7 @@ $(document).on('pagecontainershow', '#messages', function () {
     }
 
     //AJAX call for sending message
-    $(document).on('click', '#sendMessage', function (e) {
+    $(document).one('click', '#sendMessage', function (e) {
 
         //Prevent auto redirect
         e.preventDefault();
