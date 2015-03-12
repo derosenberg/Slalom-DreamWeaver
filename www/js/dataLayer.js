@@ -298,13 +298,13 @@ function GetConversations() {
 
 }
 
-function GetMessages(message_id) {
+function GetMessages(recipient_id) {
 
     var messages;
 
     //AJAX call to update location
     $.ajax({
-        url: S_ROOT + 'api/conversations/getmessages/' + message_id,
+        url: S_ROOT + 'api/conversations/getmessages/' + recipient_id,
         type: 'GET',
         async: false,
         beforeSend: function (request) {
