@@ -1,5 +1,5 @@
 //Map page JS
-$(document).on('pageinit', '#mapPage', function () {
+$(document).one('pageshow', '#mapPage', function () {
 	var longitude;
 	var latitude;
 	var latLong;
@@ -40,6 +40,9 @@ $(document).on('pageinit', '#mapPage', function () {
 			};
 
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			google.maps.event.trigger(map, 'resize');
+			
 	$(document).ready(function(){
        	setInterval(function() {
 		var appPlacment = {
@@ -147,9 +150,9 @@ $(document).on('pageinit', '#mapPage', function () {
 			
 			addMarkers();
 			
+			var markers = GetEventsList();
 
-
-			var markers = [
+			/*var markers = [
             ['Location 1', 33.200932, -87.538735],
             ['Location 2', 33.212193, -87.553714],
             ['Location 3', 33.213007, -87.558909]
@@ -163,26 +166,35 @@ $(document).on('pageinit', '#mapPage', function () {
             ['<div class="info_content">' +
             '<h2>5:00 PM</h2>'+'<h3>The Farm House</h3>' + '<h5>210 Almond St Nashville, TN 37201</h5>' +'<p>Reimagined, farm-fresh Southern classics, local brews & house-flavored 		moonshine in a hip space</p>' + '</div>']
 			];
-
+			
+				*/		
+					
 			var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
-
+			
+			
+			
 			// Loop through our array of markers & place each one on the map  
 			for (i = 0; i < markers.length; i++) {
-				var pos = new google.maps.LatLng(markers[i][1], markers[i][2]);
+				var pos = new google.maps.LatLng(markers[i].eventlat, markers[i].eventlng);
 				var eventMarker = new google.maps.Marker({
 					position: pos,
 					map: map,
-					title: markers[i][0]
+					title: markers[i].eventname
 				});
 
 				google.maps.event.addListener(eventMarker, 'click', (function (eventMarker, i) {
 					return function () {
-						infoWindow.setContent(infoWindowContent[i][0]);
+						infoWindow.setContent('<h2>' + markers[i].eventdate + '</h2>' + '<h3>'+ markers[i].eventname + '</h3>' +  '<h5>'+  markers[i].address + '</h5>' + '<p>' + markers[i].description + '</p>');
 						infoWindow.open(map, eventMarker);
 					}
 				})(eventMarker, i));
 
 			}
+		
+			
+		
+			
+			
 			$(document).ready(function(){
        		setInterval(function() {
 				
