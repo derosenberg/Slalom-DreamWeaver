@@ -157,15 +157,20 @@ $(document).on('pageinit', '#Home', function () {
 
     //Onclicking stuff, post the status
     $(document).on('click', '#submitNewStatus', function () {
-
-        PostStatus($("#statusbody").val());
-
+        PostStatus($("#statusBody").val());
+        $("#statusBody").val("");
     });
 
+});
 
-    //Reset the form
-    function resetform() {
-        document.getElementById("statusUpdateForm").reset();
+$(document).on('pageshow', '#Home', function () {
+
+    var statuses = GetStatusList();
+
+    for(i = 0; i < statuses.length; i++)
+    {
+
     }
+
 });
 //------------------------------------------------------------------------------------------------------------
