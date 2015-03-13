@@ -460,3 +460,40 @@ function GetStatusList() {
     return statuses;
 }
 
+function GetEventsList() {
+
+    var events;
+
+    //AJAX call to get a list of user locations
+    $.ajax({
+        url: S_ROOT + 'api/Event/getevents',
+        type: 'GET',
+        async: false,
+        contentType: "application/json",
+		dataType: "json",
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+        success: function (result) {
+
+            events = result;
+        },
+        error: function (request, error) {
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Operation Failed");
+        }
+    });
+
+    return events;
+}
