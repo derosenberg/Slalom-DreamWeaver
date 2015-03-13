@@ -161,12 +161,6 @@
 			return false;
 		}
 		
-	
-
-
-
-
-
 
 </script>
 	<!--JavaScript-->
@@ -355,39 +349,27 @@ Photo Library</button>
                
 				</ul>
 			</div>
-			<h1>Home</h1>
+			<h1>Status</h1>
 		</div>
-		<div data-role="content">
-<form id="newStatusForm" method="status">
-    <div data-role="fieldcontain">
-        <!--<label for="username">Username:</label>
-        <input type="text" name="username" id="username" value="" />-->
-    </div>
-  <div data-role="fieldcontain">
-         <label for="body">New Post:</label>
-        <input type="text" name="statusbody" id="statusbody" value="" />
-    </div>  
-    <div>
-    <a href="#" id="submitNewStatus" data-role="button" data-theme="d">Submit</a>
-    </div>
-</form>
+		
+        
+        
+        <div id="statusPageContent" name="statusPageContent" data-role="content">
+        <div class="statusContaniner">
 
-<hr />
-<a href="#" id="refreshStatus"> Refresh Status</a>
-<dl id="ul_current">      			
-                <dt><strong>Username1:</strong></dt>
-                <dd>Content for the FIRST update</dd>
-        
-                <dt><strong>Username2:</strong></dt>
-                <dd>Content for the SECOND update</dd>
-        
-                <dt><strong>Username3:</strong></dt>
-                <dd>Content for the THIRD update</dd>       	
-    </dl>
-    
- 
+		
+
+		<a href="#" id="loadMore"> Load More</a>
+
 		</div>
-		<div data-role="footer" data-position="fixed">
+
+         <label for="body">New Status:</label>
+        <input type="text" name="statusBody" id="statusBody" value="" />
+    	<a href="#" id="submitNewStatus" data-role="button" data-theme="d">Submit</a>
+   
+        </div>
+
+        <div data-role="footer" data-position="fixed">
 			<h4>Footer</h4>
 		</div>
 	</div>

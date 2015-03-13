@@ -451,20 +451,3 @@ LoadPosts(data);
 	
 	});
 }
-
-//function to load on to list
-function LoadPosts(data){
-	for (var i in data){
-		var post = data[i];
-		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
-		$("#ul_current").append(row);
-	}
-}
-
-function RefreshPosts(){
-$(document).on('click', '#resfreshPosts', function () {
-	GetPostList();
-			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
-		$("#ul_current").append(testrow);
-});
-}

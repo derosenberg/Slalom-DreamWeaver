@@ -153,19 +153,33 @@ $(document).on('pageshow', '#messages', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
-$(document).on('pageinit', '#Home', function () {
+$(document).on('pageshow', '#Home', function () {
 
     //Onclicking stuff, post the status
     $(document).on('click', '#submitNewStatus', function () {
 
-        PostStatus($("#statusbody").val());
-
+        PostStatus($("#statusBody").val());
+		$("#statusBody").val("");
     });
 
-
-    //Reset the form
-    function resetform() {
-        document.getElementById("statusUpdateForm").reset();
-    }
+   
 });
+
+//function to load on to list
+function LoadStatus(data){
+	for (var i in data){
+		var post = data[i];
+		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
+		$("#ul_current").append(row);
+	}
+}
+
+function RefreshPosts(){
+$(document).on('click', '#resfreshPosts', function () {
+	GetPostList();
+			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
+		$("#ul_current").append(testrow);
+});
+}
+
 //------------------------------------------------------------------------------------------------------------
