@@ -418,7 +418,6 @@ function PostStatus(status) {
 }
 
 //gets posts in list
-<<<<<<< HEAD
 function GetStatusList() {
 
     var statuses;
@@ -456,38 +455,3 @@ function GetStatusList() {
     return statuses;
 }
 
-=======
-function GetStatusList(){
-$.ajax({
-	type: "GET",
-	url: S_ROOT + 'api/posts/GetPosts',
-		async: false,
-		contentType: "application/json",
-		dataType: "json",
-	beforeSend: function (request) {
-
-		//Show page loader
-		$.mobile.showPageLoadingMsg(true);
-
-		//Attaches credentials to AJAX call
-		request.withCredentials = true;
-		request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-
-	},
-		  success: function (data) {
-
-LoadPosts(data);
-		//Log success
-		console.log("message sent");
-		navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
-	},
-	error: function (request, error) {
-
-		//Log failure
-		var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-		navigator.notification.alert(myError, console.log(myError), "Post Failed");
-	}
-	
-	});
-}
->>>>>>> origin/Sprint2

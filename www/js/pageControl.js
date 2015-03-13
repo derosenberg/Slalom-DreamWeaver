@@ -153,7 +153,7 @@ $(document).on('pageshow', '#messages', function () {
 });
 //------------------------------------------------------------------------------------------------------------
 
-$(document).on('pageshow', '#Home', function () {
+$(document).on('pageinit', '#Home', function () {
 
     //Onclicking stuff, post the status
     $(document).on('click', '#submitNewStatus', function () {
@@ -161,7 +161,6 @@ $(document).on('pageshow', '#Home', function () {
         $("#statusBody").val("");
     });
 
-<<<<<<< HEAD
 });
 
 $(document).on('pageshow', '#Home', function () {
@@ -173,30 +172,5 @@ $(document).on('pageshow', '#Home', function () {
 
     }
 
-=======
-        PostStatus($("#statusBody").val());
-		$("#statusBody").val("");
-    });
-
-   
 });
-
-//function to load on to list
-function LoadStatus(data){
-	for (var i in data){
-		var post = data[i];
-		var row = "<dt>Userinfo</dt>" + "<dd>" + post.body + "</dd>";
-		$("#ul_current").append(row);
-	}
-}
-
-function RefreshPosts(){
-$(document).on('click', '#resfreshPosts', function () {
-	GetPostList();
-			var testrow = "<dt>Userinfo</dt>" + "<dd>" + "Test Message" + "</dd>";
-		$("#ul_current").append(testrow);
->>>>>>> origin/Sprint2
-});
-}
-
 //------------------------------------------------------------------------------------------------------------
