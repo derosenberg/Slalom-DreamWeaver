@@ -437,6 +437,11 @@ function GetStatusList() {
             request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
 
         },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
         success: function (data) {
             statuses = data;
             //Log success

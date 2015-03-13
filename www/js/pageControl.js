@@ -159,17 +159,45 @@ $(document).on('pageinit', '#Home', function () {
     $(document).on('click', '#submitNewStatus', function () {
         PostStatus($("#statusBody").val());
         $("#statusBody").val("");
+
+        $("#statusPageContent").empty();
+
+        var statuses = GetStatusList();
+
+        for (i = 0; i < statuses.length; i++) {
+            var temp = "<div class='statusContainer'><label style='float:left'><strong>";
+            temp += statuses[i].name;
+            temp += "</strong></label><label style='float:right'>";
+            temp += statuses[i].date;
+            temp += "</label>";
+            temp += "<br /><br /><p style='clear:both;'>";
+            temp += statuses[i].body;
+            temp += "</p></div>";
+
+            $("#statusPageContent").append(temp);
+        }
     });
 
 });
 
 $(document).on('pageshow', '#Home', function () {
 
+    $("#statusPageContent").empty();
+
     var statuses = GetStatusList();
 
     for(i = 0; i < statuses.length; i++)
     {
+        var temp = "<div class='statusContainer'><label style='float:left'><strong>";
+        temp += statuses[i].name;
+        temp += "</strong></label><label style='float:right'>";
+        temp += statuses[i].date;
+        temp += "</label>";
+        temp += "<br /><br /><p style='clear:both;'>";
+        temp += statuses[i].body;
+        temp += "</p></div>";
 
+        $("#statusPageContent").append(temp);
     }
 
 });

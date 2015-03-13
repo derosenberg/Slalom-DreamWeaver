@@ -87,6 +87,7 @@ div[data-role="content"] {
     float: left;
     margin-left: 5px;
     padding: 10px;
+    max-width: 70%;
 }
 .senderMessage {
     background-color: #009ed3;
@@ -95,6 +96,7 @@ div[data-role="content"] {
     float: right;
     margin-right: 5px;
     padding: 10px;
+    max-width: 70%;
 }
 
 /*--------------------------------------------------------*/
@@ -119,7 +121,7 @@ div[data-role="content"] {
 .statusContainer {
     margin-top: 10px;
     display: inline-block;
-    height: 100px;
+    height: 75px;
     width: 100%;
     padding: 5px 0px;
     border-bottom: 2px solid #666666;
