@@ -182,7 +182,7 @@ function GetLocationList() {
         },
         error: function (request, error) {
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Operation Failed");
+           // navigator.notification.alert(myError, console.log(myError), "Operation Failed");
         }
     });
 
@@ -243,7 +243,7 @@ function PostMessage(recipient, message) {
 
             //Log success
             console.log("message sent");
-            navigator.notification.alert("Successsssss", console.log("success"), "Message Sent");
+          //  navigator.notification.alert("Successsssss", console.log("success"), "Message Sent");
         },
         error: function (request, error) {
 
@@ -284,13 +284,18 @@ function GetConversations() {
             conversations = result;
 
             //Log success
-            navigator.notification.alert("Received list", console.log(result), "Conversation Received");
+          //  navigator.notification.alert("Received list", console.log(result), "Conversation Received");
         },
         error: function (request, error) {
 
+            
+            
+           conversations = null;
+            
+
             //Log failure
-            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+           // var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+           // navigator.notification.alert(myError, console.log(myError), "Unable to Load");
         }
     });
 
@@ -327,13 +332,17 @@ function GetMessages(recipient_id) {
             messages = result;
 
             //Log success
-            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+          //  navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
         },
         error: function (request, error) {
 
+           
+           messages = null;
+          
+
             //Log failure
-            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+           // var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            //navigator.notification.alert(myError, console.log(myError), "Unable to Load");
         }
     });
 
@@ -371,7 +380,7 @@ function GetRecipients()
             recipients = result;
 
             //Log success
-            navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
+         //   navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
         },
         error: function (request, error) {
 
@@ -405,7 +414,7 @@ function PostStatus(status) {
         success: function (result) {
 
             //Log success
-            navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+       //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
         },
         error: function (request, error) {
 
@@ -446,7 +455,7 @@ function GetStatusList() {
             statuses = data;
             //Log success
             console.log("message sent");
-            navigator.notification.alert("Successsssss", console.log("success"), "Statuses Getted");
+       //     navigator.notification.alert("Successsssss", console.log("success"), "Statuses Getted");
         },
         error: function (request, error) {
 

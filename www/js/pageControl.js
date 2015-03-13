@@ -101,19 +101,21 @@ $(document).on('pageshow', '#conversations', function () {
 
     var conversations = GetConversations();
 
-    for (i = 0; i < conversations.length; i++)
-    {
-        var temp = "<div class='conversationContainer'><label class='conversationName' style='float:left'><strong>";
-        temp += conversations[i].recname;
-        temp += "</strong></label><label style='float:right'>";
-        temp += conversations[i].latestmessagedate;
-        temp += "</label><input type='hidden' value='";
-        temp += conversations[i].rec_id;
-        temp += "'><br /><br /><p style='color:#666666; clear:both;'>";
-        temp += conversations[i].latestmessagetext;
-        temp += "</p></div>";
+    if (conversations != null) {
+        for (i = 0; i < conversations.length; i++)
+        {
+            var temp = "<div class='conversationContainer'><label class='conversationName' style='float:left'><strong>";
+            temp += conversations[i].recname;
+            temp += "</strong></label><label style='float:right'>";
+            temp += conversations[i].latestmessagedate;
+            temp += "</label><input type='hidden' value='";
+            temp += conversations[i].rec_id;
+            temp += "'><br /><br /><p style='color:#666666; clear:both;'>";
+            temp += conversations[i].latestmessagetext;
+            temp += "</p></div>";
 
-        $("#conversationPageContent").append(temp);
+            $("#conversationPageContent").append(temp);
+        }
     }
 });
 //------------------------------------------------------------------------------------------------------------
@@ -144,11 +146,13 @@ $(document).on('pageshow', '#messages', function () {
 
     var conversation = GetMessages(recipient_id);
 
-    for (i = 0; i < conversation[0].Messages.length; i++) {
-        if (conversation[0].Messages[i].ProfileID == recipient_id)
-            $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
-        else
-            $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+    if (conversation != null) {
+        for (i = 0; i < conversation[0].Messages.length; i++) {
+            if (conversation[0].Messages[i].ProfileID == recipient_id)
+                $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+            else
+                $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+        }
     }
 });
 //------------------------------------------------------------------------------------------------------------
