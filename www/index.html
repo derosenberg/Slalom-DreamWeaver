@@ -156,10 +156,7 @@
 		}
 
 		//Back Button Functionality
-		function goBack() {
-			history.back();
-			return false;
-		}
+	
 		
 
 </script>
@@ -174,7 +171,7 @@
 <body>
 	<div id="login" data-role="page">
 		<div data-role="header">
-			<h1>Login</h1>
+		
 
 		</div>
 		<div id="loginPage" data-role="content">
@@ -182,28 +179,27 @@
 
 			<form id="loginForm" method="post">
 				<div data-role="fieldcontain">
-					<label for="username">Username: </label>
-					<input name="username" type="text" id="username" value="" data-theme="d" />
+				
+					<input name="username" type="text" placeholder="Slalom Email Address" id="username" value="" data-theme="d" />
 				</div>
 
 				<div data-role="fieldcontain">
-					<label for="password">Password:</label>
-					<input name="password" type="password" id="password" value="" data-theme="d" />
+					
+					<input name="password" placeholder="Password" type="password" id="password" value="" data-theme="d" />
 				</div>
 
-				<a href="#" id="loginSubmitBtn" data-role="button" data-theme="d">Submit</a>
+				<a href="#" id="loginSubmitBtn" data-role="button"  style="background:  #0072c8; color: white">Submit</a>
 
 			</form>
-			<a href="#forgotPassword">Forgot your password?</a>
-			<a href="#regisPage" style="float: right;">New User</a>
+			<a href="#forgotPassword" style="font: Gotham; color: white;">Forgot your password?</a>
+			<a href="#regisPage" style="font: Gotham; float: right; color: white;">New User</a>
 		</div>
 	</div>
-
-
+	
 
 	<div id="forgotPassword" data-role="page">
 		<div data-role="header">
-			<a href="#login" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+			
 
 			<h1>Forgot Password</h1>
 		</div>
@@ -224,7 +220,7 @@
 
 	<div id="regisPage" data-role="page">
 		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="link" data-icon="back" style="background: #009ed3">Back</a>
+			
 			<h1>Registration Page</h1>
 		</div>
 		<div data-role="content" data-theme="d">
@@ -293,7 +289,7 @@
 	</div>
 	<div id="camera" data-role="page">
 	  <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+  
 	    <h1>Camera</h1>
       </div>
 	  <div data-role="content">
@@ -309,7 +305,7 @@ Photo Library</button>
 
 	<div data-role="page" id="mapPage">
 		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+			
 
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
@@ -336,7 +332,7 @@ Photo Library</button>
 
 	<div id="Home" data-role="page">
 		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+		
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -382,7 +378,7 @@ Photo Library</button>
 
 	<div data-role="page" id="activities">
 		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+		
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -409,7 +405,7 @@ Photo Library</button>
 
 	<div data-role="page" id="weather">
 		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+			
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -435,7 +431,7 @@ Photo Library</button>
     
   <div data-role="page" id="conversations">
 	  <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+      
       <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -479,7 +475,7 @@ Photo Library</button>
 
 <div data-role="page" id="messages">
   <div data-role="header" data-position="fixed">
-  <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+
       <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">

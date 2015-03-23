@@ -16,6 +16,8 @@
 	z-index:: -1;
 }*/
 
+
+
 #map {
 	position: absolute;
 	top: 43px;
@@ -132,7 +134,18 @@ div[data-role="content"] {
 	text-align: center;
 }
 
+#loginPage {
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+	
+	}
 
+#username {
+	width: 100%;
+	}
+	
+#password {
+    width: 100%;	
+	}
 
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {

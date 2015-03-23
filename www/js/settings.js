@@ -5,8 +5,8 @@
 var S_TOKEN = "";
 
 //Site Root - MUST START WITH HTTP AND END WITH /
-//var S_ROOT = "http://slalominternaltest.azurewebsites.net/";
-var S_ROOT = "http://slalomhi8usclienttest.azurewebsites.net/";
+var S_ROOT = "http://slalominternaltest.azurewebsites.net/";
+//var S_ROOT = "http://slalomhi8usclienttest.azurewebsites.net/";
 
 //User Class
 function S_User(Fname, Lname, Email, Password, ConfirmPass, Phone, GuestMail, ImgData) {
