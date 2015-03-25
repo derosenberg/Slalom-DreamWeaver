@@ -171,7 +171,15 @@ $(document).one('pageshow', '#mapPage', function () {
 					
 			var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
 			
-			
+			var pinColor = "2F76EE";
+		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0,0),
+            new google.maps.Point(10, 34));
+		var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+            new google.maps.Size(40, 37),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(12, 35));
 			
 			// Loop through our array of markers & place each one on the map  
 			for (i = 0; i < markers.length; i++) {
@@ -179,6 +187,8 @@ $(document).one('pageshow', '#mapPage', function () {
 				var eventMarker = new google.maps.Marker({
 					position: pos,
 					map: map,
+					icon: pinImage,
+					shadow: pinShadow,
 					title: markers[i].eventname
 				});
 
