@@ -89,7 +89,7 @@ $(document).one('pageshow', '#mapPage', function () {
 				
 				
 			 var locationmarker = {
-					url: 'img/blue_dot.png',
+					url: 'img/newBlueDot.png',
 					anchor: new google.maps.Point(16, 0)
 				}
 				
@@ -139,7 +139,7 @@ $(document).one('pageshow', '#mapPage', function () {
 				
 				google.maps.event.addListener(otherMarker, 'click', (function (otherMarker, p) {
 					return function () {
-						otherInfoWindow.setContent(locations[p].fname + ' ' +locations[p].lname);
+						otherInfoWindow.setContent(locations[p].fname + ' ' + locations[p].lname + '<br>' + 'Last Updated: ' + locations[p].locationdate );
 						otherInfoWindow.open(map, otherMarker);
 					}
 				})(otherMarker, p));
