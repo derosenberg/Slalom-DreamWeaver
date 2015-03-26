@@ -3,12 +3,12 @@
 /*    FONT GOTHAM      */
 @font-face {
     font-family: Gotham-Medium;
-    src: url(font/Gotham-Medium.otf);
+    src: url(../font/Gotham-Medium.otf);
 }
 
 @font-face {
     font-family: Gotham-Book;
-    src: url(font/Gotham-Book.otf);
+    src: url(../font/Gotham-Book.otf);
 }
 
 .portrait h1 {
@@ -173,7 +173,7 @@ div[data-role="content"] {
 
 #loginPage {
 	
-	padding-top: 200px;
+	padding-top: 165px;
 	
 	
 }
@@ -182,11 +182,16 @@ div[data-role="content"] {
 	
 	display: block;
 	width: 100%;
-	font-size: 12px;
 	border: solid 2px #c9c9c9;
 	background: #EEF3F6;
 	margin-top: 35px;
 	margin-bottom: -10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	font-family: Gotham-Book;
+	height: 30px;
+	font-size: 12pt;
+	padding-left: 10px;
 	
 }
 
@@ -194,21 +199,43 @@ div[data-role="content"] {
 	
 	display: block;
 	width: 100%;
-	font-size: 12px;
 	border: solid 2px #c9c9c9;
 	background: #EEF3F6;
 	margin-top: -10px;
-	
+	margin-left: 0px;
+	margin-right: 0px;
+	font-family: Gotham-Book;
+	height: 30px;
+	font-size: 12pt;
+	padding-left: 10px;
 }
 
 #loginSubmitBtn {
 	
+	
 	display: block;
-	text-align:center;
-	padding-top: 5px;
+	text-align: center;
+	padding-top: 15px;
+	border: hidden;
+	border-radius: 0px;
+	background: #2472B9;
+	width: 100%;
+	font-family: Gotham-Medium, sans-serif;
+	color: white;
+	height: 35px;
+	font-size: 12pt;
+	margin-top: 25px;
+	
 	
 }
+
+#loginSubmitBtn p {
 	
+	margin: 0px;
+	padding: 0px;
+	
+}
+
 	
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
