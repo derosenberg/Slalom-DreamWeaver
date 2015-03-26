@@ -171,6 +171,12 @@ div[data-role="content"] {
 	
 }
 
+#login a {
+	
+	color: white;
+	
+}
+
 #loginPage {
 	
 	padding-top: 165px;
@@ -232,6 +238,8 @@ div[data-role="content"] {
 	padding: 0px;
 	
 }
+
+
 
 	
 /* Uncomment this before compiling in order to cause the initial page to fade in
