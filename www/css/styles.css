@@ -147,6 +147,25 @@ div[data-role="content"] {
     width: 100%;	
 	}
 
+#toggle {
+	background: url(../img/menu-icon.png) center;
+	padding: 10px 10px 10px 10px;
+	border-style:none;
+	border-radius: 1px 1px 1px 1px;
+	align-content:center;
+}
+
+#popupMenu{
+	height: 100%;
+	width: 100%;
+}
+
+
+#header {
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+}
+
+
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
 	#page1 {
@@ -154,3 +173,5 @@ div[data-role="content"] {
 	}
 }
 */
+
+
