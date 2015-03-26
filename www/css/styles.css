@@ -1,4 +1,16 @@
 ﻿@charset "UTF-8";
+
+/*    FONT GOTHAM      */
+@font-face {
+    font-family: Gotham-Medium;
+    src: url(font/Gotham-Medium.otf);
+}
+
+@font-face {
+    font-family: Gotham-Book;
+    src: url(font/Gotham-Book.otf);
+}
+
 .portrait h1 {
 }
 .landscape h1 {
