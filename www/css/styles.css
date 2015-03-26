@@ -165,6 +165,38 @@ div[data-role="content"] {
 	
 	
 }
+
+#username {
+	
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	border: solid 2px #c9c9c9;
+	background: #EEF3F6;
+	margin-top: 35px;
+	margin-bottom: -10px;
+	
+}
+
+#password {
+	
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	border: solid 2px #c9c9c9;
+	background: #EEF3F6;
+	margin-top: -10px;
+	
+}
+
+#loginSubmitBtn {
+	
+	display: block;
+	text-align:center;
+	padding-top: 5px;
+	
+}
+	
 	
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
