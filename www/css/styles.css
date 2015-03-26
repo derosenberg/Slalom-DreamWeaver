@@ -147,9 +147,10 @@ div[data-role="content"] {
 	width: 100%;
 }
 
-
+<!--LOGIN PAGE CONTROLS-->
 #header {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+	
 }
 
 #login {
@@ -158,6 +159,13 @@ div[data-role="content"] {
 	
 }
 
+#loginPage {
+	
+	padding-top: 200px;
+	
+	
+}
+	
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
 	#page1 {
