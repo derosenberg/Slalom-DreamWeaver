@@ -180,16 +180,14 @@ div[data-role="content"] {
 
 #username {
 	
-	display: block;
-	width: 100%;
-	border: solid 2px #c9c9c9;
+	
+	width: 90%;
+	border: none;
+	border-radius: 0px;
 	background: #EEF3F6;
-	margin-top: 35px;
-	margin-bottom: -10px;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin: 0px;
 	font-family: Gotham-Book;
-	height: 30px;
+	height: 10px;
 	font-size: 12pt;
 	padding-left: 10px;
 	
@@ -198,14 +196,13 @@ div[data-role="content"] {
 #password {
 	
 	display: block;
-	width: 100%;
-	border: solid 2px #c9c9c9;
+	width: 90%;
+	border: none;
+	border-radius: 0px;
 	background: #EEF3F6;
-	margin-top: -10px;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin: 0px;
 	font-family: Gotham-Book;
-	height: 30px;
+	height: 10px;
 	font-size: 12pt;
 	padding-left: 10px;
 }
