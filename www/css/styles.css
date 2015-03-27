@@ -245,6 +245,7 @@ div[data-role="content"] {
 
 /*REGISTRATION PAGE CONTROLS*/
 
+
 #submitNewUser {
 	
 	display: block;
@@ -255,7 +256,8 @@ div[data-role="content"] {
 	width: 100%;
 	color: white;
 	font-family: Gotham-Medium, sans-serif;
-	height: 10px;
+	height: 40px;
+	padding-top: 15px;
 }
 	
 
