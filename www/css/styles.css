@@ -215,7 +215,7 @@ div[data-role="content"] {
 
 #loginSubmitBtn {
 	
-	
+	cursor: pointer;
 	display: block;
 	text-align: center;
 	padding-top: 15px;
@@ -229,13 +229,6 @@ div[data-role="content"] {
 	font-size: 12pt;
 	margin-top: 25px;
 	
-	
-}
-
-#loginSubmitBtn p {
-	
-	margin: 0px;
-	padding: 0px;
 	
 }
 
