@@ -160,10 +160,6 @@ div[data-role="content"] {
 }
 
 <!--LOGIN PAGE CONTROLS-->
-#header {
-	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
-	
-}
 
 #login {
 	
@@ -230,6 +226,22 @@ div[data-role="content"] {
 	margin-top: 25px;
 	
 	
+}
+
+
+/*        Header and footer templates        */
+
+.header {
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+	padding-top: 10px;
+	min-height: 50px;
+}
+
+.header p {
+	font-family: Gotham-Book;
+	font-size: 12pt;
+	color: #ffffff;
+	text-align: center;
 }
 
 
