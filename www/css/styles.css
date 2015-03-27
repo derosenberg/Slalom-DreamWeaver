@@ -11,10 +11,7 @@
     src: url(../font/Gotham-Book.otf);
 }
 
-.portrait h1 {
-}
-.landscape h1 {
-}
+
 .logo {
 	padding: 10px;
 	text-align: center;
@@ -232,6 +229,23 @@ div[data-role="content"] {
 	
 }
 
+
+
+<!--REGISTRATION PAGE CONTROLS-->
+
+#submitNewUser {
+	
+	display: block;
+	text-align: center;
+	border: hidden;
+	border-radius: 0px;
+	background: #2472B9;
+	width: 100%;
+	color: white;
+	font-family: Gotham-Medium, sans-serif;
+	height: 10px;
+}
+	
 
 
 	

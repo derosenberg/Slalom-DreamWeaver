@@ -175,10 +175,7 @@
 <body>
 	
     <div id="login" data-role="page">
-		<div data-role="header">
-
-
-		</div>
+		
 		<div id="loginPage">
 			<img src="img/slalomLogo.png" width="50%" height="auto" style="display: block; margin-left: auto; margin-right: auto;" />
 
@@ -228,73 +225,49 @@
 
 
 	<div id="regisPage" data-role="page">
-		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="link" data-icon="back" style="background: #009ed3">Back</a>
-			<h1>Registration Page</h1>
-		</div>
-		<div data-role="content" data-theme="d">
+		
+		<div>
 			<form id="regisPageForm" method="post">
-				<div style="float: right;" data-role="fieldcontain">
-					<label for="fname">First Name:</label>
-					<input type="text" name="fname" id="fname" value="" />
+				<div style="float: right; display: block; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow: hidden;">
+					<input type="text" name="fname" id="fname" placeholder="First Name" value="" />
 				</div>
-				<div style="float: right;" data-role="fieldcontain">
-					<label for="lname">Last Name:</label>
-					<input type="text" name="lname" id="lname" value="" />
+				<div style="float: right; display: block; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="text" name="lname" id="lname" placeholder="Last Name" value="" />
 				</div>
          <div>
          <a href = "#camera"> 
-        <img style="display: block; text-align: center; margin-right: auto;" id="regisPortrait" name="regisPortrait" src=""  width="130px" height="170px" />
+        <img style="display: block; margin-left:auto;  margin-right: auto;" id="regisPortrait" name="regisPortrait" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
            </a>
 		</div>
 			
 
-				<div data-role="fieldcontain">
-					<label for="regisEmail">Email:</label>
-					<input type="email" name="regisEmail" id="regisEmail" value="" />
+				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="email" name="regisEmail" id="regisEmail" placeholder="Slalom Email" value="" />
 				</div>
-				<div data-role="fieldcontain">
-					<label for="regisPassword">Password:</label>
-					<input type="password" name="regisPassword" id="regisPassword" value="" />
+				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="password" name="regisPassword" id="regisPassword" placeholder="Password" value="" />
 				</div>
-				<div data-role="fieldcontain">
-					<label for="ConfirmPassword">Re-type Password:</label>
-					<input type="password" name="ConfirmPassword" id="ConfirmPassword" value="" />
+				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" value="" />
 				</div>
-				<div data-role="fieldcontain">
-					<label for="phone">Phone Number:</label>
-					<input type="text" name="phone" id="phone" value="" />
+				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="text" name="phone" id="phone" placeholder="Phone Number" value="" />
 				</div>
-				<div data-role="fieldcontain">
-					<label for="guestemail">Guest Email:</label>
-					<input type="email" name="guestemail" id="guestemail" value="" />
+				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<input type="email" name="guestemail" id="guestemail" placeholder="Guest Email" value="" />
 				</div>
                 
                 <br/>
-                 
-        		<div>
-					<a href="#" id="submitNewUser" data-role="button" data-theme="d">					Submit</a>
-				</div>
-				
-                <br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-			</form>
-		</div>
+             
+        		
+              
+				   </form>
+                
+		<div id="submitNewUser">SUBMIT</div>
+		
+        </div>
 	</div>
 	<div id="camera" data-role="page">
 	  <div data-role="header">
