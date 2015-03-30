@@ -260,7 +260,33 @@ div[data-role="content"] {
 	padding-top: 15px;
 }
 	
+#fname{
+	font-family: Gotham-Medium;
+	}
+	
+#lname {
+	font-family: Gotham-Medium;
+}
 
+#regisEmail {
+	font-family: Gotham-Medium;
+}
+
+#regisPassword {
+	font-family: Gotham-Medium;
+}
+
+#ConfirmPassword {
+	font-family: Gotham-Medium;
+}
+
+#phone {
+	font-family: Gotham-Medium;
+}
+
+#guestemail {
+	font-family: Gotham-Medium;
+}
 
 	
 /* Uncomment this before compiling in order to cause the initial page to fade in
