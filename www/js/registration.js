@@ -2,7 +2,8 @@
 
 //Registration page Controls
 $(document).on('pageinit', '#regisPage', function () {
-
+	
+	
     //Enable form
     $('#regisPageForm :input').prop("disabled", false);
 
@@ -20,6 +21,9 @@ $(document).on('pageinit', '#regisPage', function () {
 
     });
 });
+
+
+
 //------------------------------------------------------------------------------------------------------------
 
 //AJAX Call to submit photo

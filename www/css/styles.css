@@ -208,18 +208,8 @@ div[data-role="content"] {
 
 #loginSubmitBtn {
 	
-	cursor: pointer;
-	display: block;
-	text-align: center;
-	padding-top: 15px;
-	border: hidden;
-	border-radius: 0px;
-	background: #2472B9;
-	width: 100%;
-	font-family: Gotham-Medium, sans-serif;
-	color: white;
+	
 	height: 35px;
-	font-size: 12pt;
 	margin-top: 25px;
 	
 	
@@ -241,13 +231,9 @@ div[data-role="content"] {
 	text-align: center;
 }
 
+/*DIV BUTTON CONTROL*/
+.divButton {
 
-
-/*REGISTRATION PAGE CONTROLS*/
-
-
-#submitNewUser {
-	
 	display: block;
 	text-align: center;
 	border: hidden;
@@ -255,10 +241,17 @@ div[data-role="content"] {
 	background: #2472B9;
 	width: 100%;
 	color: white;
-	font-family: Gotham-Medium, sans-serif;
+	font-family: Gotham-Medium;
 	height: 40px;
 	padding-top: 15px;
+	cursor: pointer;
+	font-size: 12pt;
 }
+
+/*REGISTRATION PAGE CONTROLS*/
+
+
+
 	
 #fname{
 	font-family: Gotham-Medium;
@@ -299,19 +292,7 @@ div[data-role="content"] {
 	font-size: 12pt;
 }
 
-#forgotPasswordBtn {
-	display: block;
-	text-align: center;
-	border: hidden;
-	border-radius: 0px;
-	background: #2472B9;
-	width: 100%;
-	color: white;
-	font-family: Gotham-Medium;
-	height: 30px;
-	padding-top: 20px;
-	
-}
+
 
 #forgotPassword {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
@@ -323,39 +304,13 @@ div[data-role="content"] {
 	padding-top: 165px;
 }
 
-#takePhoto {
-	display: block;
-	text-align: center;
-	border: hidden;
-	border-radius: 0px;
-	background: #2472B9;
-	width: 100%;
-	color: white;
-	font-family: Gotham-Medium;
-	height: 20px;
-	padding-top: 20px;
 
-	
-}
-
-#grabDatPhoto {
-	display: block;
-	text-align: center;
-	border: hidden;
-	border-radius: 0px;
-	background: #2472B9;
-	width: 100%;
-	color: white;
-	font-family: Gotham-Medium;
-	height: 20px;
-	padding-top: 20px;
-	
-}
 
 #camera {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
 }
-	
+
+
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
 	#page1 {
