@@ -282,18 +282,20 @@
         </div>
 	</div>
 	<div id="camera" data-role="page">
-	  <div data-role="header">
+	  
+      <div data-role="header">
       <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
 	    <h1>Camera</h1>
       </div>
-	  <div data-role="content">
-      	<button onclick="capturePhoto();">Capture Photo</button>
-        <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From
+      <form id="cameraStyle" method="post">
+	    <div id="takePhoto">  
+      	<button  onclick="capturePhoto();">Capture Photo</button>
+        </div>
+        <br/>
+      <div id="grabDatPhoto"> <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From
 Photo Library</button>
       </div>
-	  <div data-role="footer" data-position="fixed">
-	  
-      </div>
+	 </form>
 </div>
 
 

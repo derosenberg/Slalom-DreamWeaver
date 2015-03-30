@@ -317,6 +317,44 @@ div[data-role="content"] {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
 }
 
+
+/*Camera Page Controls*/
+#cameraStyle {
+	padding-top: 165px;
+}
+
+#takePhoto {
+	display: block;
+	text-align: center;
+	border: hidden;
+	border-radius: 0px;
+	background: #2472B9;
+	width: 100%;
+	color: white;
+	font-family: Gotham-Medium;
+	height: 20px;
+	padding-top: 20px;
+
+	
+}
+
+#grabDatPhoto {
+	display: block;
+	text-align: center;
+	border: hidden;
+	border-radius: 0px;
+	background: #2472B9;
+	width: 100%;
+	color: white;
+	font-family: Gotham-Medium;
+	height: 20px;
+	padding-top: 20px;
+	
+}
+
+#camera {
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+}
 	
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
