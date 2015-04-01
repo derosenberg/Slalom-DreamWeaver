@@ -47,7 +47,9 @@ function GetRecipients() {
         },
 
         //On success, add recipients to list
-        success: AddRecipientsToList(result),
+        success: function (result) {
+            AddRecipientsToList(result)
+        },
 
         error: function (request, error) {
 
@@ -180,7 +182,9 @@ function GetMessages(recipient_id) {
         },
 
         //On success, add messages ot the page
-        success: AddMessagesToPage(result),
+        success: function (result) {
+            AddMessagesToPage(result)
+        },
 
         error: function (request, error) {
 
@@ -212,7 +216,9 @@ function PostMessage(recipient, message) {
 
         },
 
-        success: OnMessageIsSent(message),
+        success: function (message) {
+            OnMessageIsSent(message)
+        },
 
         error: function (request, error) {
 
