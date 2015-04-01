@@ -281,7 +281,7 @@ function GetLocationList() {
 
     //AJAX call to get a list of user locations
     $.ajax({
-        url: S_ROOT + 'api/Profiles/getlocations/',
+        url: S_ROOT + 'api/Profile/getlocations',
         type: 'GET',
         async: false,
         contentType: "application/x-www-form-urlencoded",
