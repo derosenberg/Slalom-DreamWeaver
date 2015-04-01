@@ -2,7 +2,7 @@
 
 //------------------------------------------------------------------------------------------------------------
 $(document).on('pageshow', '#Home', function () {
-    var numStatus = 10;
+var numStatus = 10;
 function GetStatusList(){
 	$.ajax({
         type: "GET",
@@ -61,20 +61,15 @@ GetStatusList();
 GetStatusList();
                 }, 60000);
             });
-			
-	 $(document).on('click', '#loadMoreStatuses', function () {
-	 		numStatus = numStatus + 10;
-			GetStatusList();
-	 });
-	 
-	 $(document).on('click', '#submitNewStatus', function () {
-        PostStatus($("#statusBody").val());
-        $("#statusBody").val("");
 
-       
-    });		
-});
-//------------------------------------------------------------------------------------------------------------
+      $(document).on('click', '#loadMoreStatuses', function () {
+		  numStatus = numStatus + 10;
+		  GetStatusList();
+	  });
+	  
+	   $(document).on('click', '#submitNewStatus', function () {
+       	 PostStatus($("#statusBody").val());
+	});		
 
 function PostStatus(status) {
 
@@ -93,9 +88,8 @@ function PostStatus(status) {
 
         },
 
-        success: function (result) {
-			
-			
+        success: function (result) {	
+		$("#statusBody").val("");		
 			GetStatusList();
             //Log success
             //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
@@ -109,7 +103,7 @@ function PostStatus(status) {
     });
 
 }
-
+});
 
     //Onclicking stuff, post the status
 
