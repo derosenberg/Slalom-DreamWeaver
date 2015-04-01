@@ -1,44 +1,113 @@
-// JavaScript source code
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+//                                         NEW CALLBACK CALLS
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 
 
+//On initialization of conversations page
 $(document).on('pageinit', '#conversations', function () {
-    //AJAX call for Submit New User
 
-    var recipients = GetRecipients();
-    
-    for (i = 0; i < recipients.length; i++)
-    {
-        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].ProfileID + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
-    }
-    
-    $(document).on('click', '.recipientList', function () {
-        $('#recipientId').val($(this).val());
+    //Get the list of recipients (AJAX call)
+    GetRecipients();
 
-        $('#recipientName').text($(this).text());
+    //Event listener that loads the messages page when a recipient is clicked
+    $(document).on('click', '.recipientList', LoadMessagesFromRecipient($(this).val(), $(this).text()));
 
-    });
-
+    //Event listener that loads the messages page when a conversation div is clicked
     $(document).on('click', '.conversationContainer', function () {
 
+        //Change the page to messages
         $.mobile.changePage("#messages");
 
-        $('#recipientId').val($(this).find(":input").val());
-
-        $('#recipientName').text($(this).find(".conversationName").text());
+        //Load the messages on the page
+        LoadMessagesFromRecipient($(this).find(":input").val(), $(this).find(".conversationName").text());
 
     });
 
 });
 
-$(document).on('pageshow', '#conversations', function () {
+//Every time the conversations page is shown
+$(document).on('pageshow', '#conversations', GetConversations());
 
+//Load available recipients from the server
+function GetRecipients() {
+
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getrecipients/',
+        type: 'GET',
+        beforeSend: function (request) {
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+        },
+
+        //On success, add recipients to list
+        success: AddRecipientsToList(result),
+
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Can't load recipients");
+        }
+    });
+
+    return;
+}
+
+//Once recipients have loaded, add them to the list
+function AddRecipientsToList(recipients) {
+
+    //Empty the list
+    $("#popupMenu1").empty();
+
+    //Build the list
+    for (i = 0; i < recipients.length; i++) {
+        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].ProfileID + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
+    }
+}
+
+//Get a list of conversations
+function GetConversations() {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getconversations',
+        type: 'GET',
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+            //On success, add conversations to list
+            AddConversationsToList(result);
+        },
+        error: function (request, error) {
+
+            //Log failure
+            // var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            // navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+        }
+    });
+
+    return;
+
+}
+
+//Once conversations have loaded, add them to list
+function AddConversationsToList(conversations)
+{
+    //Empty conversations page
     $("#conversationPageContent").empty();
 
-    var conversations = GetConversations();
-
+    //Add the conversations to the page
     if (conversations != null) {
-        for (i = 0; i < conversations.length; i++)
-        {
+        for (i = 0; i < conversations.length; i++) {
             var temp = "<div class='conversationContainer'><label class='conversationName' style='float:left'><strong>";
             temp += conversations[i].recname;
             temp += "</strong></label><label style='float:right'>";
@@ -52,11 +121,13 @@ $(document).on('pageshow', '#conversations', function () {
             $("#conversationPageContent").append(temp);
         }
     }
-});
-//------------------------------------------------------------------------------------------------------------
+}
 
+
+//On initialize message page
 $(document).on('pageinit', '#messages', function () {
-    //AJAX call for sending message
+
+    //Onclick for the send message button
     $(document).on('click', '#sendMessage', function (e) {
 
         //Prevent auto redirect
@@ -65,37 +136,61 @@ $(document).on('pageinit', '#messages', function () {
         //Post Message
         PostMessage($('#recipientId').val(), $('#messageBody').val());
 
-        //Create new message bubble
-        $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + $('#messageBody').val() + "</div></div>")
-
         //Clear message
         $("#messageBody").val("");
 
     });
 });
 
-$(document).on('pageshow', '#messages', function () {
+//Function for each time recipients are loaded
+function LoadMessagesFromRecipient(recipient_id, recipient_name) {
 
+    //Empty page of content first thing
     $("#messagePageContent").empty();
 
     var recipient_id = $("#recipientId").val();
 
-    var conversation = GetMessages(recipient_id);
+    GetMessages(recipient_id);
+}
 
-    if (conversation != null) {
-        for (i = 0; i < conversation[0].Messages.length; i++) {
-            if (conversation[0].Messages[i].ProfileID == recipient_id)
-                $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
-            else
-                $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+function GetMessages(recipient_id) {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getmessages/' + recipient_id,
+        type: 'GET',
+        beforeSend: function (request) {
+
+            //Show page loader
+            $.mobile.showPageLoadingMsg(true);
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+        complete: function () {
+
+            //Hide loader
+            $.mobile.hidePageLoadingMsg();
+        },
+
+        //On success, add messages ot the page
+        success: AddMessagesToPage(result),
+
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
         }
-    }
-});
+    });
 
+    return;
 
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
+}
 
+//Post a message to the server
 function PostMessage(recipient, message) {
 
 
@@ -103,7 +198,6 @@ function PostMessage(recipient, message) {
     $.ajax({
         url: S_ROOT + 'api/conversations/',
         type: 'POST',
-        async: true,
         data: '{ "recipient_id": "' + recipient + '", "text": "' + message + '" }',
         contentType: "application/json",
         beforeSend: function (request) {
@@ -114,12 +208,8 @@ function PostMessage(recipient, message) {
 
         },
 
-        success: function (result) {
+        success: OnMessageIsSent(message),
 
-            //Log success
-            console.log("message sent");
-            //  navigator.notification.alert("Successsssss", console.log("success"), "Message Sent");
-        },
         error: function (request, error) {
 
             //Log failure
@@ -130,140 +220,23 @@ function PostMessage(recipient, message) {
 
 }
 
-function GetConversations() {
+//Function controlling a successful send message
+function OnMessageIsSent(messagetext) {
 
-    var conversations;
-
-    //AJAX call to update location
-    $.ajax({
-        url: S_ROOT + 'api/conversations/getconversations',
-        type: 'GET',
-        async: false,
-        beforeSend: function (request) {
-
-            //Show page loader
-            $.mobile.showPageLoadingMsg(true);
-
-            //Attaches credentials to AJAX call
-            request.withCredentials = true;
-            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-
-        },
-        complete: function () {
-
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
-        },
-        success: function (result) {
-
-            conversations = result;
-
-            //Log success
-            //  navigator.notification.alert("Received list", console.log(result), "Conversation Received");
-        },
-        error: function (request, error) {
-
-
-
-            conversations = null;
-
-
-            //Log failure
-            // var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            // navigator.notification.alert(myError, console.log(myError), "Unable to Load");
-        }
-    });
-
-    return conversations;
-
+    //Create new message bubble
+    $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + messagetext + "</div></div>")
 }
 
-function GetMessages(recipient_id) {
+//Add a conversation to a messages page
+function AddMessagesToPage(conversation) {
 
-    var messages;
-
-    //AJAX call to update location
-    $.ajax({
-        url: S_ROOT + 'api/conversations/getmessages/' + recipient_id,
-        type: 'GET',
-        async: false,
-        beforeSend: function (request) {
-
-            //Show page loader
-            $.mobile.showPageLoadingMsg(true);
-
-            //Attaches credentials to AJAX call
-            request.withCredentials = true;
-            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-
-        },
-        complete: function () {
-
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
-        },
-        success: function (result) {
-
-            messages = result;
-
-            //Log success
-            //  navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
-        },
-        error: function (request, error) {
-
-
-            messages = null;
-
-
-            //Log failure
-            // var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            //navigator.notification.alert(myError, console.log(myError), "Unable to Load");
+    if (conversation != null) {
+        for (i = 0; i < conversation[0].Messages.length; i++) {
+            if (conversation[0].Messages[i].ProfileID == recipient_id)
+                $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
+            else
+                $("#messagePageContent").append("<div class='messageContainer'><div class='senderMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
         }
-    });
-
-    return messages;
-
-}
-
-function GetRecipients() {
-
-    var recipients;
-
-    //AJAX call to update location
-    $.ajax({
-        url: S_ROOT + 'api/conversations/getrecipients/',
-        type: 'GET',
-        async: false,
-        beforeSend: function (request) {
-
-            //Show page loader
-            $.mobile.showPageLoadingMsg(true);
-
-            //Attaches credentials to AJAX call
-            request.withCredentials = true;
-            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-
-        },
-        complete: function () {
-
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
-        },
-        success: function (result) {
-
-            recipients = result;
-
-            //Log success
-            //   navigator.notification.alert("Received Messages", console.log(result), "Conversation Received");
-        },
-        error: function (request, error) {
-
-            //Log failure
-            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Unable to Load");
-        }
-    });
-
-    return recipients;
+    }
 
 }
