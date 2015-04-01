@@ -12,7 +12,9 @@ $(document).on('pageinit', '#conversations', function () {
     GetRecipients();
 
     //Event listener that loads the messages page when a recipient is clicked
-    $(document).on('click', '.recipientList', LoadMessagesFromRecipient($(this).val(), $(this).text()));
+    $(document).on('click', '.recipientList', function () {
+        LoadMessagesFromRecipient($(this).val(), $(this).text())
+    });
 
     //Event listener that loads the messages page when a conversation div is clicked
     $(document).on('click', '.conversationContainer', function () {
@@ -28,7 +30,9 @@ $(document).on('pageinit', '#conversations', function () {
 });
 
 //Every time the conversations page is shown
-$(document).on('pageshow', '#conversations', GetConversations());
+$(document).on('pageshow', '#conversations', function () {
+    GetConversations()
+});
 
 //Load available recipients from the server
 function GetRecipients() {
