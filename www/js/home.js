@@ -59,9 +59,14 @@ GetStatusList();
  $(document).ready(function () {
                 setInterval(function () {
 GetStatusList();
-                }, 2000);
+                }, 60000);
             });
 			
+	 $(document).on('click', '#loadMoreStatuses', function () {
+	 		numStatus = numStatus + 10;
+			GetStatusList();
+	 });
+	 
 	 $(document).on('click', '#submitNewStatus', function () {
         PostStatus($("#statusBody").val());
         $("#statusBody").val("");
