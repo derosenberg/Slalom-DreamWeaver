@@ -2,11 +2,11 @@
 
 //------------------------------------------------------------------------------------------------------------
 $(document).on('pageshow', '#Home', function () {
-    
+    var numStatus = 10;
 function GetStatusList(){
 	$.ajax({
         type: "GET",
-        url: S_ROOT + 'api/status/getstatuses/1',
+        url: S_ROOT + 'api/status/getstatuses/' + numStatus,
         async: true,
         dataType: "json",
         beforeSend: function (request) {
