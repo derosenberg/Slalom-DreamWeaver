@@ -30,8 +30,18 @@ function S_ClearTime() {
     if (S_TIMER.length > 0) {
         for (i = 0; i < S_TIMER.length; i++) {
             clearInterval(S_TIMER[i]);
+            console.log("Deleted timer " + i);
         }
+
+        S_TIMER = [];
     }
 
 }
 
+//Global Pagehide
+$("document").on('pagebeforehide', '#Home', function () {
+
+    S_ClearTime();
+
+    alert("pagebeforehide");
+});
