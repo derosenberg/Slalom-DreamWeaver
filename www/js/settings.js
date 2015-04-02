@@ -24,13 +24,14 @@ function S_User(Fname, Lname, Email, Password, ConfirmPass, Phone, GuestMail, Im
 //Global Timers
 var S_TIMER = []
 
+//Clears all timers
 function S_ClearTime() {
 
-    if(S_TIMER.l)
-
-    for(i=0; i < S_TIMER.length; i++)
-    {
-        clearInterval(S_TIMER[i]);
+    if (S_TIMER.length > 0) {
+        for (i = 0; i < S_TIMER.length; i++) {
+            clearInterval(S_TIMER[i]);
+        }
     }
 
 }
+
