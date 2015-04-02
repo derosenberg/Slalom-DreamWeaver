@@ -286,10 +286,11 @@
             <br/>
         </div>
 	</div>
+    
+    
 	<div id="camera" data-role="page">
 	  
-      <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+      <div data-role="header" class="header">
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -340,7 +341,7 @@
                     <li><a href="#conversations">Conversations</a></li>
 				</ul>
 			</div>
-			<p>Status<p>
+			<p>Status</p>
            
 		</div>
         
@@ -351,15 +352,23 @@
         <div class="statusContaniner"></div>
      </div>
      
-  		 <button id="loadMoreStatuses" type="button">Load More Statuses</button>
+  		
+<div id="loadMoreStatuses">Load More Statuses</div>
+       
+      <div data-role="footer" data-position="fixed" class="footer">
+  <input type="text" id="statusBody" name="statusBody" placeholder="Post a status"></input>     
+    <div name="submitNewStatus" id="submitNewStatus">Send Message</div>
   </div>
-
-        <div data-role="footer" data-position="fixed">
-			<input type="text" name="statusBody" id="statusBody" placeholder="Post a status" />
-            <a href="#" id="submitNewStatus" data-role="button" data-theme="d">Submit</a>
-		</div>
-	</div>
-
+ </div>
+       
+       
+       
+       
+       
+       
+       
+       
+     
 
 
 
@@ -393,7 +402,7 @@
 				
           <div style= "width: 100%;">
          <a href = "#camera"> 
-        <img style="display: block; padding-top: 15px; padding-bottom: 10px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
+        <img style="display: block; padding-top: 15px; padding-bottom: 10px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px"height="170px" />
     	
 			<input type="hidden" id="regisPic1" name="regisPic1" value="UNSET" />
            </a>
@@ -444,7 +453,8 @@
     
     
   <div data-role="page" id="conversations">
-	  <div data-role="header">
+	  <div data-role="header" class="header">
+      	<h1>Conversations</h1>
       <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
@@ -455,7 +465,7 @@
 					<li><a href="#editProfile">Edit Profile</a></li>
                     </ul>
                     </div>
-	    <h1>Conversations</h1>
+
       </div>
 
       
@@ -476,9 +486,7 @@
       </div>
 
 	  
-      <div data-role="footer" data-position="fixed">
-	    <h4>Footer</h4>
-      </div>
+      
 		
   </div>
 
@@ -487,7 +495,7 @@
 
 
 <div data-role="page" id="messages">
-  <div data-role="header" data-position="fixed">
+  <div data-role="header" data-position="fixed" class="header">
   <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
@@ -508,10 +516,10 @@
       
       </div>
 
-  <div data-role="footer" data-position="fixed">
+  <div data-role="footer" data-position="fixed" class="footer">
   <input id="messageBody" name="messageBody" placeholder="Message"></input>
-     <input type="hidden" name="recipientId" id="recipientId" value="">      
-    <button name="sendMessage" id="sendMessage" data-icon="arrow-r" data-iconpos="right" >Send Message</button>
+     <input type="hidden" name="recipientId" id="recipientId" value=""></input>     
+    <div name="sendMessage" id="sendMessage">Send Message</div>
   </div>
 </div>
 
