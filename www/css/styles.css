@@ -231,6 +231,13 @@ div[data-role="content"] {
 	text-align: center;
 }
 
+.header h1 {
+	
+	font-family: Gotham-Medium;
+	color: #FFFFFF;
+	
+}
+
 /*DIV BUTTON CONTROL*/
 .divButton {
 
