@@ -154,7 +154,7 @@ function LoadMessagesFromRecipient(recipient_id, recipient_name) {
     //Empty page of content first thing
     $("#messagePageContent").empty();
 
-    var recipient_id = $("#recipientId").val();
+    $("#recipientId").val(recipient_id);
 
     GetMessages(recipient_id);
 }
@@ -183,7 +183,7 @@ function GetMessages(recipient_id) {
 
         //On success, add messages ot the page
         success: function (result) {
-            AddMessagesToPage(result)
+            AddMessagesToPage(result, recipient_id)
         },
 
         error: function (request, error) {
@@ -216,7 +216,7 @@ function PostMessage(recipient, message) {
 
         },
 
-        success: function (message) {
+        success: function () {
             OnMessageIsSent(message)
         },
 
@@ -238,7 +238,7 @@ function OnMessageIsSent(messagetext) {
 }
 
 //Add a conversation to a messages page
-function AddMessagesToPage(conversation) {
+function AddMessagesToPage(conversation, recipient_id) {
 
     if (conversation != null) {
         for (i = 0; i < conversation[0].Messages.length; i++) {
