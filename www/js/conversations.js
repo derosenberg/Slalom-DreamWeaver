@@ -169,6 +169,8 @@ function LoadMessagesFromRecipient(recipient_id, recipient_name) {
     //Empty page of content first thing
     $("#messagePageContent").empty();
 
+    $("#recipientName").text(recipient_name.split(' ')[0]);
+
     $("#recipientId").val(recipient_id);
 
     GetMessages(recipient_id);
