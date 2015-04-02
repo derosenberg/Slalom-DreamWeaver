@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/editProfile.js"></script>
     
     
     <!-- <script type="text/javascript" src="js/status.js"></script> -->
@@ -364,38 +365,30 @@
 
 
 
-
-	
-
-
-
-
-
-	<div data-role="page" id="editProfile">
-		<div data-role="header" class="header">
-        	<h1>Edit Profile</h1>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;"><img src="img/menu-icon.png" width="30" alt=""/></a>
+	<div id="editProfile" data-role="page">
+				<div data-role="header" class="header">
+			<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider">Select a Page</li>
+					<li data-role="divider" data-theme="e">Select a Page</li>
 					<li><a href="#Home">Home</a></li>
-					<li><a href="#mapPage">Map</a></li>
+                    <li><a href="#mapPage">Map</a></li>
                     <li><a href="#conversations">Conversations</a></li>
-                 
 				</ul>
-                
-                
-    		</div>
-            </div>
-            
-            <div>
+			</div>
+			<p>Edit Profile<p>
+           
+		</div>
+
+		<div>
 			<form id="editProfileForm" method="post">
 				
-          <div style= "width: 100%;">
+                <div style= "width: 100%;">
          <a href = "#camera"> 
-        <img style="display: block; padding-top: 15px; padding-bottom: 10px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
+        <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
     	
-			<input type="hidden" id="regisPic1" name="regisPic1" value="UNSET" />
+			<input type="hidden" id="regisPic1" name="regisPic1"  />
            </a>
 		</div>
                 
@@ -413,12 +406,7 @@
 				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
 					<input type="email" name="regisEmail1" id="regisEmail1" placeholder="Slalom Email" value="" />
 				</div>
-				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
-					<input type="password" name="regisPassword1" id="regisPassword1" placeholder="Password" value="" />
-				</div>
-				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
-					<input type="password" name="ConfirmPassword1" id="ConfirmPassword1" placeholder="Confirm Password" value="" />
-				</div>
+			
 				<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
 					<input type="text" name="phone1" id="phone1" placeholder="Phone Number" value="" />
 				</div>
@@ -432,13 +420,20 @@
               
 				   </form>
                 
-		<div class="divButton" id="submitNewUser1">SUBMIT</div>
+		<div class="divButton" id="submitNewUser">SUBMIT</div>
 			<br/>
             <br/>
             <br/>
             <br/>
         </div>
-            </div>
+	</div>
+	
+
+
+
+
+
+
 			
     
     
