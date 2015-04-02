@@ -8,14 +8,6 @@
 //On initialization of conversations page
 $(document).on('pageinit', '#conversations', function () {
 
-    //Get the list of recipients (AJAX call)
-    GetRecipients();
-
-    //Event listener that loads the messages page when a recipient is clicked
-    $(document).on('click', '.recipientList', function () {
-        LoadMessagesFromRecipient($(this).val(), $(this).text())
-    });
-
     //Event listener that loads the messages page when a conversation div is clicked
     $(document).on('click', '.conversationContainer', function () {
 
@@ -34,45 +26,6 @@ $(document).on('pageshow', '#conversations', function () {
     GetConversations()
 });
 
-//Load available recipients from the server
-function GetRecipients() {
-
-    $.ajax({
-        url: S_ROOT + 'api/conversations/getrecipients/',
-        type: 'GET',
-        beforeSend: function (request) {
-            //Attaches credentials to AJAX call
-            request.withCredentials = true;
-            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-        },
-
-        //On success, add recipients to list
-        success: function (result) {
-            AddRecipientsToList(result)
-        },
-
-        error: function (request, error) {
-
-            //Log failure
-            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Can't load recipients");
-        }
-    });
-
-    return;
-}
-
-//Once recipients have loaded, add them to the list
-function AddRecipientsToList(recipients) {
-
-    //Empty the list
-    $("#popupMenu1").empty();
-
-    //Build the list
-    for (i = 0; i < recipients.length; i++) {
-        $("#popupMenu1").append("<li class='recipientList' value='" + recipients[i].ProfileID + "'><a href='#messages'>" + recipients[i].fname + " " + recipients[i].lname + "</a></li>");
-    }
-}
 
 //Get a list of conversations
 function GetConversations() {
@@ -130,6 +83,68 @@ function AddConversationsToList(conversations)
 }
 
 
+//On initialization of recipients page
+$(document).on('pageinit', '#recipients', function () {
+
+    //Event listener that loads the messages page when a recipient is clicked
+    $(document).on('click', '.recipientContent', function () {
+
+        //Change the page to messages
+        $.mobile.changePage("#messages");
+
+        //Load messages
+        LoadMessagesFromRecipient($(this).data('value'), $(this).text())
+    });
+
+});
+
+//Every time the conversations page is shown
+$(document).on('pageshow', '#recipients', function () {
+    GetRecipients();
+});
+
+
+//Load available recipients from the server
+function GetRecipients() {
+
+    $.ajax({
+        url: S_ROOT + 'api/conversations/getrecipients/',
+        type: 'GET',
+        beforeSend: function (request) {
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+        },
+
+        //On success, add recipients to list
+        success: function (result) {
+            AddRecipientsToList(result)
+        },
+
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Can't load recipients");
+        }
+    });
+
+    return;
+}
+
+//Once recipients have loaded, add them to the list
+function AddRecipientsToList(recipients) {
+
+    //Empty the list
+    $("#recipientPageContainer").empty();
+
+    //Build the list
+    for (i = 0; i < recipients.length; i++) {
+        $("#recipientPageContainer").append("<div class='recipientContent' data-value='" + recipients[i].ProfileID + "'>" + recipients[i].fname + " " + recipients[i].lname + "</div>");
+    }
+}
+
+
 //On initialize message page
 $(document).on('pageinit', '#messages', function () {
 
@@ -154,7 +169,7 @@ function LoadMessagesFromRecipient(recipient_id, recipient_name) {
     //Empty page of content first thing
     $("#messagePageContent").empty();
 
-    var recipient_id = $("#recipientId").val();
+    $("#recipientId").val(recipient_id);
 
     GetMessages(recipient_id);
 }
@@ -183,7 +198,7 @@ function GetMessages(recipient_id) {
 
         //On success, add messages ot the page
         success: function (result) {
-            AddMessagesToPage(result)
+            AddMessagesToPage(result, recipient_id)
         },
 
         error: function (request, error) {
@@ -216,7 +231,7 @@ function PostMessage(recipient, message) {
 
         },
 
-        success: function (message) {
+        success: function () {
             OnMessageIsSent(message)
         },
 
@@ -238,7 +253,7 @@ function OnMessageIsSent(messagetext) {
 }
 
 //Add a conversation to a messages page
-function AddMessagesToPage(conversation) {
+function AddMessagesToPage(conversation, recipient_id) {
 
     if (conversation != null) {
         for (i = 0; i < conversation[0].Messages.length; i++) {

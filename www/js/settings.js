@@ -20,3 +20,17 @@ function S_User(Fname, Lname, Email, Password, ConfirmPass, Phone, GuestMail, Im
 	this.imgData = ImgData;
 	this.imgID = '';
 }
+
+//Global Timers
+var S_TIMER = []
+
+function S_ClearTime() {
+
+    if(S_TIMER.l)
+
+    for(i=0; i < S_TIMER.length; i++)
+    {
+        clearInterval(S_TIMER[i]);
+    }
+
+}
