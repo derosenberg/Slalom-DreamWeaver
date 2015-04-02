@@ -91,8 +91,8 @@ div[data-role="content"] {
 .recipientMessage {
     border: 2px solid #009ed3;
     border-radius: 6px;
-    background-color: #FFFFFF;
-    color: #009ed3;
+    background-color: #BB4481;
+    color: #FFFFFF;
     float: left;
     margin-left: 5px;
     padding: 10px;
@@ -388,6 +388,9 @@ div[data-role="content"] {
 	
 	cursor: pointer;
 	margin-top: 10px;
+	font-family: Gotham-Book;
+	font-size: 14pt;
+	color: #0083C1;
 }
 
 .statusContainer strong {
