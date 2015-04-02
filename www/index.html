@@ -366,21 +366,6 @@
        
        
        
-       
-       
-       
-     
-
-
-
-
-
-	
-
-
-
-
-
 	<div data-role="page" id="editProfile">
 		<div data-role="header" class="header">
         	<h1>Edit Profile</h1>
@@ -472,7 +457,7 @@
       
       <div data-role="content" data-theme="d">
       
-      		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="star" style="background: #009ed3">Select a User</a>
+      		<a href="#recipients" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="star" style="background: #009ed3">Select a User</a>
            
             <div data-role="popup" id="popupMenu2">
             <ul id="popupMenu1" data-role="listview" data-inset="true" data-filter="true" style="min-width:210px;"<br/>>
@@ -485,12 +470,39 @@
             </div>
             
       </div>
+		
+  </div>
+
+
+
+<div data-role="page" id="recipients">
+	  <div data-role="header" class="header">
+      	<h1>Recipients</h1>
+      <a href="#conversations"><img src="img/wm_back.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<div data-role="popup" id="popupMenu">
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li data-role="divider" data-theme="e">Select a Page</li>
+					<li><a href="#Home">Home</a></li>
+					<li><a href="#mapPage">Map</a></li>
+					<li><a href="#editProfile">Edit Profile</a></li>
+                    </ul>
+                    </div>
+
+      </div>
+
+      <div id="recipientPageContainer" >
+            
+            
+            <div id="recipientContent">
+            </div>
+            
+      </div>
 
 	  
       
 		
   </div>
-
 
 
 
