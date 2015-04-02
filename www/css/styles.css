@@ -328,7 +328,7 @@ div[data-role="content"] {
 	width: 100%;
 	color: white;
 	font-family: Gotham-Medium;
-	height: 40px;
+	height: 25px;
 	padding-top: 15px;
 	cursor: pointer;
 	font-size: 12pt;
@@ -343,7 +343,7 @@ div[data-role="content"] {
 		border-top: solid 2px #c9c9c9; 
 		border-bottom: solid 2px #c9c9c9; 
 		margin-top: 20px;
-		margin-bottom: 10px; 
+		margin-bottom: 0px; 
 		overflow:hidden;
 		
 }
@@ -351,6 +351,24 @@ div[data-role="content"] {
 #sendMessage
 {
 
+	display: inline-block;
+	text-align: center;
+	border: hidden;
+	border-radius: 0px;
+	background: #2472B9;
+	width: 100%;
+	color: white;
+	font-family: Gotham-Medium;
+	height: 25px;
+	padding-top: 15px;
+	cursor: pointer;
+	font-size: 12pt;
+	overflow:hidden;
+	
+}
+
+#submitNewStatus{
+	
 	display: block;
 	text-align: center;
 	border: hidden;
@@ -359,7 +377,7 @@ div[data-role="content"] {
 	width: 100%;
 	color: white;
 	font-family: Gotham-Medium;
-	height: 40px;
+	height: 25px;
 	padding-top: 15px;
 	cursor: pointer;
 	font-size: 12pt;
@@ -370,6 +388,29 @@ div[data-role="content"] {
 	
 	cursor: pointer;
 	margin-top: 10px;
+}
+
+.statusContainer strong {
+	
+	color: #0083C1;
+	font-family: Gotham-Book;
+	font-size: 11pt;
+	
+}
+
+.statusContainer label {
+	
+	color: #0083C1;
+	font-family: Gotham-Book;
+	font-size: 10pt;	
+	
+}
+
+.statusContainer p {
+	
+	font-family: Gotham-Book;
+	font-size: 12pt;	
+	
 }
 
 /* Uncomment this before compiling in order to cause the initial page to fade in
