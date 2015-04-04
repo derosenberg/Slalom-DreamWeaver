@@ -20,23 +20,19 @@ $.ajax({
         },
         success: function (data) {
 			
-			
-			var picture = GetPic();
-			
-			var profPic = document.getElementById('#regisPortrait1')
-			profPic.src = picture;
-	
-			
-           
-		   /*$("#regisPic1").val(profPic);*/
+		
 		   $("#fname1").val(data.fname);
 		   $("#lname1").val(data.lname);
 		   $("#regisEmail1").val(data.email);
 		   $("#phone1").val(data.phone);
 		   $("#guestemail1").val(data.guestemail);
+		   
+		   getPicture();
+		   
             //Log success
             console.log("profile received");
-           
+	
+      
 		   
 			
         },
@@ -48,12 +44,13 @@ $.ajax({
         }
 
     });
-function GetPic() {
-	var pic;
+});
+
+function getPicture(){
 $.ajax({
         type: "GET",
         url: S_ROOT + 'api/getpic',
-        async: false,
+        async: true,
         dataType: "json",
         beforeSend: function (request) {
 
@@ -68,7 +65,9 @@ $.ajax({
         },
         success: function (data) {
 			
-		    pic = data;
+			
+		   $('#regisPortrait1').attr('src', data);
+		
 			console.log("picture received");
         },
         error: function (request, error) {
@@ -80,17 +79,25 @@ $.ajax({
 
     });
 	
-	return pic;
-}
+};
 
-});
+		/*	var picture = GetPic();
+			
+			var profPic = document.getElementById('#regisPortrait1')
+			profPic.src = picture;
+	
+			*/
+           
+		   /*$("#regisPic1").val(profPic);
+		   $("#fname1").val(data.fname);
+		   $("#lname1").val(data.lname);
+		   $("#regisEmail1").val(data.email);
+		   $("#phone1").val(data.phone);
+		   $("#guestemail1").val(data.guestemail);
+            //Log success
+            console.log("profile received");
 
-
-
-
-
-
-
+*/
 
 
 
