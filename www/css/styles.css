@@ -178,7 +178,7 @@ div[data-role="content"] {
 	
 	
 	width: 90%;
-	border: none;
+	border: hidden;
 	border-radius: 0px;
 	background: #EEF3F6;
 	margin: 0px;
@@ -193,7 +193,7 @@ div[data-role="content"] {
 	
 	display: block;
 	width: 90%;
-	border: none;
+	border: hidden;
 	border-radius: 0px;
 	background: #EEF3F6;
 	margin: 0px;
@@ -255,8 +255,6 @@ div[data-role="content"] {
 }
 
 /*REGISTRATION PAGE CONTROLS*/
-
-
 
 	
 #fname{
@@ -422,6 +420,19 @@ div[data-role="content"] {
 	
 }
 
+.ui-input-text {
+	border: none;
+}
+
+.ui-footer {
+	border: none;
+}
+
+#statusBody {
+
+	font-family: Gotham-Medium;	
+	
+}
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
 	#page1 {
