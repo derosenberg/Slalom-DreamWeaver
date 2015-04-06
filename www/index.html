@@ -212,8 +212,8 @@
 
 	
     <div id="forgotPassword" data-role="page">
-		<div data-role="header">
-			<a href="#login" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+		<div class="header">
+	
 
 			<h1>Forgot Password</h1>
 		</div>
@@ -287,7 +287,8 @@
             <br/>
         </div>
 	</div>
-	<div id="camera" data-role="page">
+	
+    <div id="camera" data-role="page">
 	  
       <div data-role="header">
       <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
@@ -346,18 +347,17 @@
 		</div>
         
         
-  <div data-role="content">
+
         
-     <div id="statusPageContent" name="statusPageContent" data-role="content">
-        <div class="statusContaniner"></div>
-     </div>
-     
-  		 <button id="loadMoreStatuses" type="button">Load More Statuses</button>
+     <div id="statusPageContent" name="statusPageContent">
+        <div class="statusContainer">
+    	 </div>
+         <div id="loadMoreStatuses">Load More Statuses</div>
   </div>
 
         <div data-role="footer" data-position="fixed">
-			<input type="text" name="statusBody" id="statusBody" placeholder="Post a status" />
-            <a href="#" id="submitNewStatus" data-role="button" data-theme="d">Submit</a>
+			<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
+            <div id="submitNewStatus">Submit</div>
 		</div>
 	</div>
 

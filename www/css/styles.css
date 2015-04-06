@@ -232,6 +232,8 @@ div[data-role="content"] {
 	
 	font-family: Gotham-Book;
 	color: #FFFFFF;
+	text-align: center;
+	font-size: 12pt;
 	
 }
 
@@ -373,8 +375,8 @@ div[data-role="content"] {
 	width: 100%;
 	color: white;
 	font-family: Gotham-Medium;
-	height: 25px;
-	padding-top: 15px;
+	height: 35px;
+	padding-top: 0px;
 	cursor: pointer;
 	font-size: 12pt;
 	
@@ -400,6 +402,7 @@ div[data-role="content"] {
 	color: #0083C1;
 	font-family: Gotham-Book;
 	font-size: 11pt;
+	padding-left: 2px;
 	
 }
 
@@ -407,7 +410,8 @@ div[data-role="content"] {
 	
 	color: #0083C1;
 	font-family: Gotham-Book;
-	font-size: 10pt;	
+	font-size: 10pt;
+	padding-right: 2px;	
 	
 }
 
