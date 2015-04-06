@@ -149,8 +149,13 @@ div[data-role="content"] {
 }
 
 #popupMenu{
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
 	height: 100%;
 	width: 100%;
+	z-index: 99;
 }
 
 /*LOGIN PAGE CONTROLS*/
