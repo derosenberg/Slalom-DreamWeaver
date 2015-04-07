@@ -138,8 +138,8 @@ div[data-role="content"] {
     display: inline-block;
     height: 75px;
     width: 100%;
-    padding: 5px 0px;
-    border-bottom: 2px solid #666666;
+    padding: 8px 0px;
+    border-bottom: 10px solid #D9D9D9;
 
 }
 
