@@ -174,16 +174,14 @@
 	<div data-role="page" id="mapPage">
 		
         <div data-role="header" class="header">
-<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-<div class="menu" >
-  <ul>
-    <a href="#home"><li>Home</li></a>
-    <a href="#mapPage"><li>Map Page</li></a>
-    <a href="#conversations"><li>Conversations</li></a>
-    <a href="#editProfile"><li>Edit Profile</li></a>
-    <a href="#logOut"><li>Log Out</li></a>
-  </ul>
-</div>
+			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<div data-role="popup" id="popupMenu">
+					<div><a href="#home">Home</a></div>
+                    <div><a href="#mapPage">Map</a></div>
+					<div><a href="#conversations">Conversations</a></div>
+					<div><a href="#editProfile">Edit Profile</a></div>
+                    <div><a href="#logOut">Log Out</a></div>
+			</div>
 
 			<h1>Map</h1>
 		</div>
@@ -198,13 +196,13 @@
 
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
 			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
-					<div>Select a Page</div>
-					<div><a href="#mapPage">Map</a></div>
+					<div><a href="#home">Home</a></div>
+                    <div><a href="#mapPage">Map</a></div>
+					<div><a href="#conversations">Conversations</a></div>
 					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#conversations">Conversations</a></div>
+                    <div><a href="#logOut">Log Out</a></div>
 			</div>
 			<p>Status<p>
            
@@ -231,15 +229,13 @@
 
 	<div id="editProfile" data-role="page">
 				<div data-role="header" class="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#Home">Home</a></li>
-                    <li><a href="#mapPage">Map</a></li>
-                    <li><a href="#conversations">Conversations</a></li>
-				</ul>
+					<div><a href="#home">Home</a></div>
+                    <div><a href="#mapPage">Map</a></div>
+					<div><a href="#conversations">Conversations</a></div>
+					<div><a href="#editProfile">Edit Profile</a></div>
+                    <div><a href="#logOut">Log Out</a></div>
 			</div>
 			<p>Edit Profile<p>
            
@@ -310,15 +306,14 @@
 	
 <div data-role="page" id="conversations">
 	  <div data-role="header" class="header">
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#Home">Home</a></li>
-					<li><a href="#mapPage">Map</a></li>
-					<li><a href="#editProfile">Edit Profile</a></li>
-                    </ul>
-                    </div>
+					<div><a href="#home">Home</a></div>
+                    <div><a href="#mapPage">Map</a></div>
+					<div><a href="#conversations">Conversations</a></div>
+					<div><a href="#editProfile">Edit Profile</a></div>
+                    <div><a href="#logOut">Log Out</a></div>
+			</div>
 	    <h1>Conversations</h1>
       </div>
 
@@ -413,7 +408,35 @@
 
 
 
+<div data-role="page" id="menu">
+	  <div data-role="header" class="header">
+      	<h1>Menu</h1>
+      <a href="#conversations"><img src="img/wm_back.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<div data-role="popup" id="popupMenu">
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li data-role="divider" data-theme="e">Select a Page</li>
+					<li><a href="#Home">Home</a></li>
+					<li><a href="#mapPage">Map</a></li>
+					<li><a href="#editProfile">Edit Profile</a></li>
+                    </ul>
+                    </div>
+<div><a href="#home">Home</a></div>
+                    <div><a href="#mapPage">Map</a></div>
+					<div><a href="#conversations">Conversations</a></div>
+					<div><a href="#editProfile">Edit Profile</a></div>
+                    <div><a href="#logOut">Log Out</a></div>
+      </div>
 
+      <div id="recipientPageContainer" >
+            
+            
+            <div id="recipientContent">
+            </div>
+            
+      </div>
+
+</div>
 
 
 
