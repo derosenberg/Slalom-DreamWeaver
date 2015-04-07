@@ -11,10 +11,12 @@ $(document).on('pageinit', '#regisPage', function () {
     $(document).on('click', '#submitNewUser', function () {
 
         //Disable form on submit
- //       $('#regisPageForm :input').prop("disabled", true);
-
+        $('#regisPageForm :input').prop("disabled", true);
+		
+			var pictureData = document.getElementById('regisPortrait').getAttribute('src');
+		
         //Create user variable
-        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $("#regisPic").val());
+        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), pictureData);
 
         //Register user
         RegisterUser(myUser);
