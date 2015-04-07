@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<title>Test</title>
 	<!--Jquery Scripts and Styles-->
-	<!--<link href="jquery-mobile/jquery.mobile.theme-1.3.0.min.css" rel="stylesheet" type="text/css">-->
-	<link href="jquery-mobile/jquery.mobile.structure-1.3.0.min.css" rel="stylesheet" type="text/css">
+	<!--<link href="jquery-mobile/jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" type="text/css">-->
+	<link href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" type="text/css">
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine.js"></script>
 	<script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine-html.js"></script>
 	<script src="jquery-mobile/jquery-1.11.1.min.js" type="text/javascript"></script>
-	<script src="jquery-mobile/jquery.mobile-1.3.0.min.js" type="text/javascript"></script>
+	<script src="jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
     <script src="jquery.fullscreen-popup.js"></script>
 	<script type="text/javascript" src="cordova.js"></script>
 
@@ -31,12 +31,148 @@
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/editProfile.js"></script>
-    <script type="text/javascript" src="js/regisCamera.js"></script>
-    <script type="text/javascript" src="js/editCamera.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     
     
     <!-- <script type="text/javascript" src="js/status.js"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
+	<script type="text/javascript">
+
+
+
+	
+		var pictureSource;   // picture source
+		var destinationType; // sets the format of returned value
+
+		// Wait for device API libraries to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+		// device APIs are available
+		//
+		function onDeviceReady() {
+			pictureSource = navigator.camera.PictureSourceType;
+			destinationType = navigator.camera.DestinationType;
+		}
+
+		// Called when a photo is successfully retrieved
+		
+		
+		function onPhotoDataSuccess(imageData) {
+			// Uncomment to view the base64-encoded image data
+			console.log(imageData);
+
+			window.location.href = "#regisPage";
+
+			// Get image handle
+			//
+			var smallImage = document.getElementById('regisPortrait');
+			var hiddenField = document.getElementById('regisPic');
+
+
+
+			var hiddenField = document.getElementById('regisPic');
+
+
+			// Unhide image elements
+			//
+			smallImage.style.display = 'block';
+
+			// Show the captured photo
+			// The in-line CSS rules are used to resize the image
+			//
+			smallImage.src = "data:image/jpeg;base64," + imageData;
+			hiddenField.value = "data:image/jpeg;base64," + imageData;
+		}
+
+		// Called when a photo is successfully retrieved
+		//
+		function onPhotoURISuccess(imageURI) {
+			// Uncomment to view the image file URI
+			// console.log(imageURI);
+			window.location.href = "#regisPage";
+
+			// Get image handle
+			//
+			var largeImage = document.getElementById('regisPortrait');
+			var hiddenField = document.getElementById('regisPic');
+
+
+
+			var hiddenField = document.getElementById('regisPic');
+
+			// Unhide image elements
+			//
+			largeImage.style.display = 'block';
+
+			// Show the captured photo
+			// The in-line CSS rules are used to resize the image
+			//
+			largeImage.src = imageURI;
+		}
+
+		// A button will call this function
+		//
+		function capturePhoto() {
+			// Take picture using device camera and retrieve image as base64-encoded string
+			navigator.camera.getPicture(onPhotoDataSuccess, onFail,
+            {
+            	quality: 50,
+            	correctOrientation: true,
+            	destinationType: destinationType.DATA_URL
+            });
+		}
+		
+		 function capturePhotoWithFile() {
+        
+		
+			navigator.camera.getPicture(onPhotoFileSuccess, onFail, 
+			{ 
+				quality: 50, 
+				correctOrientation: true,
+				destinationType: Camera.DestinationType.FILE_URI });
+    		}
+    
+
+		// A button will call this function
+		//
+		function capturePhotoEdit() {
+			// Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+			navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+				quality: 20, 
+				allowEdit: true,
+				destinationType: destinationType.DATA_URL
+			});
+		}
+
+		// A button will call this function
+		//
+	 function getPhoto(source) {
+			// Retrieve image file location from specified source
+			navigator.camera.getPicture(onPhotoURISuccess, onFail,
+             {
+             	quality: 50,
+             	correctOrientation: true,
+             	destinationType: destinationType.FILE_URI,
+             	sourceType: source
+             });
+		}
+
+
+		// Called if something bad happens.
+		//
+		function onFail(message) {
+			alert('Failed because: ' + message);
+		}
+
+		//Back Button Functionality
+		function goBack() {
+			history.back();
+			return false;
+		}
+		
+
+</script>
 	<!--JavaScript-->
 
 
@@ -54,10 +190,10 @@
 
 			<form id="loginForm" method="post">
 			
-					<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
+					<div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: hidden 2px #c9c9c9; border-bottom: none 2px #c9c9c9; margin-top: 20px; margin-bottom: 10px; overflow:hidden;">
                     <input name="username" type="text" id="username" value="" placeholder="Slalom Email Address" />
 					</div>
-                    <div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 10px; overflow:hidden">
+                    <div style="display: block; width: 100%; height: 40px; background: #EEF3F6; border-top: hidden 2px #FFFFFF; border-bottom: hidden 2px #c9c9c9; margin-bottom: 10px; overflow:hidden">
                     <input name="password" type="password" id="password" value="" placeholder="Password" />
                     </div>
 		
@@ -77,8 +213,8 @@
 
 	
     <div id="forgotPassword" data-role="page">
-		<div data-role="header">
-			<a href="#login" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+		<div class="header">
+	
 
 			<h1>Forgot Password</h1>
 		</div>
@@ -96,7 +232,7 @@
 
 			</form>
 		</div>
-	</div>
+
 
 
 	<div id="regisPage" data-role="page">
@@ -105,7 +241,7 @@
 			<form id="regisPageForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#regisCamera"> 
+         <a href = "#camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait" name="regisPortrait" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
@@ -152,36 +288,38 @@
             <br/>
         </div>
 	</div>
-	<div id="regisCamera" data-role="page">
+	
+    <div id="camera" data-role="page">
 	  
       <div data-role="header">
       <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
-	    <div class="divButton" id="takePhoto">  
+	    <div class="divButton" id="takePhoto" onClick="capturePhoto();">  
       	Capture Photo
         </div>
         <br/>
-      <div class="divButton" id="grabDatPhoto"> Get Photo from Library</div>
+      <div class="divButton" id="grabDatPhoto" onClick="getPhoto(pictureSource.PHOTOLIBRARY);"> Get Photo from Library
+      </div>
 	 </form>
 </div>
 
 
 	<div data-role="page" id="mapPage">
-		<div data-role="header">
-			<a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+		
+        <div data-role="header" class="header">
+<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+<div class="menu" >
+  <ul>
+    <a href="#home"><li>Home</li></a>
+    <a href="#mapPage"><li>Map Page</li></a>
+    <a href="#conversations"><li>Conversations</li></a>
+    <a href="#editProfile"><li>Edit Profile</li></a>
+    <a href="#logOut"><li>Log Out</li></a>
+  </ul>
+</div>
 
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="background: #009ed3">Menu</a>
-			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#Home">Home</a></li>
-                    <li><a href="#conversations">Conversations</a></li>
-                    <li><a href="#editProfile">Edit Profile</a></li>
-               
-				</ul>
-			</div>
 			<h1>Map</h1>
 		</div>
 		<div data-role="content" id="map"></div>
@@ -196,32 +334,30 @@
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
 			<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#mapPage">Map</a></li>
-					<li><a href="#editProfile">Edit Profile</a></li>
-                    <li><a href="#conversations">Conversations</a></li>
-				</ul>
+					<div>Select a Page</div>
+					<div><a href="#mapPage">Map</a></div>
+					<div><a href="#editProfile">Edit Profile</a></div>
+                    <div><a href="#conversations">Conversations</a></div>
 			</div>
 			<p>Status<p>
            
 		</div>
         
         
-  <div data-role="content">
+
         
-     <div id="statusPageContent" name="statusPageContent" data-role="content">
-        <div class="statusContaniner"></div>
-     </div>
-     
-  		 <button id="loadMoreStatuses" type="button">Load More Statuses</button>
+     <div id="statusPageContent" name="statusPageContent">
+        <div class="statusContainer">
+         <div id="loadMoreStatuses">Load More Statuses</div>
+    	 </div>
+        
   </div>
 
         <div data-role="footer" data-position="fixed">
-			<input type="text" name="statusBody" id="statusBody" placeholder="Post a status" />
-            <a href="#" id="submitNewStatus" data-role="button" data-theme="d">Submit</a>
+			<div class = "statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
+            <div id="submitNewStatus">Status</div>
 		</div>
 	</div>
 
@@ -249,10 +385,10 @@
 			<form id="editProfileForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#editCamera"> 
+         <a href = "#camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
     	
-			<input type="hidden" id="regisPic1" name="regisPic1"/>
+			<input type="hidden" id="regisPic1" name="regisPic1"  />
            </a>
 		</div>
                 
@@ -284,7 +420,7 @@
               
 				   </form>
                 
-		<div class="divButton" id="editProfileSumit">EDIT</div>
+		<div class="divButton" id="submitNewUser">SUBMIT</div>
 			<br/>
             <br/>
             <br/>
@@ -292,32 +428,8 @@
         </div>
 	</div>
 	
-	<div id="editCamera" data-role="page">
-      <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-	    <h1>Camera</h1>
-      </div>
-      <form id="cameraStyle1" method="post">
-	    <div class="divButton" id="takePhoto1">  
-      	Capture Photo
-        </div>
-        <br/>
-      <div class="divButton" id="grabDatPhoto1"> Get Photo from Library
-      </div>
-	 </form>
-</div>
-
-
-
-
-
-			
-    
-    
-    
-  <div data-role="page" id="conversations">
+<div data-role="page" id="conversations">
 	  <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -333,15 +445,8 @@
       
       <div data-role="content" data-theme="d">
       
-      		<a href="#popupMenu2" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="star" style="background: #009ed3">Select a User</a>
-           
-            <div data-role="popup" id="popupMenu2">
-            <ul id="popupMenu1" data-role="listview" data-inset="true" data-filter="true" style="min-width:210px;"<br/>>
-            <br/>
-            </ul>
-            </div>
+      	<a href="#recipients" style="background: #009ed3">Recipients</a>
             
-            <br/>
             <div id="conversationPageContent">
             </div>
             
@@ -355,6 +460,43 @@
   </div>
 
 
+
+
+
+
+<div data-role="page" id="recipients">
+	  <div data-role="header" class="header">
+      	<h1>Recipients</h1>
+      <a href="#conversations"><img src="img/wm_back.png" width="30" alt=""/></a>
+			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<div data-role="popup" id="popupMenu">
+				<ul data-role="listview" data-inset="true" style="min-width:210px;">
+					<li data-role="divider" data-theme="e">Select a Page</li>
+					<li><a href="#Home">Home</a></li>
+					<li><a href="#mapPage">Map</a></li>
+					<li><a href="#editProfile">Edit Profile</a></li>
+                    </ul>
+                    </div>
+
+      </div>
+
+      <div id="recipientPageContainer" >
+            
+            
+            <div id="recipientContent">
+            </div>
+            
+      </div>
+
+</div>
+
+
+
+			
+    
+    
+    
+  
 
 
 
