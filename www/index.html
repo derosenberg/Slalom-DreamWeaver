@@ -174,15 +174,10 @@
 	<div data-role="page" id="mapPage">
 		
         <div data-role="header" class="header">
-			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-					<div><a href="#home">Home</a></div>
-                    <div><a href="#mapPage">Map</a></div>
-					<div><a href="#conversations">Conversations</a></div>
-					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#logOut">Log Out</a></div>
-			</div>
-
+        
+        	<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			
 			<h1>Map</h1>
 		</div>
 		<div data-role="content" id="map"></div>
@@ -196,14 +191,10 @@
 
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
-			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-					<div><a href="#home">Home</a></div>
-                    <div><a href="#mapPage">Map</a></div>
-					<div><a href="#conversations">Conversations</a></div>
-					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#logOut">Log Out</a></div>
-			</div>
+        
+        	<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+			
 			<p>Status<p>
            
 		</div>
@@ -228,15 +219,9 @@
 
 
 	<div id="editProfile" data-role="page">
-				<div data-role="header" class="header">
-			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-					<div><a href="#home">Home</a></div>
-                    <div><a href="#mapPage">Map</a></div>
-					<div><a href="#conversations">Conversations</a></div>
-					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#logOut">Log Out</a></div>
-			</div>
+			<div data-role="header" class="header">
+			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+			
 			<p>Edit Profile<p>
            
 		</div>
@@ -306,14 +291,10 @@
 	
 <div data-role="page" id="conversations">
 	  <div data-role="header" class="header">
-			<a href="#popupMenu" data-rel="popup" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-					<div><a href="#home">Home</a></div>
-                    <div><a href="#mapPage">Map</a></div>
-					<div><a href="#conversations">Conversations</a></div>
-					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#logOut">Log Out</a></div>
-			</div>
+      
+      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			
 	    <h1>Conversations</h1>
       </div>
 
@@ -343,15 +324,7 @@
 	  <div data-role="header" class="header">
       	<h1>Recipients</h1>
       <a href="#conversations"><img src="img/wm_back.png" width="30" alt=""/></a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#Home">Home</a></li>
-					<li><a href="#mapPage">Map</a></li>
-					<li><a href="#editProfile">Edit Profile</a></li>
-                    </ul>
-                    </div>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 
       </div>
 
@@ -377,17 +350,10 @@
 
 <div data-role="page" id="messages">
   <div data-role="header" class="header">
+  
   <a href="#conversations"><img src="img/ic_action_back.png" style="margin-top: 0px; width: 80%;"/></a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
-					<li><a href="#Home">Home</a></li>
-					<li><a href="#mapPage">Map</a></li>
-					<li><a href="#editProfile">Edit Profile</a></li>
-                    <li><a href="#conversations">Conversations</a></li>
-                    </ul>
-                    </div>
+			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+			
     <h1 id="recipientName" name="recipientName">Messages</h1>
   
  		</div>
@@ -409,30 +375,19 @@
 
 
 <div data-role="page" id="menu">
-	  <div data-role="header" class="header">
-      	<h1>Menu</h1>
-      <a href="#conversations"><img src="img/wm_back.png" width="30" alt=""/></a>
-			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
-			<div data-role="popup" id="popupMenu">
-				<ul data-role="listview" data-inset="true" style="min-width:210px;">
-					<li data-role="divider" data-theme="e">Select a Page</li>
+	  
+				<ul>
 					<li><a href="#Home">Home</a></li>
 					<li><a href="#mapPage">Map</a></li>
+                    <li><a href="#conversations">Conversations</a></li>
 					<li><a href="#editProfile">Edit Profile</a></li>
+                    <li><a href="#logOut">Log Out</a></li>
                     </ul>
                     </div>
-<div><a href="#home">Home</a></div>
-                    <div><a href="#mapPage">Map</a></div>
-					<div><a href="#conversations">Conversations</a></div>
-					<div><a href="#editProfile">Edit Profile</a></div>
-                    <div><a href="#logOut">Log Out</a></div>
+
       </div>
 
-      <div id="recipientPageContainer" >
-            
-            
-            <div id="recipientContent">
-            </div>
+      <div id="menu" >
             
       </div>
 
