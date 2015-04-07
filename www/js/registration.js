@@ -50,10 +50,15 @@ function RegisterUser(user) {
             async: true,
             contentType: "application/x-www-form-urlencoded",
             beforeSend: function () {
-                $.mobile.showPageLoadingMsg(true);
+                $.mobile.loader('show', {
+                    theme: "a",
+                    text: "Registering",
+                    textonly: true,
+                    textVisible: true
+                });
             },
             complete: function () {
-                $.mobile.hidePageLoadingMsg();
+                $.mobile.loader('hide');
             },
             success: function (result) {
                 user.imgID = result;
