@@ -124,6 +124,11 @@ div[data-role="content"] {
 
 }
 
+.controlgroup-textinput{
+    padding-top:.22em;
+    padding-bottom:.22em;
+}
+
 #statusPageContent {
 	border-top: 2px solid #666666;	
 }
@@ -375,13 +380,16 @@ div[data-role="content"] {
 	border: hidden;
 	border-radius: 0px;
 	background: #2472B9;
-	width: 100%;
+	width: auto;
+	margin-bottom: 0px;
 	color: white;
 	font-family: Gotham-Medium;
-	height: 35px;
-	padding-top: 0px;
+	height: 44px;
+	padding-top: auto;
 	cursor: pointer;
 	font-size: 12pt;
+	line-height: 45px;
+
 	
 }
 
@@ -417,6 +425,8 @@ div[data-role="content"] {
 	padding-right: 2px;	
 	
 }
+
+.statusInput { float: left; }
 
 .statusContainer p {
 	
