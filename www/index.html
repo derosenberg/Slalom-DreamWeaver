@@ -215,14 +215,13 @@
         
      <div id="statusPageContent" name="statusPageContent">
         <div class="statusContainer">
-         <div id="loadMoreStatuses">Load More Statuses</div>
     	 </div>
         
   </div>
-
-        <div data-role="footer" data-position="fixed">
+		<div id="loadMoreStatuses">Load More Statuses</div>
+        <div style="padding-top: 10px;" data-role="footer" data-position="fixed">
 			<div class = "statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
-            <div id="submitNewStatus">Status</div>
+            <div id="submitNewStatus">Send</div>
 		</div>
 	</div>
 
@@ -310,7 +309,7 @@
 </div>
 	
 <div data-role="page" id="conversations">
-	  <div data-role="header">
+	  <div data-role="header" class="header">
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -382,8 +381,8 @@
 
 
 <div data-role="page" id="messages">
-  <div data-role="header" data-position="fixed">
-  <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+  <div data-role="header" class="header">
+  <a href="#conversations"><img src="img/ic_action_back.png" style="margin-top: 0px; width: 80%;"/></a>
 			<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" style="margin-top:10px;" ><img src="img/menu-icon.png" width="30" alt=""/></a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
@@ -404,9 +403,9 @@
       </div>
 
   <div data-role="footer" data-position="fixed">
-  <input id="messageBody" name="messageBody" placeholder="Message"></input>
+  <div class="statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" id="messageBody" name="messageBody" placeholder="Message"></input></div>
      <input type="hidden" name="recipientId" id="recipientId" value="">      
-    <button name="sendMessage" id="sendMessage" data-icon="arrow-r" data-iconpos="right" >Send Message</button>
+    <div name="sendMessage" id="sendMessage">Send</div>
   </div>
 </div>
 
