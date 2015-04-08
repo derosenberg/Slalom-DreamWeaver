@@ -112,9 +112,11 @@ div[data-role="content"] {
 
 /*--------------------------------------------------------*/
 #conversationPageContent {
-    border-top: 1px thin #666666;
+    border-top:  thick  1px  #666666;
 	margin-top: 45px;
+	
 }
+
 
 .conversationContainer {
     margin-top: 10px;
