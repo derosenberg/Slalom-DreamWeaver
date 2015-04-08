@@ -1,4 +1,16 @@
 // JavaScript source code
+$(document).on('pageinit', '#Home', function () {
+
+    $(document).on('click', '#loadMoreStatuses', function () {
+        numStatus = numStatus + 10;
+        GetStatusList();
+    });
+
+    $(document).on('click', '#submitNewStatus', function () {
+        PostStatus($("#statusBody").val());
+    });
+});
+
 
 //------------------------------------------------------------------------------------------------------------
 $(document).on('pageshow', '#Home', function () {
@@ -64,14 +76,7 @@ $(document).on('pageshow', '#Home', function () {
         }, 1000));
 
 
-    $(document).on('click', '#loadMoreStatuses', function () {
-        numStatus = numStatus + 10;
-        GetStatusList();
-    });
 
-    $(document).on('click', '#submitNewStatus', function () {
-        PostStatus($("#statusBody").val());
-    });
 
     function PostStatus(status) {
 

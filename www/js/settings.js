@@ -39,9 +39,8 @@ function S_ClearTime() {
 }
 
 //Global Pagehide
-$("document").on('pagebeforehide', '#Home', function () {
+$(document).on('pagebeforehide', "[data-role='page']", function (event, ui) {
 
     S_ClearTime();
 
-    alert("pagebeforehide");
 });
