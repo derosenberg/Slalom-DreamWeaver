@@ -44,3 +44,6 @@ $(document).on('pagebeforehide', "[data-role='page']", function (event, ui) {
     S_ClearTime();
 
 });
+
+//Number of statuses loaded
+var S_NUMSTATUS = 0;

@@ -163,6 +163,16 @@ $(document).on('pageinit', '#messages', function () {
     });
 });
 
+//On initialize message page
+$(document).on('pageinit', '#messages', function () {
+
+    S_TIMER.push(setInterval(function () {
+        GetMessages($("#recipientId").val());
+        console.log("Gotten Messages");
+    }, 10000));
+
+});
+
 //Function for each time recipients are loaded
 function LoadMessagesFromRecipient(recipient_id, recipient_name) {
 
@@ -258,6 +268,8 @@ function OnMessageIsSent(messagetext) {
 function AddMessagesToPage(conversation, recipient_id) {
 
     if (conversation != null) {
+        $("#messagePageContent").empty();
+
         for (i = 0; i < conversation[0].Messages.length; i++) {
             if (conversation[0].Messages[i].ProfileID == recipient_id)
                 $("#messagePageContent").append("<div class='messageContainer'><div class='recipientMessage'>" + conversation[0].Messages[i].messagetext + "</div></div>");
