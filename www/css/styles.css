@@ -153,15 +153,6 @@ div[data-role="content"] {
 	align-content:center;
 }
 
-#popupMenu{
-	position:absolute;
-	top: 0px;
-	left: 0px;
-	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
-	height: 100%;
-	width: 100%;
-	z-index: 99;
-}
 
 /*LOGIN PAGE CONTROLS*/
 
@@ -228,7 +219,7 @@ div[data-role="content"] {
 .header {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
 	padding-top: 10px;
-	min-height: 50px;
+	min-height: 45px;
 }
 
 .header p {
@@ -508,7 +499,6 @@ div[data-role="content"] {
 	margin: 0px;
 	width: 100%;
 	font-family: Gotham-Book;
-	
 	border-top: 1px solid white;
 	text-align:center;
 }
