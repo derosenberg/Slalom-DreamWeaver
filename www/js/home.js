@@ -17,7 +17,7 @@ $(document).on('pageinit', '#Home', function () {
 //------------------------------------------------------------------------------------------------------------
 $(document).on('pageshow', '#Home', function () {
 
-    var S_NUMSTATUS = 10;
+    S_NUMSTATUS = 10;
 
     GetStatusList();
 
@@ -32,7 +32,7 @@ $(document).on('pageshow', '#Home', function () {
 function GetStatusList() {
     $.ajax({
         type: "GET",
-        url: S_ROOT + 'api/status/getstatuses/' + numStatus,
+        url: S_ROOT + 'api/status/getstatuses/' + S_NUMSTATUS,
         async: true,
         dataType: "json",
         beforeSend: function (request) {

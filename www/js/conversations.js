@@ -164,7 +164,7 @@ $(document).on('pageinit', '#messages', function () {
 });
 
 //On initialize message page
-$(document).on('pageinit', '#messages', function () {
+$(document).on('pageshow', '#messages', function () {
 
     S_TIMER.push(setInterval(function () {
         GetMessages($("#recipientId").val());
@@ -194,18 +194,12 @@ function GetMessages(recipient_id) {
         type: 'GET',
         beforeSend: function (request) {
 
-            //Show page loader
-            $.mobile.showPageLoadingMsg(true);
+
 
             //Attaches credentials to AJAX call
             request.withCredentials = true;
             request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
 
-        },
-        complete: function () {
-
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
         },
 
         //On success, add messages ot the page
