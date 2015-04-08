@@ -31,7 +31,6 @@
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/editProfile.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/editCamera.js"></script>
     <script type="text/javascript" src="js/regisCamera.js"></script>
     
@@ -172,11 +171,10 @@
 
 
 	<div data-role="page" id="mapPage">
-		
-        <div data-role="header" class="header">
-        
-        	<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+		<div data-role="header" class="header">
+      
+      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<h1>Map</h1>
 		</div>
@@ -191,9 +189,9 @@
 
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
-        
-        	<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+      
+      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<p>Status<p>
            
@@ -221,7 +219,7 @@
 	<div id="editProfile" data-role="page">
 			<div data-role="header" class="header">
             <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#menu"><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<p>Edit Profile<p>
            
@@ -294,7 +292,7 @@
 	  <div data-role="header" class="header">
       
       		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
-			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 	    <h1>Conversations</h1>
       </div>
@@ -302,8 +300,8 @@
       
       <div>
       
-      	      	<a href="#recipients"><img src="img/bluePlus.jpg" width="40" id="bluePlus" style="padding-top: 30px; padding-right: 100px; float: right;"/></a>
-            	<label style="padding-top: 36px; float:right; padding-right: 5px;font-family: Gotham-Medium; font-size: 19pt; color: #009ed3;"for="#bluePlus">Please Select a User</label>
+      	      	<a href="#recipients"><img src="img/bluePlus.jpg" width="40" id="bluePlus" style="padding-top: 5px; margin-left: auto; margin-right: 6px; float: right;"/></a>
+            	<label style="padding-top: 12px; margin-right: auto; margin-left: 6px;font-family: Gotham-Medium; font-size: 19pt; color: #009ed3;"for="#bluePlus">Start New Conversation</label>
 
             <div id="conversationPageContent">
             </div>
@@ -325,7 +323,7 @@
       	<h1>Recipients</h1>
 		
       <a href="#conversations"><img src="img/ic_action_back.png" width="30" alt=""/></a>
-			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#menu" ><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			<div data-role="popup" id="popupMenu">
 				<ul data-role="listview" data-inset="true" style="min-width:210px;">
 					<li data-role="divider" data-theme="e">Select a Page</li>
@@ -357,7 +355,7 @@
   <div data-role="header" class="header">
   
   <a href="#conversations"><img src="img/ic_action_back.png" style="margin-top: 0px; width: 80%;"/></a>
-			<a href="#menu"><img src="img/menu-icon.png" width="30" alt=""/></a>
+			<a href="#menu"><img src="img/menu-icon.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
     <h1 id="recipientName" name="recipientName">Messages</h1>
   
@@ -381,7 +379,7 @@
 
 <div data-role="page" id="menu">
 
-      <a type="button" onclick="history.back();" value="Back"><img src="img/closeButton.png" width="26" alt="" style="float:right; padding-right:10px;"/></a>
+      <a type="button" onclick="history.back();" value="Back"><img src="img/closeButton.png" width="26" alt="" style="float:right; padding-right:15px;"/></a>
       <div id="jumpTo">
       <p>Jump to:</p>
       </div>
