@@ -475,7 +475,7 @@ div[data-role="content"] {
 
 #messageBody {
 	
-	font-family: Gotam-Medium;
+	font-family: Gotham-Medium;
 	
 }
 
@@ -491,56 +491,45 @@ div[data-role="content"] {
 }
 
 #menu ul {
+	padding-left: 0px;
+	padding-right: 0px;
+	margin:0px;
 	width: 100%;
 	font-family: Gotham-Book;
 	padding-top: 165px;
-	border-top: 1px thin white;
+	border-bottom: 1px solid white;
+	list-style-type: none;
 }
 
 #menu li {
+	font-family: Gotham-Medium;
+	font-size: 14pt;
+	height: 60px;
+	margin: 0px;
 	width: 100%;
 	font-family: Gotham-Book;
-	padding-top: 25px;
-	border-bottom: 1px thin white;
+	
+	border-top: 1px solid white;
+	text-align:center;
 }
 
-#username {
-	
-	
-	width: 90%;
-	border: hidden;
-	border-radius: 0px;
-	background: #EEF3F6;
-	margin: 0px;
-	font-family: Gotham-Book;
-	height: 10px;
-	font-size: 12pt;
-	padding-left: 10px;
-	
+#menu a {
+	width: 100%;
+	height: 40px;
+	padding-top: 20px;
+	padding-bottom: 0px;
+	display:inline-block;
+	text-decoration:none;	
 }
 
-#password {
-	
-	display: block;
-	width: 90%;
-	border: hidden;
-	border-radius: 0px;
-	background: #EEF3F6;
-	margin: 0px;
-	font-family: Gotham-Book;
-	height: 10px;
-	font-size: 12pt;
-	padding-left: 10px;
+#menu li a:active {
+	background-color: white;
+	color: #2472B9;	
 }
 
-#loginSubmitBtn {
-	
-	
-	height: 35px;
-	margin-top: 25px;
-	
-	
-}
+
+
+
 
 
 /* Uncomment this before compiling in order to cause the initial page to fade in
