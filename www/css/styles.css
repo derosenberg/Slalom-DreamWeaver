@@ -110,7 +110,8 @@ div[data-role="content"] {
 
 /*--------------------------------------------------------*/
 #conversationPageContent {
-    border-top: 2px solid #666666;
+    border-top: 2px hidden #666666;
+	margin-top: 45px;
 }
 
 .conversationContainer {
