@@ -452,6 +452,15 @@ div[data-role="content"] {
 	
 }
 
+.recipientContent img {
+	
+	float: right;
+	padding-right: 5px;
+	width: 30px;
+	
+	
+	}
+
 .statusContainer strong {
 	
 	color: #0083C1;

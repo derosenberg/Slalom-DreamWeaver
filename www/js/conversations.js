@@ -140,7 +140,7 @@ function AddRecipientsToList(recipients) {
 
     //Build the list
     for (i = 0; i < recipients.length; i++) {
-        $("#recipientPageContainer").append("<div class='recipientContent' data-value='" + recipients[i].ProfileID + "'>" + recipients[i].fname + " " + recipients[i].lname + "</div>");
+        $("#recipientPageContainer").append("<div class='recipientContent' data-value='" + recipients[i].ProfileID + "'>" + recipients[i].fname + " " + recipients[i].lname + "<img src='img/message-icon.png'/></div>");
     }
 }
 
