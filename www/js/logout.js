@@ -5,7 +5,7 @@ $(document).on('pageinit', '#menu', function () {
 
     //Event listener that waits for logout button clicks
     $(document).on('click', '#logOutButton', function () {
-
+        console.log("clicked the button!");
         LogOutSlalom();
 
     });
