@@ -443,15 +443,12 @@ div[data-role="content"] {
 	cursor: pointer;
 	margin-top: 15px;
 	font-family: Gotham-Book;
-	font-size: 14pt;
-	color: #FFFFFF;
-	border: thin #0083C1;
-	border-radius: 1px;
+	font-size: 18pt;
+	padding: 5px 5px 5px 15px;
+	color: #009ed3;
+	height: 40px;
+	border-bottom: 8px solid #D9D9D9;
 	display: block;
-	background-color: #0083C1;
-	text-align: center;
-
-
 	
 }
 
