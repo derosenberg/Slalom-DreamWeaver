@@ -23,7 +23,7 @@ $(document).one('pageshow', '#mapPage', function () {
         onDeviceReady: function () {
 
             // app.receivedEvent('deviceready');
-            navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
+            navigator.geolocation.watchPosition(app.onSuccess, app.onError);
 
         },
 
@@ -42,37 +42,6 @@ $(document).one('pageshow', '#mapPage', function () {
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
             google.maps.event.trigger(map, 'resize');
-
-            $(document).ready(function () {
-                setInterval(function () {
-                    var appPlacment = {
-
-                        // Application Constructor
-                        initialize: function () {
-                            this.bindEvents();
-                        },
-                        // Bind Event Listeners
-                        //
-                        // Bind any events that are required on startup. Common events are:
-                        // 'load', 'deviceready', 'offline', and 'online'.
-                        bindEvents: function () {
-                            document.addEventListener('deviceready', this.onDeviceReady, false);
-                        },
-                        // deviceready Event Handler
-                        //
-                        // The scope of 'this' is the event. In order to call the 'receivedEvent'
-                        // function, we must explicitly call 'app.receivedEvent(...);'
-                        onDeviceReady: function () {
-
-                            // app.receivedEvent('deviceready');
-                            navigator.geolocation.getCurrentPosition(appPlacment.onSuccess, appPlacment.onError);
-
-                        },
-
-                        onSuccess: function (position) {
-                            longitude = position.coords.longitude;
-                            latitude = position.coords.latitude;
-                            latLong = new google.maps.LatLng(latitude, longitude);
 
                             function clearOverlays() {
                                 for (var i = 0; i < mMarker.length; i++) {
@@ -95,18 +64,6 @@ $(document).one('pageshow', '#mapPage', function () {
 
                             clearOverlays();
                             PutLocation(longitude, latitude);
-
-
-
-
-                        },
-                        onError: function (error) {
-                            alert("the code is " + error.code + ". \n" + "message: " + error.message);
-                        },
-                    };
-                    appPlacment.initialize();
-                }, 2000);
-            });
 
 
             function removeMarkers() {
@@ -206,68 +163,6 @@ $(document).one('pageshow', '#mapPage', function () {
 
     afterEach(function () {
         document.getElementById('stage').innerHTML = '';
-    });
-
-    var helper = {
-        trigger: function (obj, name) {
-            var e = document.createEvent('Event');
-            e.initEvent(name, true, true);
-            obj.dispatchEvent(e);
-        },
-        getComputedStyle: function (querySelector, property) {
-            var element = document.querySelector(querySelector);
-            return window.getComputedStyle(element).getPropertyValue(property);
-        }
-    };
-
-    describe('app', function () {
-        describe('initialize', function () {
-            it('should bind deviceready', function () {
-                runs(function () {
-                    spyOn(app, 'onDeviceReady');
-                    app.initialize();
-                    helper.trigger(window.document, 'deviceready');
-                });
-
-                waitsFor(function () {
-                    return (app.onDeviceReady.calls.length > 0);
-                }, 'onDeviceReady should be called once', 500);
-
-                runs(function () {
-                    expect(app.onDeviceReady).toHaveBeenCalled();
-                });
-            });
-        });
-
-        describe('onDeviceReady', function () {
-            it('should report that it fired', function () {
-                spyOn(app, 'receivedEvent');
-                app.onDeviceReady();
-                expect(app.receivedEvent).toHaveBeenCalledWith('deviceready');
-            });
-        });
-
-        describe('receivedEvent', function () {
-            beforeEach(function () {
-                var el = document.getElementById('stage');
-                el.innerHTML = ['<div id="deviceready">',
-                                '    <p class="event listening">Listening</p>',
-                                '    <p class="event received">Received</p>',
-                                '</div>'].join('\n');
-            });
-
-            it('should hide the listening element', function () {
-                app.receivedEvent('deviceready');
-                var displayStyle = helper.getComputedStyle('#deviceready .listening', 'display');
-                expect(displayStyle).toEqual('none');
-            });
-
-            it('should show the received element', function () {
-                app.receivedEvent('deviceready');
-                var displayStyle = helper.getComputedStyle('#deviceready .received', 'display');
-                expect(displayStyle).toEqual('block');
-            });
-        });
     });
 });
 
