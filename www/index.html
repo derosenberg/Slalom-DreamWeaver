@@ -48,6 +48,9 @@
 
 
 <body>
+
+
+<!--LOGIN PAGE-->
 	
     <div id="login" data-role="page">
 
@@ -78,6 +81,9 @@
 </div>
 
 	
+<!--FORGOT PASSWORD PAGE-->    
+    
+    
     <div id="forgotPassword" data-role="page">
 		<div class="header">
 	
@@ -98,27 +104,30 @@
 
 			</form>
 		</div>
+  
+  
+<!--CHANGE PASSWORD PAGE-->  
         
         <div id="changePassword" data-role="page">
-		<div class="header">
+		<div class="header" data-role= "header" data-position= "fixed">
 	
 
 			<h1>Change Password</h1>
 		</div>
 		<div id="passwordChange">
 			<form id="changePasswordForm" method="post">
-				<br/>
+		
                
-				<div style="display: block; width: 100%; height: 50px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
-                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password." /> 
+				<div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
+                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password." style="font-family: Gotham-Book;" /> 
                  </div>
 			 
-             <div style="display: block; width: 100%; height: 50px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
-             <input name="newPassword" id="newPassword" type="password" value="" placeholder="New Password" />
+             <div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
+             <input name="newPassword" id="newPassword" type="password" value="" placeholder="New Password"  style="font-family: Gotham-Book;" />
              </div>
                     
-                    <div style="display: block; width: 100%; height: 50px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
-                   <input name="confirmNewPassword" id="confirmNewPassword" type="password" value="" placeholder="Confirm New Password" />
+                    <div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
+                   <input name="confirmNewPassword" id="confirmNewPassword" type="password" value="" placeholder="Confirm New Password"  style="font-family: Gotham-Book;" />
                    </div>
 				</div>
 
@@ -128,6 +137,8 @@
 		</div>
 
 
+
+<!--REGISTRATION PAGE-->
 
 	<div id="regisPage" data-role="page">
 		
@@ -182,11 +193,14 @@
             <br/>
         </div>
 	</div>
+
+
+<!--REGISTRATION CAMERA PAGE-->
 	
     <div id="regisCamera" data-role="page">
 	  
-      <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
+      <div data-role="header" class="header">
+       <a href="#regisPage"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -194,10 +208,36 @@
       	Capture Photo
         </div>
         <br/>
-      <div class="divButton" id="grabDatPhoto"> Get Photo from Library
+      <div class="divButton" id="grabDatPhoto"> 
+      	Get Photo from Library
       </div>
 	 </form>
 </div>
+
+
+<!--EDIT CAMERA PAGE-->
+
+   <div id="editCamera" data-role="page">
+	  
+      <div data-role="header" class="header">
+       <a href="#editProfile"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+	    <h1>Camera</h1>
+      </div>
+      <form id="cameraStyle" method="post">
+	    <div class="divButton" id="takePhoto1">  
+      	Capture Photo
+        </div>
+        <br/>
+      <div class="divButton" id="grabDatPhoto1"> 
+      	Get Photo from Library
+      </div>
+	 </form>
+</div>
+
+
+
+
+<!--MAP PAGE-->
 
 
 	<div data-role="page" id="mapPage">
@@ -214,7 +254,7 @@
 
 
 
-
+<!--HOME/STATUS PAGE-->
 
 
 	<div id="Home" data-role="page">
@@ -244,7 +284,7 @@
 
 
 
-
+<!--EDIT PROFILE PAGE-->
 
 	<div id="editProfile" data-role="page">
 			<div data-role="header" class="header">
@@ -301,22 +341,11 @@
             <br/>
         </div>
 	</div>
-    
-        <div id="editCamera" data-role="page">
-	  
-      <div data-role="header">
-      <a onclick="goBack()" href="#" data-role="button" data-icon="back" style="background: #009ed3">Back</a>
-	    <h1>Camera</h1>
-      </div>
-      <form id="cameraStyle" method="post">
-	    <div class="divButton" id="takePhoto1">  
-      	Capture Photo
-        </div>
-        <br/>
-      <div class="divButton" id="grabDatPhoto1"> Get Photo from Library
-      </div>
-	 </form>
-</div>
+
+
+
+<!--CONVERSATIONS PAGE-->
+     
 	
 <div data-role="page" id="conversations">
 	  <div data-role="header" class="header">
@@ -345,7 +374,7 @@
 
 
 
-
+<!--RECIPIENTS PAGE-->
 
 
 <div data-role="page" id="recipients">
@@ -378,7 +407,7 @@
 
 
   
-
+<!--MESSAGES PAGE-->
 
 
 <div data-role="page" id="messages">
@@ -405,6 +434,8 @@
 
 
 
+
+<!--MENU PAGE-->
 
 
 <div data-role="page" id="menu">

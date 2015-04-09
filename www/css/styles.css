@@ -270,7 +270,7 @@ div[data-role="content"] {
 	
 }
 
-/*DIV BUTTON CONTROL*/
+
 
 /*REGISTRATION PAGE CONTROLS*/
 
@@ -419,6 +419,7 @@ div[data-role="content"] {
 	
 }
 
+/*DIV BUTTON CONTROL*/
 .divButton {
 
 	display: block;
@@ -429,7 +430,7 @@ div[data-role="content"] {
 	width: 100%;
 	color: white;
 	font-family: Gotham-Medium;
-	height: 40px;
+	height: 35px;
 	padding-top: 15px;
 	cursor: pointer;
 	font-size: 12pt;
@@ -440,7 +441,7 @@ div[data-role="content"] {
 .recipientContent {
 	
 	cursor: pointer;
-	margin-top: 10px;
+	margin-top: 15px;
 	font-family: Gotham-Book;
 	font-size: 14pt;
 	color: #FFFFFF;
@@ -448,6 +449,7 @@ div[data-role="content"] {
 	border-radius: 1px;
 	display: block;
 	background-color: #0083C1;
+	text-align: center;
 
 
 	
@@ -567,9 +569,23 @@ div[data-role="content"] {
 	color: white;
 }
 
+#changePassword {
+	
+	padding-top: 165px;
+	
+	}
 
+.ui-header {
+	
+	border-bottom: hidden;
+	
+	}
 
-
+#cameraStyle {
+	
+	padding-top: 200px;
+	
+	}
 /* Uncomment this before compiling in order to cause the initial page to fade in
 @media only screen and (max-width: 800px) {
 	#page1 {
