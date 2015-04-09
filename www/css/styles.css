@@ -308,6 +308,10 @@ div[data-role="content"] {
 	padding-top: 165px;
 
 }
+#passwordChange{
+	padding-top: 165px;
+
+}
 
 #emailForgot {
 	font-family: Gotham-Medium;
@@ -317,6 +321,10 @@ div[data-role="content"] {
 
 
 #forgotPassword {
+	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
+}
+
+#changePassword {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
 }
 
