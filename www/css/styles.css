@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 
 /*    FONT GOTHAM      */
 @font-face {
@@ -178,7 +178,7 @@ div[data-role="content"] {
 
 
 #toggle {
-	background: url(../img/menu-icon.png) center;
+	background: url(../img/menuButton.png) center;
 	padding: 10px 10px 10px 10px;
 	border-style:none;
 	border-radius: 1px 1px 1px 1px;
@@ -534,7 +534,7 @@ div[data-role="content"] {
 
 #menu li {
 	font-family: Gotham-Medium;
-	font-size: 14pt;
+	font-size: 13pt;
 	height: 60px;
 	margin: 0px;
 	width: 100%;
@@ -560,7 +560,7 @@ div[data-role="content"] {
 #jumpTo {
 	font-family: Gotham-Book;
 	font-size: 12pt;
-	padding-top:35px;
+	padding-top:15px;
 	text-align:center;
 	margin: 0px;
 	width: 100%;
