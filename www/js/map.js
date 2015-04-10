@@ -1,9 +1,9 @@
-//Map page JS
 $(document).one('pageshow', '#mapPage', function () {
     var longitude;
     var latitude;
     var latLong;
     var mMarker = [];
+	var gmarkers = [];
     var app = {
         // Application Constructor
         initialize: function () {
@@ -23,16 +23,16 @@ $(document).one('pageshow', '#mapPage', function () {
         onDeviceReady: function () {
 
             // app.receivedEvent('deviceready');
-            navigator.geolocation.watchPosition(app.onSuccess, app.onError);
+            navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
 
         },
 
         onSuccess: function (position) {
-            longitude = position.coords.longitude;
+            
+			longitude = position.coords.longitude;
             latitude = position.coords.latitude;
             latLong = new google.maps.LatLng(latitude, longitude);
-            var gmarkers = [];
-
+		
             var mapOptions = {
                 center: latLong,
                 zoom: 17,
@@ -42,48 +42,49 @@ $(document).one('pageshow', '#mapPage', function () {
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
             google.maps.event.trigger(map, 'resize');
-
-                            function clearOverlays() {
-                                for (var i = 0; i < mMarker.length; i++) {
-                                    mMarker[i].setMap(null);
-                                }
-                                var marker = new google.maps.Marker({
-                                    position: latLong,
-                                    map: map,
-                                    title: 'my location',
-                                    icon: locationmarker
-                                });
-                                mMarker.push(marker);
-                            }
-
-
-                            var locationmarker = {
-                                url: 'img/newBlueDot.png',
-                                anchor: new google.maps.Point(16, 0)
-                            }
-
-                            clearOverlays();
-                            PutLocation(longitude, latitude);
-
+			
+			var locationmarker = {
+               	url: 'img/newBlueDot.png',
+               	anchor: new google.maps.Point(16, 0)
+			}               
+             var marker = new google.maps.Marker({
+                map: map,
+                title: 'my location',
+                icon: locationmarker
+              });
+			 watchCurrentPosition();
+			           
+            function setMarker(marker, pos){  
+				marker.setPosition(
+					new google.maps.LatLng(pos.coords.latitude,
+                        pos.coords.longitude)
+				);
+			}
+			
+			function watchCurrentPosition() {
+				var watchPos = navigator.geolocation.watchPosition(
+					function (pos) {
+						setMarker(marker, pos)
+						PutLocation(pos.coords.longitude, pos.coords.latitude)
+					});
+			}
 
             function removeMarkers() {
                 for (i = 0; i < gmarkers.length; i++) {
                     gmarkers[i].setMap(null);
                 }
-
             }
 
             function addMarkers() {
                 var locations = GetLocationList();
-
-                var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
-
+                var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p
 
                 for (p = 0; p < locations.length; p++) {
                     var otherLocationMarker = {
                         url: 'img/pink_Dot.png',
                         anchor: new google.maps.Point(16, 0)
                     }
+					
                     var position = new google.maps.LatLng(locations[p].latitude, locations[p].longitude);
                     var otherMarker = new google.maps.Marker({
                         position: position,
@@ -163,6 +164,68 @@ $(document).one('pageshow', '#mapPage', function () {
 
     afterEach(function () {
         document.getElementById('stage').innerHTML = '';
+    });
+
+    var helper = {
+        trigger: function (obj, name) {
+            var e = document.createEvent('Event');
+            e.initEvent(name, true, true);
+            obj.dispatchEvent(e);
+        },
+        getComputedStyle: function (querySelector, property) {
+            var element = document.querySelector(querySelector);
+            return window.getComputedStyle(element).getPropertyValue(property);
+        }
+    };
+
+    describe('app', function () {
+        describe('initialize', function () {
+            it('should bind deviceready', function () {
+                runs(function () {
+                    spyOn(app, 'onDeviceReady');
+                    app.initialize();
+                    helper.trigger(window.document, 'deviceready');
+                });
+
+                waitsFor(function () {
+                    return (app.onDeviceReady.calls.length > 0);
+                }, 'onDeviceReady should be called once', 500);
+
+                runs(function () {
+                    expect(app.onDeviceReady).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe('onDeviceReady', function () {
+            it('should report that it fired', function () {
+                spyOn(app, 'receivedEvent');
+                app.onDeviceReady();
+                expect(app.receivedEvent).toHaveBeenCalledWith('deviceready');
+            });
+        });
+
+        describe('receivedEvent', function () {
+            beforeEach(function () {
+                var el = document.getElementById('stage');
+                el.innerHTML = ['<div id="deviceready">',
+                                '    <p class="event listening">Listening</p>',
+                                '    <p class="event received">Received</p>',
+                                '</div>'].join('\n');
+            });
+
+            it('should hide the listening element', function () {
+                app.receivedEvent('deviceready');
+                var displayStyle = helper.getComputedStyle('#deviceready .listening', 'display');
+                expect(displayStyle).toEqual('none');
+            });
+
+            it('should show the received element', function () {
+                app.receivedEvent('deviceready');
+                var displayStyle = helper.getComputedStyle('#deviceready .received', 'display');
+                expect(displayStyle).toEqual('block');
+            });
+        });
     });
 });
 
