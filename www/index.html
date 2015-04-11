@@ -32,8 +32,7 @@
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/editProfile.js"></script>
-    <script type="text/javascript" src="js/editCamera.js"></script>
-    <script type="text/javascript" src="js/regisCamera.js"></script>
+    <script type="text/javascript" src="js/Camera.js"></script>
     <script type="text/javascript" src="js/changePassword.js"></script>
     
     
@@ -146,7 +145,7 @@
 			<form id="regisPageForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#regisCamera"> 
+         <a href = "#Camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait" name="regisPortrait" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
@@ -194,13 +193,12 @@
         </div>
 	</div>
 
-
-<!--REGISTRATION CAMERA PAGE-->
+<!--CAMERA PAGE-->
 	
-    <div id="regisCamera" data-role="page">
+    <div id="Camera" data-role="page">
 	  
       <div data-role="header" class="header">
-       <a href="#regisPage"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+       <a href="#" onclick="goBack()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -209,26 +207,6 @@
         </div>
         <br/>
       <div class="divButton" id="grabDatPhoto"> 
-      	Get Photo from Library
-      </div>
-	 </form>
-</div>
-
-
-<!--EDIT CAMERA PAGE-->
-
-   <div id="editCamera" data-role="page">
-	  
-      <div data-role="header" class="header">
-       <a href="#editProfile"><img src="img/ic_action_back.png" width="30" alt=""/></a>
-	    <h1>Camera</h1>
-      </div>
-      <form id="cameraStyle" method="post">
-	    <div class="divButton" id="takePhoto1">  
-      	Capture Photo
-        </div>
-        <br/>
-      <div class="divButton" id="grabDatPhoto1"> 
       	Get Photo from Library
       </div>
 	 </form>
@@ -299,7 +277,7 @@
 			<form id="editProfileForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#editCamera"> 
+         <a href = "#Camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic1" name="regisPic1"  />
