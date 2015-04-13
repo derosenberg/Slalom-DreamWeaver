@@ -32,7 +32,7 @@
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/editProfile.js"></script>
-    <script type="text/javascript" src="js/Camera.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
     <script type="text/javascript" src="js/changePassword.js"></script>
     
     
@@ -109,6 +109,7 @@
         
         <div id="changePassword" data-role="page">
 		<div class="header" data-role= "header" data-position= "fixed">
+        	<a href="#" onclick="history.back()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 	
 
 			<h1>Change Password</h1>
@@ -198,7 +199,11 @@
     <div id="Camera" data-role="page">
 	  
       <div data-role="header" class="header">
+<<<<<<< HEAD
        <a onclick="goBack()" href="#"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+=======
+       <a href="#" onclick="history.back()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+>>>>>>> origin/Sprint3
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -221,7 +226,7 @@
 	<div data-role="page" id="mapPage">
 		<div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<h1>Map</h1>
@@ -238,7 +243,7 @@
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<p>Status<p>
@@ -268,7 +273,7 @@
 
 	<div id="editProfile" data-role="page">
 			<div data-role="header" class="header">
-            <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+            <a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu"><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<p>Edit Profile<p>
@@ -330,7 +335,7 @@
 <div data-role="page" id="conversations">
 	  <div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 	    <h1>Conversations</h1>
@@ -391,7 +396,7 @@
 <div data-role="page" id="messages">
   <div data-role="header" class="header">
   
-  <a href="#conversations"><img src="img/ic_action_back.png" style="margin-top: 0px; width: 80%;"/></a>
+  <a href="#conversations"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 			<a href="#menu"><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
     <h1 id="recipientName" name="recipientName">Messages</h1>
