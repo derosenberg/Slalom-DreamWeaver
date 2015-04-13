@@ -1,9 +1,13 @@
 $(document).one('pageshow', '#mapPage', function () {
+	    app.initialize();
+});
+
     var longitude;
     var latitude;
     var latLong;
-    var mMarker = [];
 	var gmarkers = [];
+	var locations = [];
+	
     var app = {
         // Application Constructor
         initialize: function () {
@@ -75,11 +79,19 @@ $(document).one('pageshow', '#mapPage', function () {
                 }
             }
 
-            function addMarkers() {
-                var locations = GetLocationList();
-                var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p
-
+            function getMarkers(){
+				GetLocationList();
+			}
+			
+			function getEventMarkers(){
+				GetEventsList();
+			}
+			
+			function addMarkers(locations) {
+                var otherInfoWindow = new google.maps.InfoWindow(), otherMarker, p;
+				
                 for (p = 0; p < locations.length; p++) {
+					
                     var otherLocationMarker = {
                         url: 'img/pink_Dot.png',
                         anchor: new google.maps.Point(16, 0)
@@ -93,7 +105,7 @@ $(document).one('pageshow', '#mapPage', function () {
                         icon: otherLocationMarker
                     });
 
-                    gmarkers.push(otherMarker)
+                    gmarkers.push(otherMarker);
 
                     google.maps.event.addListener(otherMarker, 'click', (function (otherMarker, p) {
                         return function () {
@@ -105,22 +117,19 @@ $(document).one('pageshow', '#mapPage', function () {
                 }
 
             }
-
-            addMarkers();
-
-            var markers = GetEventsList();
-
+			
+			getMarkers();
+			getEventMarkers();
+			
+		function addEventMarkers(markers){
             var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
-
+			 var hotelInfoWindow = new google.maps.InfoWindow(), hotelMarker;
+			 
             var pinColor = "2F76EE";
             var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
                 new google.maps.Size(21, 34),
                 new google.maps.Point(0, 0),
                 new google.maps.Point(10, 34));
-            var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-                new google.maps.Size(40, 37),
-                new google.maps.Point(0, 0),
-                new google.maps.Point(12, 35));
 
             // Loop through our array of markers & place each one on the map  
             for (i = 0; i < markers.length; i++) {
@@ -129,7 +138,6 @@ $(document).one('pageshow', '#mapPage', function () {
                     position: pos,
                     map: map,
                     icon: pinImage,
-                    shadow: pinShadow,
                     title: markers[i].eventname
                 });
 
@@ -141,107 +149,47 @@ $(document).one('pageshow', '#mapPage', function () {
                 })(eventMarker, i));
 
             }
+			
 
+var hotelPinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + "00b100",
+                new google.maps.Size(21, 34),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(10, 34));
 
-
-
+			 var hotelMarker = new google.maps.Marker({
+                    map: map,
+					icon: hotelPinImage, 
+                    title: "Omni Nashville Hotel"
+                });
+				
+				hotelMarker.setPosition(
+					new google.maps.LatLng(36.157599, -86.775199)
+				);
+				
+				google.maps.event.addListener(hotelMarker, 'click', (function (hotelMarker) {
+                    return function () {
+                        hotelInfoWindow.setContent('<h2>' + "Omni Nashville Hotel" + '</h2>' + '<h5>' + "250 Fifth Avenue South" + '<br>' + "Nashville, TN 37203" + '</h5>' + '<p>' + "The Omni Nashville Hotel is created specifically to be an authentic expression of the city's vibrant music culture. Across from the Music City Center, this downtown Nashville hotel is a one-of-a-kind experience, fully integrated with an expansion of the Country Music Hall of Fame® and Museum on three levels. " + '</p>');
+                        hotelInfoWindow.open(map, hotelMarker);
+                    }
+                })(hotelMarker));
+			
+		};
 
             $(document).ready(function () {
                 setInterval(function () {
 
                     removeMarkers();
-                    addMarkers();
+                    getMarkers();
 
                 }, 10000);
             });
-        },
-        onError: function (error) {
-            alert("the code is " + error.code + ". \n" + "message: " + error.message);
-        },
-    };
-
-    app.initialize();
-
-    afterEach(function () {
-        document.getElementById('stage').innerHTML = '';
-    });
-
-    var helper = {
-        trigger: function (obj, name) {
-            var e = document.createEvent('Event');
-            e.initEvent(name, true, true);
-            obj.dispatchEvent(e);
-        },
-        getComputedStyle: function (querySelector, property) {
-            var element = document.querySelector(querySelector);
-            return window.getComputedStyle(element).getPropertyValue(property);
-        }
-    };
-
-    describe('app', function () {
-        describe('initialize', function () {
-            it('should bind deviceready', function () {
-                runs(function () {
-                    spyOn(app, 'onDeviceReady');
-                    app.initialize();
-                    helper.trigger(window.document, 'deviceready');
-                });
-
-                waitsFor(function () {
-                    return (app.onDeviceReady.calls.length > 0);
-                }, 'onDeviceReady should be called once', 500);
-
-                runs(function () {
-                    expect(app.onDeviceReady).toHaveBeenCalled();
-                });
-            });
-        });
-
-        describe('onDeviceReady', function () {
-            it('should report that it fired', function () {
-                spyOn(app, 'receivedEvent');
-                app.onDeviceReady();
-                expect(app.receivedEvent).toHaveBeenCalledWith('deviceready');
-            });
-        });
-
-        describe('receivedEvent', function () {
-            beforeEach(function () {
-                var el = document.getElementById('stage');
-                el.innerHTML = ['<div id="deviceready">',
-                                '    <p class="event listening">Listening</p>',
-                                '    <p class="event received">Received</p>',
-                                '</div>'].join('\n');
-            });
-
-            it('should hide the listening element', function () {
-                app.receivedEvent('deviceready');
-                var displayStyle = helper.getComputedStyle('#deviceready .listening', 'display');
-                expect(displayStyle).toEqual('none');
-            });
-
-            it('should show the received element', function () {
-                app.receivedEvent('deviceready');
-                var displayStyle = helper.getComputedStyle('#deviceready .received', 'display');
-                expect(displayStyle).toEqual('block');
-            });
-        });
-    });
-});
-
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-function GetLocationList() {
-
-    var locations;
-
+			
+	function GetLocationList() {
     //AJAX call to get a list of user locations
     $.ajax({
         url: S_ROOT + 'api/Profile/getlocations',
         type: 'GET',
-        async: false,
+        async: true,
         contentType: "application/x-www-form-urlencoded",
         beforeSend: function (request) {
 
@@ -250,29 +198,67 @@ function GetLocationList() {
             request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
 
             //Show page loader
-            $.mobile.showPageLoadingMsg(true);
         },
         complete: function () {
 
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
+			
         },
         success: function (result) {
-
-            locations = result;
+			
+			addMarkers(result);
+			console.log("other users location list updated");
+			
         },
         error: function (request, error) {
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
             // navigator.notification.alert(myError, console.log(myError), "Operation Failed");
         }
     });
+	}
+	
+	function GetEventsList() {
+    //AJAX call to get a list of user locations
+    $.ajax({
+        url: S_ROOT + 'api/Event/getevents',
+        type: 'GET',
+        async: true,
+        contentType: "application/json",
+        beforeSend: function (request) {
 
-    return locations;
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+        },
+        complete: function () {
+
+        },
+        success: function (result) {
+			
+			addEventMarkers(result);
+			console.log("Event Location list obtained");
+            
+        },
+        error: function (request, error) {
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Operation Failed");
+        }
+    });
 }
 
+        },
+        onError: function (error) {
+            alert("the code is " + error.code + ". \n" + "message: " + error.message);
+        },
+    };
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
 function PutLocation(Longitude, Latitude) {
-
-
     //AJAX call to update location
     $.ajax({
         url: S_ROOT + 'api/Profile/putlocation/?lat=' + Latitude + '&lo=' + Longitude,
@@ -304,40 +290,3 @@ function PutLocation(Longitude, Latitude) {
 
 
 
-function GetEventsList() {
-
-    var events;
-
-    //AJAX call to get a list of user locations
-    $.ajax({
-        url: S_ROOT + 'api/Event/getevents',
-        type: 'GET',
-        async: false,
-        contentType: "application/json",
-        dataType: "json",
-        beforeSend: function (request) {
-
-            //Attaches credentials to AJAX call
-            request.withCredentials = true;
-            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
-
-            //Show page loader
-            $.mobile.showPageLoadingMsg(true);
-        },
-        complete: function () {
-
-            //Hide loader
-            $.mobile.hidePageLoadingMsg();
-        },
-        success: function (result) {
-
-            events = result;
-        },
-        error: function (request, error) {
-            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
-            navigator.notification.alert(myError, console.log(myError), "Operation Failed");
-        }
-    });
-
-    return events;
-}
