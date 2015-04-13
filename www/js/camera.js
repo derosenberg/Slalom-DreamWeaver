@@ -1,10 +1,13 @@
 // JavaScript Document
 
-$(document).on('pageinit', '#Camera', function (event, data) {
+$(document).on('pageshow', '#Camera', function (event, ui) {
+
+    console.log(event);
+    console.log(ui);
 
     //Figure out what pic we're getting
     var cameraObject = {};
-    cameraObject.lastPage = data.prevPage.attr('id');
+    cameraObject.lastPage = ui.prevPage.attr('id');
     console.log("the previous page was: " + cameraObject.lastPage);
 
     //Registration Page
@@ -165,10 +168,12 @@ $(document).on('pageinit', '#Camera', function (event, data) {
         alert('Failed because: ' + message);
     }
 
-    //Back Button Functionality
-    function goBack() {
-        history.back();
-        return false;
-    }
+});
+
+
+$(document).on('pagebeforehide', '#Camera', function () {
+
+    $(document).off('click', '#takePhoto');
+    $(document).off('click', '#grabDatPhoto');
 
 });
