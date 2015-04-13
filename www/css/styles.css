@@ -127,7 +127,7 @@ div[data-role="content"] {
 	padding-top: auto;
 	cursor: pointer;
 	font-size: 12pt;
-	line-height: 0px;
+	line-height: 45px;
 
 	
 }
@@ -288,6 +288,13 @@ div[data-role="content"] {
 	line-height: 45px;
 
 	
+}
+
+#cameraIcon2 {
+	
+	float: left;
+	line-height: 0px;
+	width: auto;
 }
 
 
