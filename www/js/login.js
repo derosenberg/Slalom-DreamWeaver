@@ -2,9 +2,6 @@
 //Login Page Controls
 $(document).on('pageinit', '#login', function () {
 
-    //Disable form on submit
-    $('#loginForm :input').prop("disabled", false);
-
     //Get Token to latest value
     if (window.localStorage.getItem("S_TOKEN") !== null) {
         S_TOKEN = window.localStorage.getItem("S_TOKEN");
@@ -17,14 +14,8 @@ $(document).on('pageinit', '#login', function () {
         AuthenticateToken();
     }
 
-    //Enable form
-    $('#regisPageForm :input').prop("disabled", false);
-
     //When submit button clicked, get the token
     $(document).on('click', '#loginSubmitBtn', function () {
-
-        //Disable form on submit
-        $('#loginForm :input').prop("disabled", true);
 
         //Gets the token and either logs in or alerts failure
         GetToken($('#username').val(), $('#password').val());
@@ -43,13 +34,25 @@ function GetToken(username, password) {
         url: S_ROOT + 'Token',
         data: "username=" + username + "&password=" + password + "&grant_type=password",
         type: 'POST',
+        cache: false,
         async: true,
         beforeSend: function () {
+
+            //Disable form
+            $(document).off('click', '#loginSubmitBtn');
 
             //Show page loading message
             $.mobile.loading('show');
         },
         complete: function () {
+
+            //When submit button clicked, get the token
+            $(document).on('click', '#loginSubmitBtn', function () {
+
+                //Gets the token and either logs in or alerts failure
+                GetToken($('#username').val(), $('#password').val());
+
+            });
 
             //On complete, hide loader
             $.mobile.loading('hide');
