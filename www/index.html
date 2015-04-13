@@ -118,7 +118,7 @@
 		
                
 				<div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
-                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password." style="font-family: Gotham-Book;" /> 
+                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password" style="font-family: Gotham-Book;" /> 
                  </div>
 			 
              <div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
@@ -198,7 +198,7 @@
     <div id="Camera" data-role="page">
 	  
       <div data-role="header" class="header">
-       <a href="#" onclick="goBack()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+       <a onclick="goBack()" href="#"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -245,7 +245,7 @@
            
 		</div>
         
-        <a href="#Camera">CAMERA</a>
+      
         <input type="hidden" name="statusPic" id="statusPic" value="" >
 
         
@@ -255,9 +255,10 @@
         
   </div>
 		<div id="loadMoreStatuses">Load More Statuses</div>
-        <div style="padding-top: 10px;" data-role="footer" data-position="fixed">
-			<div class = "statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
-            <div id="submitNewStatus">Send</div>
+        <div style="padding-top: 0px; padding-bottom: 0px;" data-role="footer" data-position="fixed">
+        	<div id="cameraIcon2"><a href="#Camera"><img src="img/ic_action_camera.png" id="cameraIcon" name="cameraIcon" alt=""/></a></div>
+			<div class = "statusInput" style="padding-bottom: 0px; display: block; width: 78%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
+            <div id="submitNewStatus">SEND</div>
 		</div>
 	</div>
 
@@ -403,9 +404,9 @@
       </div>
 
   <div data-role="footer" data-position="fixed">
-  <div class="statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" id="messageBody" name="messageBody" placeholder="Message"></input></div>
+  <div class="statusInput" style="display: block; width: 85%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" id="messageBody" name="messageBody" placeholder="Message"></input></div>
      <input type="hidden" name="recipientId" id="recipientId" value="">      
-    <div name="sendMessage" id="sendMessage">Send</div>
+    <div name="sendMessage" id="sendMessage">SEND</div>
   </div>
 </div>
 
