@@ -81,7 +81,7 @@ div[data-role="content"] {
 	display: none;
 }
 
-/*--------------------------------------------------------*/
+/*MESSAGE PAGE STYLES*/
 
 .messageContainer {
     display: inline-block;
@@ -110,7 +110,7 @@ div[data-role="content"] {
 	font-family: Gotham-Book;
 }
 
-/*--------------------------------------------------------*/
+/*CONVERSATION PAGE STYLES*/
 #conversationPageContent {
     border-top:  thick  1px  #666666;
 	margin-top: 45px;
@@ -161,6 +161,8 @@ div[data-role="content"] {
     padding-bottom:.22em;
 }
 
+/*STATUS PAGE STYLES*/
+
 #statusPageContent {
 	border-top: 2px solid #666666;	
 }
@@ -186,7 +188,7 @@ div[data-role="content"] {
 }
 
 
-/*LOGIN PAGE CONTROLS*/
+/*LOGIN PAGE STYLES*/
 
 #login {
 	
