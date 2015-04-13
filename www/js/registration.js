@@ -2,16 +2,9 @@
 
 //Registration page Controls
 $(document).on('pageinit', '#regisPage', function () {
-	
-	
-    //Enable form
-    $('#regisPageForm :input').prop("disabled", false);
 
     //AJAX call for Submit New User
     $(document).on('click', '#submitNewUser', function () {
-
-        //Disable form on submit
-        $('#regisPageForm :input').prop("disabled", true);
 		
 			var pictureData = document.getElementById('regisPortrait').getAttribute('src');
 		
@@ -56,9 +49,26 @@ function RegisterUser(user) {
                     textonly: true,
                     textVisible: true
                 });
+
+                //AJAX call for Submit New User
+                $(document).off('click', '#submitNewUser');
+
             },
             complete: function () {
                 $.mobile.loader('hide');
+
+                //AJAX call for Submit New User
+                $(document).on('click', '#submitNewUser', function () {
+
+                    var pictureData = document.getElementById('regisPortrait').getAttribute('src');
+
+                    //Create user variable
+                    var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), pictureData);
+
+                    //Register user
+                    RegisterUser(myUser);
+
+                });
             },
             success: function (result) {
                 user.imgID = result;

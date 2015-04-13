@@ -32,8 +32,7 @@
     <script type="text/javascript" src="js/conversations.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/editProfile.js"></script>
-    <script type="text/javascript" src="js/editCamera.js"></script>
-    <script type="text/javascript" src="js/regisCamera.js"></script>
+    <script type="text/javascript" src="js/camera.js"></script>
     <script type="text/javascript" src="js/changePassword.js"></script>
     
     
@@ -110,6 +109,7 @@
         
         <div id="changePassword" data-role="page">
 		<div class="header" data-role= "header" data-position= "fixed">
+        	<a href="#" onclick="history.back()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 	
 
 			<h1>Change Password</h1>
@@ -119,7 +119,7 @@
 		
                
 				<div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
-                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password." style="font-family: Gotham-Book;" /> 
+                    <input name="currentPassword" id="currentPassword" type="password" value="" placeholder="Current Password" style="font-family: Gotham-Book;" /> 
                  </div>
 			 
              <div style="display: block; width: 100%; height: 45px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-top: 10px; margin-bottom: 10px; overflow:hidden">
@@ -146,7 +146,7 @@
 			<form id="regisPageForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#regisCamera"> 
+         <a href = "#Camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait" name="regisPortrait" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic" name="regisPic" value="UNSET" />
@@ -194,13 +194,16 @@
         </div>
 	</div>
 
-
-<!--REGISTRATION CAMERA PAGE-->
+<!--CAMERA PAGE-->
 	
-    <div id="regisCamera" data-role="page">
+    <div id="Camera" data-role="page">
 	  
       <div data-role="header" class="header">
-       <a href="#regisPage"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+
+       <a onclick="goBack()" href="#"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+
+       <a href="#" onclick="history.back()"><img src="img/ic_action_back.png" width="30" alt=""/></a>
+
 	    <h1>Camera</h1>
       </div>
       <form id="cameraStyle" method="post">
@@ -215,26 +218,6 @@
 </div>
 
 
-<!--EDIT CAMERA PAGE-->
-
-   <div id="editCamera" data-role="page">
-	  
-      <div data-role="header" class="header">
-       <a href="#editProfile"><img src="img/ic_action_back.png" width="30" alt=""/></a>
-	    <h1>Camera</h1>
-      </div>
-      <form id="cameraStyle" method="post">
-	    <div class="divButton" id="takePhoto1">  
-      	Capture Photo
-        </div>
-        <br/>
-      <div class="divButton" id="grabDatPhoto1"> 
-      	Get Photo from Library
-      </div>
-	 </form>
-</div>
-
-
 
 
 <!--MAP PAGE-->
@@ -243,7 +226,7 @@
 	<div data-role="page" id="mapPage">
 		<div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 			<h1>Map</h1>
@@ -260,14 +243,15 @@
 	<div id="Home" data-role="page">
 		<div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
-			<p>Status<p>
+			<h1>Status</h1>
            
 		</div>
         
-        
+      
+        <input type="hidden" name="statusPic" id="statusPic" value="" >
 
         
      <div id="statusPageContent" name="statusPageContent">
@@ -276,9 +260,10 @@
         
   </div>
 		<div id="loadMoreStatuses">Load More Statuses</div>
-        <div style="padding-top: 10px;" data-role="footer" data-position="fixed">
-			<div class = "statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
-            <div id="submitNewStatus">Send</div>
+        <div style="padding-top: 0px; padding-bottom: 0px;" data-role="footer" data-position="fixed">
+        	<div id="cameraIcon2"><a href="#Camera"><img src="img/ic_action_camera.png" id="cameraIcon" name="cameraIcon" alt=""/></a></div>
+			<div class = "statusInput" style="padding-bottom: 0px; display: block; width: 78%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" name="statusBody" id="statusBody" placeholder="Post a status" /></div>
+            <div id="submitNewStatus">SEND</div>
 		</div>
 	</div>
 
@@ -288,10 +273,10 @@
 
 	<div id="editProfile" data-role="page">
 			<div data-role="header" class="header">
-            <a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+            <a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu"><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
-			<p>Edit Profile<p>
+			<h1>Edit Profile</h1>
            
 		</div>
 
@@ -299,7 +284,7 @@
 			<form id="editProfileForm" method="post">
 				
                 <div style= "width: 100%;">
-         <a href = "#editCamera"> 
+         <a href = "#Camera"> 
         <img style="display: block; padding-top: 5px; margin-left: auto; margin-right: auto;" id="regisPortrait1" name="regisPortrait1" src=""  width="130px" height="170px" />
     	
 			<input type="hidden" id="regisPic1" name="regisPic1"  />
@@ -350,7 +335,7 @@
 <div data-role="page" id="conversations">
 	  <div data-role="header" class="header">
       
-      		<a onclick="goBack()" href="#" data-role="button" data-icon="back"></a>
+      		<a href="#" data-role="button" data-icon="back"></a>
 			<a href="#menu" ><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
 	    <h1>Conversations</h1>
@@ -411,7 +396,7 @@
 <div data-role="page" id="messages">
   <div data-role="header" class="header">
   
-  <a href="#conversations"><img src="img/ic_action_back.png" style="margin-top: 0px; width: 80%;"/></a>
+  <a href="#conversations"><img src="img/ic_action_back.png" width="30" alt=""/></a>
 			<a href="#menu"><img src="img/menuButton.png" width="30" alt="" style="padding-top:5px;"/></a>
 			
     <h1 id="recipientName" name="recipientName">Messages</h1>
@@ -424,9 +409,9 @@
       </div>
 
   <div data-role="footer" data-position="fixed">
-  <div class="statusInput" style="display: block; width: 80%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" id="messageBody" name="messageBody" placeholder="Message"></input></div>
+  <div class="statusInput" style="display: block; width: 85%; height: 40px; background: #EEF3F6; border-top: solid 2px #c9c9c9; border-bottom: solid 2px #c9c9c9; margin-bottom: 0px; overflow:hidden;"><input type="text" id="messageBody" name="messageBody" placeholder="Message"></input></div>
      <input type="hidden" name="recipientId" id="recipientId" value="">      
-    <div name="sendMessage" id="sendMessage">Send</div>
+    <div name="sendMessage" id="sendMessage">SEND</div>
   </div>
 </div>
 

@@ -101,6 +101,7 @@ function PostStatus(status) {
         },
 
         success: function (result) {
+
             $("#statusBody").val("");
             GetStatusList();
             //Log success
@@ -111,6 +112,72 @@ function PostStatus(status) {
             //Log failure
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
             navigator.notification.alert(myError, console.log(myError), "Post Failed");
+        }
+    });
+
+}
+
+//Onclicking stuff, post the status pic
+function PostStatusPic(status_id, img_data) {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/PostStatusPic/',
+        type: 'POST',
+        async: true,
+        data: '{ "s": "' + img_data + '", "statusid": "' + status_id + '" }',
+        contentType: "application/json",
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function () {
+
+            GetStatusList();
+            //Log success
+            //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Pic Post Failed");
+        }
+    });
+
+}
+
+//Get status pic
+function GetStatusPic(guid) {
+
+    //AJAX call to update location
+    $.ajax({
+        url: S_ROOT + 'api/GetStatusPic/' + guid,
+        type: 'POST',
+        async: true,
+        beforeSend: function (request) {
+
+            //Attaches credentials to AJAX call
+            request.withCredentials = true;
+            request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
+
+        },
+
+        success: function (result) {
+
+            GetStatusList();
+            //Log success
+            //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
+        },
+        error: function (request, error) {
+
+            //Log failure
+            var myError = "Error " + request.status + ": " + request.responseJSON.Message;
+            navigator.notification.alert(myError, console.log(myError), "Pic Post Failed");
         }
     });
 
