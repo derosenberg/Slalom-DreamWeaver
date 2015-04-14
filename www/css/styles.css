@@ -210,7 +210,8 @@ div[data-role="content"] {
 .statusContainer {
     margin-top: 10px;
     display: inline-block;
-    height: 75px;
+    min-height: 75px;
+	max-height: auto;
     width: 100%;
     padding: 8px 0px;
     border-bottom: 10px solid #D9D9D9;
