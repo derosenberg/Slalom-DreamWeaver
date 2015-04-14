@@ -147,13 +147,13 @@ div[data-role="content"] {
 /*CONVERSATION PAGE STYLES*/
 #conversationPageContent {
     border-top:  thick  1px  #666666;
-	margin-top: 45px;
+	margin-top: 20px;
 	
 }
 
 
 .conversationContainer {
-    margin-top: 10px;
+    margin-top: 5px;
     display: inline-block;
     height: 75px;
     width: 100%;
@@ -208,7 +208,7 @@ div[data-role="content"] {
 }
 
 .statusContainer {
-    margin-top: 10px;
+    margin-top: 12px;
     display: inline-block;
     min-height: 75px;
 	max-height: auto;
