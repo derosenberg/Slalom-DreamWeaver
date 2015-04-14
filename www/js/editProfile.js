@@ -5,42 +5,40 @@ $(document).on('pageinit', '#editProfile', function () {
 	
 	$(document).on('click', '#editProfileSumbit', function () {
 		
-		   var firstName = $("#fname1").val();
-		   var lastName = $("#lname1").val();
-		   var regisEmail = $("#regisEmail1").val();
-		   var phoneNum = $("#phone1").val();
-		   var guestEmail = $("#guestemail1").val();
-		   
-		$.ajax({
+	    var myUser = new S_User($("#fname1").val(), $("#lname1").val(), $("#regisEmail1").val(), "", "", $("#phone1").val(), $('#guestemail1').val(), $('#regisPortrait1').attr('src'));
+
+	    putProfile(myUser);
+
+	});
+	
+});
+
+function putProfile(myUser)
+{
+    $.ajax({
         type: "PUT",
         url: S_ROOT + 'api/putprofile',
         async: true,
-		data: "Email=" + regisEmail + "&fname=" + firstName + "&lname=" + lastName + "&phone=" + phoneNum + "&guestEmail=" + guestEmail,
+        data: "Email=" + myUser.email + "&fname=" + myUser.fname + "&lname=" + myUser.lname + "&phone=" + myUser.phone + "&guestEmail=" + myUser.guest,
         dataType: "json",
-		contentType: "application/x-www-form-urlencoded",
+        contentType: "application/x-www-form-urlencoded",
         beforeSend: function (request) {
-			
+
             //Attaches credentials to AJAX call
             request.withCredentials = true;
             request.setRequestHeader("Authorization", "Bearer " + S_TOKEN);
 
         },
-        complete: function () {
-		
-			
-
-        },
         success: function (data) {
-	
-			var imgID = data;
-			var picture = document.getElementById('regisPortrait1').getAttribute('src');
-			
-			UploadPhoto(picture, imgID);
-			navigator.notification.alert("Succesfully Updated Profile");
-			$.mobile.changePage("#Home");		
-			console.log("Edit Success");
-			
-			
+
+            myUser.imgID = data;
+
+            UploadPhoto(myUser);
+            navigator.notification.alert("Succesfully Updated Profile");
+            $.mobile.changePage("#Home");
+            console.log("Edit Success");
+
+
         },
         error: function (request, error) {
 
@@ -50,11 +48,7 @@ $(document).on('pageinit', '#editProfile', function () {
         }
 
     });
-
-		
-	});
-	
-});
+}
 
 function getProfile(){	
 $.ajax({
@@ -137,15 +131,7 @@ $.ajax({
     });
 	
 };
-function UploadPhoto(picture, imgID) {
- $.ajax({
-       	 	url: S_ROOT + 'api/PostPic',
-        	async: true,
-        	contentType: "application/json",
-        	type: 'POST',
-        	data: '{ "s": "' + picture + '", "id": "' + imgID + '" }',
-    });
-}
+
 
 
 

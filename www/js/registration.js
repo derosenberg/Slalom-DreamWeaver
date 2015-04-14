@@ -6,10 +6,10 @@ $(document).on('pageinit', '#regisPage', function () {
     //AJAX call for Submit New User
     $(document).on('click', '#submitNewUser', function () {
 		
-			var pictureData = document.getElementById('regisPortrait').getAttribute('src');
-		
         //Create user variable
-        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), pictureData);
+        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $('#regisPortrait').attr('src'));
+
+        console.log(myUser);
 
         //Register user
         RegisterUser(myUser);
@@ -60,10 +60,8 @@ function RegisterUser(user) {
                 //AJAX call for Submit New User
                 $(document).on('click', '#submitNewUser', function () {
 
-                    var pictureData = document.getElementById('regisPortrait').getAttribute('src');
-
                     //Create user variable
-                    var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), pictureData);
+                    var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $('#regisPortrait').attr('src'));
 
                     //Register user
                     RegisterUser(myUser);
@@ -71,7 +69,9 @@ function RegisterUser(user) {
                 });
             },
             success: function (result) {
+                console.log(result);
                 user.imgID = result;
+                console.log(user);
                 UploadPhoto(user);
                 navigator.notification.alert("Congrats, log in with your email!", console.log("yay"), "Registration Successful");
                 $.mobile.changePage("#login");
