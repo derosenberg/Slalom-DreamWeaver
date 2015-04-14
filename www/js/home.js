@@ -82,6 +82,7 @@ function showStatus() {
     }
 }
 
+
 //Onclicking stuff, post the status
 function PostStatus(status) {
 
