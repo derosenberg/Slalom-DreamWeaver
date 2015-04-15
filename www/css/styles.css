@@ -25,6 +25,8 @@
 	z-index:: -1;
 }*/
 
+
+/*MAP PAGE*/
 #map {
 	position: absolute;
 	top: 55px;
@@ -32,6 +34,12 @@
 	left: 0;
 	right: 0;
 }
+
+
+
+
+
+
 
 .thumbnail {
 	float: right;
