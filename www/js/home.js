@@ -94,6 +94,7 @@ function showStatus(statuses) {
     }
 }
 
+
 //Onclicking stuff, post the status
 function PostStatus(status, img) {
 

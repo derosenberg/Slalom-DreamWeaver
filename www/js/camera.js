@@ -60,7 +60,6 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
 
     function onPhotoDataSuccess(imageData) {
         // Uncomment to view the base64-encoded image data
-        console.log(imageData);
 
         window.location.href = "#" + cameraObject.lastPage;
 
@@ -73,15 +72,15 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
 
 
 
-        // Unhide image elements
-        //
-        smallImage.style.display = 'block';
-
-        // Show the captured photo
-        // The in-line CSS rules are used to resize the image
-        //
         if (cameraObject.smallImage.length > 0)
         {
+            // Unhide image elements
+            //
+            smallImage.style.display = 'block';
+
+            // Show the captured photo
+            // The in-line CSS rules are used to resize the image
+            //
             smallImage.src = "data:image/jpeg;base64," + imageData;
         }
 
@@ -101,14 +100,16 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
         var hiddenField = document.getElementById(cameraObject.hiddenField);
 
 
-        // Unhide image elements
-        //
-        largeImage.style.display = 'block';
-
-        // Show the captured photo
-        // The in-line CSS rules are used to resize the image
-        //
         if (cameraObject.smallImage.length > 0) {
+
+            // Unhide image elements
+            //
+            largeImage.style.display = 'block';
+
+            // Show the captured photo
+            // The in-line CSS rules are used to resize the image
+            //
+
             largeImage.src = imageURI;
         }
     }

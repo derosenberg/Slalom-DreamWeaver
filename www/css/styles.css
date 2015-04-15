@@ -27,7 +27,7 @@
 
 #map {
 	position: absolute;
-	top: 43px;
+	top: 55px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -111,9 +111,6 @@ div[data-role="content"] {
 }
 
 #sendMessage {
-	
-	
-	
 	display: block;
 	text-align: center;
 	border: hidden;
@@ -128,27 +125,19 @@ div[data-role="content"] {
 	cursor: pointer;
 	font-size: 12pt;
 	line-height: 45px;
-
-	
 }
 
 #cameraIcon2 {
-	
 	float: left;
 	line-height: 0px;
 	width: auto;
 }
 
 
-
-
-
-
 /*CONVERSATION PAGE STYLES*/
 #conversationPageContent {
     border-top:  thick  1px  #666666;
-	margin-top: 20px;
-	
+	margin-top: 20px;	
 }
 
 
@@ -160,7 +149,6 @@ div[data-role="content"] {
     padding: 7px 0px;
     border-bottom: 3px solid #D9D9D9;
 	cursor: pointer;
-
 }
 
 .conversationContainer strong {
@@ -169,34 +157,26 @@ div[data-role="content"] {
 	font-family: Gotham-Book;
 	font-size: 11pt;
 	padding-left: 4px;	
-	
 }
 
 .conversationContainer p {
-	
 	font-family: Gotham-Book;
 	font-size: 12pt;	
 	padding-left: 4px;
 	padding-right: 4px;
-	
 }
 
 .conversationContainer label {
-	
 	color: #0083C1;
 	font-family: Gotham-Book;
 	font-size: 10pt;
 	padding-right: 4px;
-	
 }
 
 .controlgroup-textinput{
     padding-top:.22em;
     padding-bottom:.22em;
 }
-
-
-
 
 
 
@@ -287,12 +267,9 @@ div[data-role="content"] {
 	cursor: pointer;
 	font-size: 11pt;
 	line-height: 45px;
-
-	
 }
 
 #cameraIcon2 {
-	
 	float: left;
 	line-height: 0px;
 	width: auto;
@@ -312,37 +289,21 @@ div[data-role="content"] {
 
 
 
-
-
-
-
-
-
-
 /*LOGIN PAGE STYLES*/
 
 #login {
-	
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
-	
 }
 
 #login a {
-	
 	color: white;
-	
 }
 
 #loginPage {
-	
 	padding-top: 165px;
-	
-	
 }
 
 #username {
-	
-	
 	width: 90%;
 	border: hidden;
 	border-radius: 0px;
@@ -352,11 +313,9 @@ div[data-role="content"] {
 	height: 10px;
 	font-size: 12pt;
 	padding-left: 10px;
-	
 }
 
 #password {
-	
 	display: block;
 	width: 90%;
 	border: hidden;
@@ -370,17 +329,9 @@ div[data-role="content"] {
 }
 
 #loginSubmitBtn {
-	
-	
 	height: 35px;
 	margin-top: 25px;
-	
-	
 }
-
-
-
-
 
 
 
@@ -403,30 +354,24 @@ div[data-role="content"] {
 }
 
 .header h1 {
-	
 	font-family: Gotham-Book;
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 12pt;
-	
 }
 
 .footer .ui-input-text {
-		
-		display: block; 
-		width: 100%; 
-		height: 40px; 
-		background: #EEF3F6; 
-		border-top: solid 2px #c9c9c9; 
-		border-bottom: solid 2px #c9c9c9; 
-		margin-top: 20px;
-		margin-bottom: 0px; 
-		overflow:hidden;
-		font-family: Gotham-Medium;
-		
+	display: block; 
+	width: 100%; 
+	height: 40px; 
+	background: #EEF3F6; 
+	border-top: solid 2px #c9c9c9; 
+	border-bottom: solid 2px #c9c9c9; 
+	margin-top: 20px;
+	margin-bottom: 0px; 
+	overflow:hidden;
+	font-family: Gotham-Medium;	
 }
-
-
 
 
 
@@ -471,19 +416,16 @@ div[data-role="content"] {
 /*FORGOT PASSWORD CONTROLS*/
 #forgettedPassword {
 	padding-top: 165px;
-
 }
+
 #passwordChange{
 	padding-top: 165px;
-
 }
 
 #emailForgot {
 	font-family: Gotham-Book;
 	font-size: 12pt;
 }
-
-
 
 #forgotPassword {
 	background: linear-gradient(to right, #2f3089, #006fae, #71cfeb);
@@ -494,6 +436,13 @@ div[data-role="content"] {
 	padding-top: 165px;
 }
 
+#changePasswordForm {
+
+	padding-top: 50px;	
+	
+}
+
+	
 
 
 
@@ -505,23 +454,13 @@ div[data-role="content"] {
 }
 
 #cameraStyle {
-	
 	padding-top: 200px;
-	
 }
-
-
-
-
-
-
-
 
 
 
 /*DIV BUTTON CONTROL*/
 .divButton {
-
 	display: block;
 	text-align: center;
 	border: hidden;
@@ -535,11 +474,6 @@ div[data-role="content"] {
 	cursor: pointer;
 	font-size: 12pt;
 }
-
-
-	
-	
-
 
 
 /*RECIPIENTS PAGE STYLES*/
@@ -559,21 +493,14 @@ div[data-role="content"] {
 }
 
 .recipientContent img {
-	
 	float: right;
 	padding-right: 5px;
 	width: 30px;
-	
 }
-
-
-
-
 
 .ui-input-text {
 	border: none;
 	font-family: Gotham-Medium;
-
 }
 
 .ui-footer {
@@ -581,21 +508,12 @@ div[data-role="content"] {
 }
 
 #statusBody {
-
 	font-family: Gotham-Medium;	
-	
 }
 
 #messageBody {
-	
 	font-family: Gotham-Medium;
-	
 }
-
-
-
-
-
 
 
 /*MENU PAGE CONTROLS*/
@@ -604,9 +522,7 @@ div[data-role="content"] {
 }
 
 #menu a {
-	
-	color: white;
-	
+	color: white;	
 }
 
 #menu ul {
@@ -656,11 +572,9 @@ div[data-role="content"] {
 }
 
 
-.ui-header {
-	
+.ui-header {	
 	border-bottom: hidden;
-	
-	}
+}
 
 
 /* Uncomment this before compiling in order to cause the initial page to fade in
