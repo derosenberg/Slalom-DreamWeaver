@@ -5,9 +5,9 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.uamis.hi8us"
-        version   = "3.5.1">
+        version   = "3.6.0">
 
-    <name>Slalom Hi8us Internal Test</name>
+    <name>Slalom Hi8us Client Test</name>
 
     <description>
         Test application for Slalom Hi8us.
