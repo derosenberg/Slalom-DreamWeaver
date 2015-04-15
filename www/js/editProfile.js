@@ -5,7 +5,7 @@ $(document).on('pageinit', '#editProfile', function () {
 	
 	$(document).on('click', '#editProfileSumbit', function () {
 		
-	    var myUser = new S_User($("#fname1").val(), $("#lname1").val(), $("#regisEmail1").val(), "", "", $("#phone1").val(), $('#guestemail1').val(), $('#regisPortrait1').attr('src'));
+	    var myUser = new S_User($("#fname1").val(), $("#lname1").val(), $("#regisEmail1").val(), "", "", $("#phone1").val(), $('#guestemail1').val(), $('#regisPic1').val());
 
 	    putProfile(myUser);
 

@@ -7,7 +7,7 @@ $(document).on('pageinit', '#regisPage', function () {
     $(document).on('click', '#submitNewUser', function () {
 		
         //Create user variable
-        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $('#regisPortrait').attr('src'));
+        var myUser = new S_User($('#fname').val(), $('#lname').val(), $('#regisEmail').val(), $('#regisPassword').val(), $('#ConfirmPassword').val(), $('#phone').val(), $('#guestemail').val(), $('#regisPic').val());
 
         console.log(myUser);
 

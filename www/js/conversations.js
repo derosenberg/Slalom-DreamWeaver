@@ -77,7 +77,7 @@ function AddConversationsToList(conversations)
             temp += conversations[i].latestmessagetext;
             temp += "</p></div>";
 
-            $("#conversationPageContent").append(temp);
+            $("#conversationPageContent").prepend(temp);
         }
     }
 }

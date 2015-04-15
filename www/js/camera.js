@@ -47,7 +47,15 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
     });
 
     $(document).on('click', '#grabDatPhoto', function () {
-        getPhoto(pictureSource.PHOTOLIBRARY);
+
+        if (cameraObject.lastPage == "Home")
+        {
+            getStatusPhoto(pictureSource.PHOTOLIBRARY);
+        }
+        else
+        {
+            getPhoto(pictureSource.PHOTOLIBRARY);
+        }
     });
 
     function onDeviceReady() {
@@ -91,6 +99,7 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
 
     // Called when a photo is successfully retrieved
     //
+
     function onPhotoURISuccess(imageURI) {
         // Uncomment to view the image file URI
         // console.log(imageURI);
@@ -101,20 +110,21 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
         
         var hiddenField = document.getElementById(cameraObject.hiddenField);
 
+        hiddenField.value = "data:image/jpeg;base64," + imageURI;
 
         if (cameraObject.smallImage.length > 0) {
 
-            var largeImage = document.getElementById(cameraObject.smallImage);
+            var smallImage = document.getElementById(cameraObject.smallImage);
 
             // Unhide image elements
             //
-            largeImage.style.display = 'block';
+            smallImage.style.display = 'block';
 
             // Show the captured photo
             // The in-line CSS rules are used to resize the image
             //
 
-            largeImage.src = imageURI;
+            smallImage.src = imageURI;
         }
     }
 
@@ -130,29 +140,6 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
         });
     }
 
-    function capturePhotoWithFile() {
-
-
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail,
-        {
-            quality: 50,
-            correctOrientation: true,
-            destinationType: Camera.DestinationType.FILE_URI
-        });
-    }
-
-
-    // A button will call this function
-    //
-    function capturePhotoEdit() {
-        // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-        navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-            quality: 20,
-            allowEdit: true,
-            destinationType: destinationType.DATA_URL
-        });
-    }
-
     // A button will call this function
     //
     function getPhoto(source) {
@@ -162,6 +149,19 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
              quality: 50,
              correctOrientation: true,
              destinationType: destinationType.FILE_URI,
+             sourceType: source
+         });
+    }
+
+    // A button will call this function
+    //
+    function getStatusPhoto(source) {
+        // Retrieve image file location from specified source
+        navigator.camera.getPicture(onPhotoURISuccess, onFail,
+         {
+             quality: 50,
+             correctOrientation: true,
+             destinationType: destinationType.DATA_URL,
              sourceType: source
          });
     }
