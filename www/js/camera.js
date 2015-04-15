@@ -66,7 +66,7 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
         // Get image handle
         //
 
-        var smallImage = document.getElementById(cameraObject.smallImage);
+
         var hiddenField = document.getElementById(cameraObject.hiddenField);
 
 
@@ -74,6 +74,8 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
 
         if (cameraObject.smallImage.length > 0)
         {
+            var smallImage = document.getElementById(cameraObject.smallImage);
+
             // Unhide image elements
             //
             smallImage.style.display = 'block';
@@ -96,11 +98,13 @@ $(document).on('pageshow', '#Camera', function (event, ui) {
 
         // Get image handle
         //
-        var largeImage = document.getElementById(cameraObject.smallImage);
+        
         var hiddenField = document.getElementById(cameraObject.hiddenField);
 
 
         if (cameraObject.smallImage.length > 0) {
+
+            var largeImage = document.getElementById(cameraObject.smallImage);
 
             // Unhide image elements
             //
