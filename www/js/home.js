@@ -1,5 +1,6 @@
 // JavaScript source code
 $(document).on('pageinit', '#Home', function () {
+    console.log("pageinit");
 
     $(document).on('click', '#loadMoreStatuses', function () {
 
@@ -9,7 +10,12 @@ $(document).on('pageinit', '#Home', function () {
     });
 
     $(document).on('click', '#submitNewStatus', function () {
-        PostStatus($("#statusBody").val());
+        var statusImg = $("#statusPic").val();
+        $("#statusPic").val("");
+
+        console.log(statusImg);
+
+        PostStatus($("#statusBody").val(), statusImg);
     });
 });
 
@@ -47,11 +53,11 @@ function GetStatusList() {
             //Hide loader
         },
         success: function (data) {
-            statuses = data;
+            var statuses = data;
             //Log success
             console.log("message sent");
             //     navigator.notification.alert("Successsssss", console.log("success"), "Statuses Getted");
-            showStatus();
+            showStatus(statuses);
         },
         error: function (request, error) {
 
@@ -64,26 +70,32 @@ function GetStatusList() {
 }
 
 //Make a list of statuses
-function showStatus() {
+function showStatus(statuses) {
     $("#statusPageContent").empty();
 
 
     for (i = 0; i < statuses.length; i++) {
-        var temp = "<div class='statusContainer'><label style='float:left'><strong>";
+        var temp = "<div class='statusContainer' id='" + statuses[i].StatusID + "'><label style='float:left'><strong>";
         temp += statuses[i].name;
         temp += "</strong></label><label style='float:right'>";
         temp += statuses[i].date;
         temp += "</label>";
         temp += "<br /><br /><p style='clear:both;'>";
         temp += statuses[i].body;
-        temp += "</p></div>";
+        temp += "</p>";
+        temp += "</div>";
 
         $("#statusPageContent").append(temp);
+
+        if (statuses[i].postpicguid != null)
+        {
+            GetStatusPic(statuses[i].StatusID, statuses[i].postpicguid);
+        }
     }
 }
 
 //Onclicking stuff, post the status
-function PostStatus(status) {
+function PostStatus(status, img) {
 
     //AJAX call to update location
     $.ajax({
@@ -101,9 +113,18 @@ function PostStatus(status) {
         },
 
         success: function (result) {
+            console.log(img);
+            if (img.length > 0)
+            {
+                PostStatusPic(result, img);
+            }
+            else
+            {
+                GetStatusList();
+            }
 
             $("#statusBody").val("");
-            GetStatusList();
+            
             //Log success
             //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
         },
@@ -119,7 +140,7 @@ function PostStatus(status) {
 
 //Onclicking stuff, post the status pic
 function PostStatusPic(status_id, img_data) {
-
+    console.log("post status pic");
     //AJAX call to update location
     $.ajax({
         url: S_ROOT + 'api/PostStatusPic/',
@@ -152,12 +173,13 @@ function PostStatusPic(status_id, img_data) {
 }
 
 //Get status pic
-function GetStatusPic(guid) {
+function GetStatusPic(status, guid) {
 
     //AJAX call to update location
     $.ajax({
         url: S_ROOT + 'api/GetStatusPic/' + guid,
-        type: 'POST',
+        type: 'GET',
+        cache: true,
         async: true,
         beforeSend: function (request) {
 
@@ -168,13 +190,12 @@ function GetStatusPic(guid) {
         },
 
         success: function (result) {
-
-            GetStatusList();
+            $('#' + status).append("<img src='" + result + "' />");
             //Log success
             //     navigator.notification.alert("Successsssss", console.log("success"), "Post Created");
         },
         error: function (request, error) {
-
+            $('#' + status).append("<p>Couldn't load image</p>");
             //Log failure
             var myError = "Error " + request.status + ": " + request.responseJSON.Message;
             navigator.notification.alert(myError, console.log(myError), "Pic Post Failed");
