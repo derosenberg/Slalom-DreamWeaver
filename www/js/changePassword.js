@@ -37,7 +37,10 @@ function changePassword(currentPword, newPword, confirmNewPword) {
             success: function (result) {
 				
 			navigator.notification.alert("Password Changed");
-			$.mobile.changePage("#Home");		
+			$("#currentPassword").val("");
+			$("#newPassword").val("");
+			$("#confirmNewPassword").val("");
+			$.mobile.changePage("#Home");
 			console.log("Password Changed");
                
             },
