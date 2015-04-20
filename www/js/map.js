@@ -56,6 +56,8 @@ $(document).one('pageshow', '#mapPage', function () {
                 title: 'my location',
                 icon: locationmarker
               });
+			 
+			 setMarker(marker, position); 
 			 watchCurrentPosition();
 			           
             function setMarker(marker, pos){  
@@ -115,6 +117,8 @@ $(document).one('pageshow', '#mapPage', function () {
                     })(otherMarker, p));
 
                 }
+				
+				
 
             }
 			
@@ -123,7 +127,7 @@ $(document).one('pageshow', '#mapPage', function () {
 			
 		function addEventMarkers(markers){
             var infoWindow = new google.maps.InfoWindow(), eventMarker, i;
-			 var hotelInfoWindow = new google.maps.InfoWindow(), hotelMarker;
+			var hotelInfoWindow = new google.maps.InfoWindow(), hotelMarker;
 			 
             var pinColor = "2F76EE";
             var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
@@ -178,7 +182,6 @@ var hotelPinImage = new google.maps.MarkerImage("http://chart.apis.google.com/ch
             $(document).ready(function () {
                 setInterval(function () {
 
-                    removeMarkers();
                     getMarkers();
 
                 }, 10000);
@@ -190,6 +193,7 @@ var hotelPinImage = new google.maps.MarkerImage("http://chart.apis.google.com/ch
         url: S_ROOT + 'api/Profile/getlocations',
         type: 'GET',
         async: true,
+		cache: false,
         contentType: "application/x-www-form-urlencoded",
         beforeSend: function (request) {
 
@@ -205,6 +209,7 @@ var hotelPinImage = new google.maps.MarkerImage("http://chart.apis.google.com/ch
         },
         success: function (result) {
 			
+			removeMarkers();
 			addMarkers(result);
 			console.log("other users location list updated");
 			
